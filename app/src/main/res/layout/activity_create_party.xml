@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreateParty"
+    android:background="@color/background">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="107dp"
+        android:background="@color/colorPrimaryDarkPurple"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/create_party_account_icon"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/account"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/create_party_help_icon"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/help"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/create_party_account_icon" />
+
+        <TextView
+            android:id="@+id/create_party_title"
+            android:layout_width="146dp"
+            android:layout_height="37dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:text="@string/create_party"
+            android:textColor="@android:color/white"
+            android:textSize="26dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/create_party_back_text"
+            android:layout_width="115dp"
+            android:layout_height="22dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:text="@string/back_home"
+            android:textColor="@android:color/white"
+            android:textSize="14dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/create_party_back_arrow" />
+
+        <ImageView
+            android:id="@+id/create_party_back_arrow"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/create_party_disco"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="91dp"
+        android:layout_marginTop="155dp"
+        android:src="@drawable/disco"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="66dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/app_name"
+        android:textColor="@color/colorPrimaryDarkPurple"
+        android:textSize="15dp"
+        app:layout_constraintStart_toEndOf="@+id/create_party_disco"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+    <AutoCompleteTextView
+        android:id="@+id/create_party_create_party_name"
+        android:layout_width="190dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="71dp"
+        android:background="@drawable/btn_rounded_transparent"
+        android:hint="@string/create_party_name"
+        app:layout_constraintStart_toEndOf="@+id/create_party_party_name_textview"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <AutoCompleteTextView
+        android:id="@+id/create_party_find_genres"
+        android:layout_width="190dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="31dp"
+        android:background="@drawable/btn_rounded_transparent"
+        android:hint="@string/find_genres"
+        app:layout_constraintStart_toEndOf="@+id/create_party_genre_textview"
+        app:layout_constraintTop_toBottomOf="@+id/create_party_create_party_name" />
+
+    <AutoCompleteTextView
+        android:id="@+id/create_party_find_songs"
+        android:layout_width="190dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/btn_rounded_transparent"
+        android:hint="@string/find_songs"
+        app:layout_constraintStart_toEndOf="@+id/create_party_song_textview"
+        app:layout_constraintTop_toBottomOf="@+id/create_party_find_genres" />
+
+    <TextView
+        android:id="@+id/create_party_party_name_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:text="Party Name: "
+        android:textColor="@color/colorPrimaryDarkPurple"
+        android:textSize="14dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_party_disco" />
+
+    <TextView
+        android:id="@+id/create_party_genre_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="97dp"
+        android:layout_marginTop="58dp"
+        android:gravity="center"
+        android:text="Genre: "
+        android:textColor="@color/colorPrimaryDarkPurple"
+        android:textSize="14dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_party_party_name_textview" />
+
+    <TextView
+        android:id="@+id/create_party_song_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="107dp"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:text="Song: "
+        android:textColor="@color/colorPrimaryDarkPurple"
+        android:textSize="14dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_party_genre_textview" />
+
+    <ToggleButton
+        android:id="@+id/create_party_public_button"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="33dp"
+        android:layout_marginBottom="22dp"
+        android:background="@drawable/btn_rounded_corner"
+        android:text="@string/public_button"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/create_party_create_button"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ToggleButton
+        android:id="@+id/create_party_private_button"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="33dp"
+        android:layout_marginBottom="22dp"
+        android:background="@drawable/btn_rounded_corner"
+        android:text="@string/private_button"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/create_party_create_button"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/create_party_create_button"
+        android:layout_width="222dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="95dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/btn_rounded_no_edge"
+        android:text="Create Party"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

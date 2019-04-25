@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryPurple">#66AE52D4</color>
+    <color name="colorPrimaryLightPurple">#BB6BD9</color>
+    <color name="colorPrimaryDarkPurple">#7B1FA2</color>
+    <color name="colorAccentPurple">#D81B60</color>
+    <color name="colorPrimaryDark">#7B1FA2</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="black">#000000</color>
+    <color name="gray">#E0E0E0</color>
+    <color name="white">#FFFFFF</color>
+    <color name="background">#F2F2F2</color>
+    <color name="toggle_button">#E0E0E0</color>
+    <color name="toggle_button_on">#C4C4C4</color>
+</resources>
