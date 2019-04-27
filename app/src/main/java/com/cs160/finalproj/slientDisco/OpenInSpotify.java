@@ -1,5 +1,6 @@
 package com.cs160.finalproj.slientDisco;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,10 +10,13 @@ public class OpenInSpotify extends AppCompatActivity {
 
     protected Button cancelButton;
 
+    String mUsername;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_open_in_spotify);
+        getExtrasFromBundle();
 
         //Cancel going to Spotify
         cancelButton = findViewById(R.id.open_spotify_cancel);
@@ -24,5 +28,13 @@ public class OpenInSpotify extends AppCompatActivity {
         });
 
         //TODO, envoke spotify API
+    }
+
+    public void getExtrasFromBundle() {
+        Intent intent = getIntent();
+        // use intent bundle to set values
+        // String value = intent.getStringExtra("key");
+        mUsername = intent.getStringExtra("username");
+
     }
 }

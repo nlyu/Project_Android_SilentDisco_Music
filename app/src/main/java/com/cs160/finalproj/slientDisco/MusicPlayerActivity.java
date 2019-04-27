@@ -35,6 +35,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
     //TODO, this music play will play all local file in the internal storage/Music directory
     //TODO, need to add backend in future
 
+
     @BindView(R.id.track_cover) protected ImageView trackCover;
     @BindView(R.id.previous_track) protected ImageView previousTrack;
     @BindView(R.id.play_or_pause) protected ImageView playOrPause;
@@ -59,6 +60,9 @@ public class MusicPlayerActivity extends AppCompatActivity {
     private boolean isTimeListenerSet;
 
     private Handler timeHandler = new Handler();
+
+    String mUsername;
+
 
     private void setPositionListener() {
         isTimeListenerSet = true;
@@ -174,6 +178,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music_player);
         ButterKnife.bind(this);
+        getExtrasFromBundle();
 
         tracks = new ArrayList<>();
 
@@ -213,6 +218,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MusicPlayerActivity.this, HelpActivity.class);
+                intent.putExtra("username", mUsername);
                 startActivity(intent);
             }
         });
@@ -221,12 +227,21 @@ public class MusicPlayerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MusicPlayerActivity.this, UserProfile.class);
+                intent.putExtra("username", mUsername);
                 startActivity(intent);
             }
         });
 
         UIUtils.colorizeImage(previousTrack, false);
         UIUtils.colorizeImage(nextTrack, false);
+    }
+
+    public void getExtrasFromBundle() {
+        Intent intent = getIntent();
+        // use intent bundle to set values
+        // String value = intent.getStringExtra("key");
+        mUsername = intent.getStringExtra("username");
+
     }
 
 }
