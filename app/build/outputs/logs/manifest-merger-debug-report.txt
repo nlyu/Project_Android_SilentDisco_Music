@@ -1,0 +1,289 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:2:1-41:12
+INJECTED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:2:1-41:12
+INJECTED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:2:1-41:12
+INJECTED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:2:1-41:12
+MERGED from [com.android.support:design:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/5c992f275bf46b275abb1350f6d0b2cd/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/1057886b028931c99e1dc77cb8d14cae/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/carigan/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/4c0e815d67b224c85c8dd9e2c127ce08/AndroidManifest.xml:2:1-11:12
+MERGED from [com.jakewharton:butterknife:9.0.0-rc2] /Users/carigan/.gradle/caches/transforms-1/files-1.1/butterknife-9.0.0-rc2.aar/0787d31557664df455853f79628c91c7/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-location:16.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/play-services-location-16.0.0.aar/7b6a6f4544be08bcd5e39a99b1309943/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-base:16.0.1] /Users/carigan/.gradle/caches/transforms-1/files-1.1/play-services-base-16.0.1.aar/60332f5a127d664d0ef55e03ee5463da/AndroidManifest.xml:17:1-29:12
+MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/play-services-places-placereport-16.0.0.aar/249a2e604303640e9172bf2fdcbfbf07/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] /Users/carigan/.gradle/caches/transforms-1/files-1.1/play-services-tasks-16.0.1.aar/96069ad9301fb74d4cdc781e3758c4c9/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] /Users/carigan/.gradle/caches/transforms-1/files-1.1/play-services-basement-16.0.1.aar/93e655c66c87edbdbcba781c767c6895/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-v4:26.1.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/01ae3a47a1ea5a53e15a574b8b41f3e6/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0.aar/6524e551186fb81dadd86293ad3f2586/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0.aar/a60b3725af986ba27a812eaed2dfd9a7/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:recyclerview-v7:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-28.0.0.aar/8226d895f4c40866ee6eeebe86de783f/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0.aar/36e1d69394721357840f100a8c2ab91c/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/support-core-utils-28.0.0.aar/bfd89dbdb7e09ca07278395ff066352e/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-28.0.0.aar/7e80b2d692b783b35b61d8c53a2dcc51/AndroidManifest.xml:17:1-22:12
+MERGED from [com.jakewharton:butterknife-runtime:9.0.0-rc2] /Users/carigan/.gradle/caches/transforms-1/files-1.1/butterknife-runtime-9.0.0-rc2.aar/4223191e6733c8453c33fd22236c5ee4/AndroidManifest.xml:2:1-7:12
+MERGED from [com.android.support:transition:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/transition-28.0.0.aar/9fddc7b9a60215a8d6f289d0bdfbb09c/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:loader:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/loader-28.0.0.aar/33a80100a14beade6d53603edfe4132b/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:viewpager:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0.aar/aaef4786f0a53700288c69012f682d93/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-28.0.0.aar/6ce6b5d860438f0004407951d98deec8/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/drawerlayout-28.0.0.aar/f61fd27e8984aa18736a69f5c9b715ee/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-28.0.0.aar/fe0bc162d4bd1e668bf340e895c8ff6b/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:customview:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/customview-28.0.0.aar/37278972355720bca90165182e6b818a/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-28.0.0.aar/f9ad924082db887d8ab06cbd3e60d2ec/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-28.0.0.aar/4a600e889fe942aae07d3f1836131731/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/c3ef740720606ee0f4565722e38c2cdd/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-compat:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/bf2fb553cc9ad7c0b1354c66fda78946/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/d30e36c40c4b8d513aa161d2c3ed1e60/AndroidManifest.xml:17:1-25:12
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0.aar/31166f16091a7fc5b1ef79062c077d15/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:cardview-v7:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/cardview-v7-28.0.0.aar/8d5cc9e512c4261f504685d7ad0ccc4e/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/carigan/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/c80df0920548e54d2416740e669bcd8e/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:documentfile:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/86df94cb7fa16345892f1b83014a61df/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0.aar/2a32a161159d5a67537a6f81e89f1a13/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:print:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/print-28.0.0.aar/c0d82c86fe1cfd78460b92e97ffd61db/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/carigan/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/73871c08910110cbcef4113bc3c40ee6/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:interpolator:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0.aar/dd8233b0f5b58f4dae4ab4f2bd931154/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/carigan/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/da7cfe139cb8dac954a738716b83e1e0/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/carigan/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/4297631b0a2c41bef64ac1c5f4a50473/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.1] /Users/carigan/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/8b7830f3a0c4a35f28b8e32588d9fce6/AndroidManifest.xml:17:1-22:12
+INJECTED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:2:1-41:12
+INJECTED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:2:1-41:12
+INJECTED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:2:1-41:12
+	package
+		ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:4:5-46
+		INJECTED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml
+		ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:2:1-41:12
+		INJECTED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml
+	xmlns:tools
+		ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:3:5-51
+	android:versionCode
+		INJECTED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml
+		ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:2:1-41:12
+		INJECTED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.GET_ACCOUNTS
+ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:7:5-71
+	android:name
+		ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:7:22-68
+uses-permission#android.permission.READ_PROFILE
+ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:8:5-71
+	android:name
+		ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:8:22-68
+uses-permission#android.permission.READ_CONTACTS
+ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:9:5-72
+	android:name
+		ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:9:22-69
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:10:5-80
+	android:name
+		ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:10:22-77
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:11:5-79
+	android:name
+		ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:11:22-76
+application
+ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:14:5-39:19
+MERGED from [com.android.support:design:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/5c992f275bf46b275abb1350f6d0b2cd/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/5c992f275bf46b275abb1350f6d0b2cd/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/carigan/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/4c0e815d67b224c85c8dd9e2c127ce08/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/carigan/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/4c0e815d67b224c85c8dd9e2c127ce08/AndroidManifest.xml:9:5-20
+MERGED from [com.google.android.gms:play-services-location:16.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/play-services-location-16.0.0.aar/7b6a6f4544be08bcd5e39a99b1309943/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-location:16.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/play-services-location-16.0.0.aar/7b6a6f4544be08bcd5e39a99b1309943/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-base:16.0.1] /Users/carigan/.gradle/caches/transforms-1/files-1.1/play-services-base-16.0.1.aar/60332f5a127d664d0ef55e03ee5463da/AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-base:16.0.1] /Users/carigan/.gradle/caches/transforms-1/files-1.1/play-services-base-16.0.1.aar/60332f5a127d664d0ef55e03ee5463da/AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/play-services-places-placereport-16.0.0.aar/249a2e604303640e9172bf2fdcbfbf07/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/play-services-places-placereport-16.0.0.aar/249a2e604303640e9172bf2fdcbfbf07/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] /Users/carigan/.gradle/caches/transforms-1/files-1.1/play-services-tasks-16.0.1.aar/96069ad9301fb74d4cdc781e3758c4c9/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] /Users/carigan/.gradle/caches/transforms-1/files-1.1/play-services-tasks-16.0.1.aar/96069ad9301fb74d4cdc781e3758c4c9/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] /Users/carigan/.gradle/caches/transforms-1/files-1.1/play-services-basement-16.0.1.aar/93e655c66c87edbdbcba781c767c6895/AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] /Users/carigan/.gradle/caches/transforms-1/files-1.1/play-services-basement-16.0.1.aar/93e655c66c87edbdbcba781c767c6895/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-v4:26.1.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/01ae3a47a1ea5a53e15a574b8b41f3e6/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-v4:26.1.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/01ae3a47a1ea5a53e15a574b8b41f3e6/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/c3ef740720606ee0f4565722e38c2cdd/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/c3ef740720606ee0f4565722e38c2cdd/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-compat:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/bf2fb553cc9ad7c0b1354c66fda78946/AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:support-compat:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/bf2fb553cc9ad7c0b1354c66fda78946/AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/d30e36c40c4b8d513aa161d2c3ed1e60/AndroidManifest.xml:22:5-23:19
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/d30e36c40c4b8d513aa161d2c3ed1e60/AndroidManifest.xml:22:5-23:19
+	android:appComponentFactory
+		ADDED from [com.android.support:support-compat:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/bf2fb553cc9ad7c0b1354c66fda78946/AndroidManifest.xml:22:18-91
+	android:supportsRtl
+		ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:19:9-35
+	android:label
+		ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:17:9-41
+	tools:ignore
+		ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:21:9-48
+	android:roundIcon
+		ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:18:9-54
+	android:icon
+		ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:16:9-43
+	android:allowBackup
+		ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:15:9-36
+	android:theme
+		ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:20:9-52
+activity#com.cs160.finalproj.slientDisco.ChooseParty
+ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:22:9-48
+	android:name
+		ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:22:19-46
+activity#com.cs160.finalproj.slientDisco.JoinParty
+ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:23:9-47
+	android:name
+		ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:23:19-44
+activity#com.cs160.finalproj.slientDisco.CreateParty
+ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:24:9-49
+	android:name
+		ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:24:19-46
+activity#com.cs160.finalproj.slientDisco.MusicPlayerActivity
+ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:25:9-57
+	android:name
+		ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:25:19-54
+activity#com.cs160.finalproj.slientDisco.OpenInSpotify
+ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:26:9-51
+	android:name
+		ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:26:19-48
+activity#com.cs160.finalproj.slientDisco.UserProfile
+ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:27:9-49
+	android:name
+		ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:27:19-46
+activity#com.cs160.finalproj.slientDisco.HelpActivity
+ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:28:9-30:59
+	android:label
+		ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:30:13-56
+	android:name
+		ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:29:13-41
+activity#com.cs160.finalproj.slientDisco.LoginActivity
+ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:31:9-38:20
+	android:label
+		ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:32:13-57
+	android:name
+		ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:31:19-48
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:33:13-37:29
+action#android.intent.action.MAIN
+ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:34:17-69
+	android:name
+		ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:34:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:36:17-77
+	android:name
+		ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml:36:27-74
+uses-sdk
+INJECTED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml
+INJECTED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml
+MERGED from [com.android.support:design:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/5c992f275bf46b275abb1350f6d0b2cd/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/5c992f275bf46b275abb1350f6d0b2cd/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/1057886b028931c99e1dc77cb8d14cae/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/1057886b028931c99e1dc77cb8d14cae/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/carigan/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/4c0e815d67b224c85c8dd9e2c127ce08/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/carigan/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/4c0e815d67b224c85c8dd9e2c127ce08/AndroidManifest.xml:5:5-7:41
+MERGED from [com.jakewharton:butterknife:9.0.0-rc2] /Users/carigan/.gradle/caches/transforms-1/files-1.1/butterknife-9.0.0-rc2.aar/0787d31557664df455853f79628c91c7/AndroidManifest.xml:5:5-44
+MERGED from [com.jakewharton:butterknife:9.0.0-rc2] /Users/carigan/.gradle/caches/transforms-1/files-1.1/butterknife-9.0.0-rc2.aar/0787d31557664df455853f79628c91c7/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-location:16.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/play-services-location-16.0.0.aar/7b6a6f4544be08bcd5e39a99b1309943/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-location:16.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/play-services-location-16.0.0.aar/7b6a6f4544be08bcd5e39a99b1309943/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-base:16.0.1] /Users/carigan/.gradle/caches/transforms-1/files-1.1/play-services-base-16.0.1.aar/60332f5a127d664d0ef55e03ee5463da/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:16.0.1] /Users/carigan/.gradle/caches/transforms-1/files-1.1/play-services-base-16.0.1.aar/60332f5a127d664d0ef55e03ee5463da/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/play-services-places-placereport-16.0.0.aar/249a2e604303640e9172bf2fdcbfbf07/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/play-services-places-placereport-16.0.0.aar/249a2e604303640e9172bf2fdcbfbf07/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] /Users/carigan/.gradle/caches/transforms-1/files-1.1/play-services-tasks-16.0.1.aar/96069ad9301fb74d4cdc781e3758c4c9/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] /Users/carigan/.gradle/caches/transforms-1/files-1.1/play-services-tasks-16.0.1.aar/96069ad9301fb74d4cdc781e3758c4c9/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] /Users/carigan/.gradle/caches/transforms-1/files-1.1/play-services-basement-16.0.1.aar/93e655c66c87edbdbcba781c767c6895/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] /Users/carigan/.gradle/caches/transforms-1/files-1.1/play-services-basement-16.0.1.aar/93e655c66c87edbdbcba781c767c6895/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:26.1.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/01ae3a47a1ea5a53e15a574b8b41f3e6/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:26.1.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/01ae3a47a1ea5a53e15a574b8b41f3e6/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0.aar/6524e551186fb81dadd86293ad3f2586/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0.aar/6524e551186fb81dadd86293ad3f2586/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0.aar/a60b3725af986ba27a812eaed2dfd9a7/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0.aar/a60b3725af986ba27a812eaed2dfd9a7/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-28.0.0.aar/8226d895f4c40866ee6eeebe86de783f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-28.0.0.aar/8226d895f4c40866ee6eeebe86de783f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0.aar/36e1d69394721357840f100a8c2ab91c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0.aar/36e1d69394721357840f100a8c2ab91c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/support-core-utils-28.0.0.aar/bfd89dbdb7e09ca07278395ff066352e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/support-core-utils-28.0.0.aar/bfd89dbdb7e09ca07278395ff066352e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-28.0.0.aar/7e80b2d692b783b35b61d8c53a2dcc51/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-28.0.0.aar/7e80b2d692b783b35b61d8c53a2dcc51/AndroidManifest.xml:20:5-44
+MERGED from [com.jakewharton:butterknife-runtime:9.0.0-rc2] /Users/carigan/.gradle/caches/transforms-1/files-1.1/butterknife-runtime-9.0.0-rc2.aar/4223191e6733c8453c33fd22236c5ee4/AndroidManifest.xml:5:5-44
+MERGED from [com.jakewharton:butterknife-runtime:9.0.0-rc2] /Users/carigan/.gradle/caches/transforms-1/files-1.1/butterknife-runtime-9.0.0-rc2.aar/4223191e6733c8453c33fd22236c5ee4/AndroidManifest.xml:5:5-44
+MERGED from [com.android.support:transition:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/transition-28.0.0.aar/9fddc7b9a60215a8d6f289d0bdfbb09c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/transition-28.0.0.aar/9fddc7b9a60215a8d6f289d0bdfbb09c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/loader-28.0.0.aar/33a80100a14beade6d53603edfe4132b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/loader-28.0.0.aar/33a80100a14beade6d53603edfe4132b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0.aar/aaef4786f0a53700288c69012f682d93/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0.aar/aaef4786f0a53700288c69012f682d93/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-28.0.0.aar/6ce6b5d860438f0004407951d98deec8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-28.0.0.aar/6ce6b5d860438f0004407951d98deec8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/drawerlayout-28.0.0.aar/f61fd27e8984aa18736a69f5c9b715ee/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/drawerlayout-28.0.0.aar/f61fd27e8984aa18736a69f5c9b715ee/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-28.0.0.aar/fe0bc162d4bd1e668bf340e895c8ff6b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-28.0.0.aar/fe0bc162d4bd1e668bf340e895c8ff6b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/customview-28.0.0.aar/37278972355720bca90165182e6b818a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/customview-28.0.0.aar/37278972355720bca90165182e6b818a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-28.0.0.aar/f9ad924082db887d8ab06cbd3e60d2ec/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-28.0.0.aar/f9ad924082db887d8ab06cbd3e60d2ec/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-28.0.0.aar/4a600e889fe942aae07d3f1836131731/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-28.0.0.aar/4a600e889fe942aae07d3f1836131731/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/c3ef740720606ee0f4565722e38c2cdd/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/c3ef740720606ee0f4565722e38c2cdd/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-compat:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/bf2fb553cc9ad7c0b1354c66fda78946/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/bf2fb553cc9ad7c0b1354c66fda78946/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/d30e36c40c4b8d513aa161d2c3ed1e60/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/d30e36c40c4b8d513aa161d2c3ed1e60/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0.aar/31166f16091a7fc5b1ef79062c077d15/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0.aar/31166f16091a7fc5b1ef79062c077d15/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/cardview-v7-28.0.0.aar/8d5cc9e512c4261f504685d7ad0ccc4e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/cardview-v7-28.0.0.aar/8d5cc9e512c4261f504685d7ad0ccc4e/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/carigan/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/c80df0920548e54d2416740e669bcd8e/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/carigan/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/c80df0920548e54d2416740e669bcd8e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/86df94cb7fa16345892f1b83014a61df/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/86df94cb7fa16345892f1b83014a61df/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0.aar/2a32a161159d5a67537a6f81e89f1a13/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0.aar/2a32a161159d5a67537a6f81e89f1a13/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/print-28.0.0.aar/c0d82c86fe1cfd78460b92e97ffd61db/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/print-28.0.0.aar/c0d82c86fe1cfd78460b92e97ffd61db/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/carigan/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/73871c08910110cbcef4113bc3c40ee6/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/carigan/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/73871c08910110cbcef4113bc3c40ee6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0.aar/dd8233b0f5b58f4dae4ab4f2bd931154/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0.aar/dd8233b0f5b58f4dae4ab4f2bd931154/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/carigan/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/da7cfe139cb8dac954a738716b83e1e0/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/carigan/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/da7cfe139cb8dac954a738716b83e1e0/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/carigan/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/4297631b0a2c41bef64ac1c5f4a50473/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/carigan/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/4297631b0a2c41bef64ac1c5f4a50473/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /Users/carigan/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/8b7830f3a0c4a35f28b8e32588d9fce6/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /Users/carigan/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/8b7830f3a0c4a35f28b8e32588d9fce6/AndroidManifest.xml:20:5-44
+INJECTED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml
+INJECTED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml
+	tools:overrideLibrary
+		ADDED from [com.android.support:support-v4:26.1.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/01ae3a47a1ea5a53e15a574b8b41f3e6/AndroidManifest.xml:23:9-51
+	android:targetSdkVersion
+		INJECTED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml
+		ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml
+		ADDED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/carigan/school/cs160/silentdisco/app/src/main/AndroidManifest.xml
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:16.0.1] /Users/carigan/.gradle/caches/transforms-1/files-1.1/play-services-base-16.0.1.aar/60332f5a127d664d0ef55e03ee5463da/AndroidManifest.xml:23:9-26:75
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:16.0.1] /Users/carigan/.gradle/caches/transforms-1/files-1.1/play-services-base-16.0.1.aar/60332f5a127d664d0ef55e03ee5463da/AndroidManifest.xml:25:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:16.0.1] /Users/carigan/.gradle/caches/transforms-1/files-1.1/play-services-base-16.0.1.aar/60332f5a127d664d0ef55e03ee5463da/AndroidManifest.xml:26:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:16.0.1] /Users/carigan/.gradle/caches/transforms-1/files-1.1/play-services-base-16.0.1.aar/60332f5a127d664d0ef55e03ee5463da/AndroidManifest.xml:24:13-79
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:16.0.1] /Users/carigan/.gradle/caches/transforms-1/files-1.1/play-services-basement-16.0.1.aar/93e655c66c87edbdbcba781c767c6895/AndroidManifest.xml:23:9-25:69
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:16.0.1] /Users/carigan/.gradle/caches/transforms-1/files-1.1/play-services-basement-16.0.1.aar/93e655c66c87edbdbcba781c767c6895/AndroidManifest.xml:25:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:16.0.1] /Users/carigan/.gradle/caches/transforms-1/files-1.1/play-services-basement-16.0.1.aar/93e655c66c87edbdbcba781c767c6895/AndroidManifest.xml:24:13-58
+meta-data#android.support.VERSION
+ADDED from [com.android.support:support-v4:26.1.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/01ae3a47a1ea5a53e15a574b8b41f3e6/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/c3ef740720606ee0f4565722e38c2cdd/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/c3ef740720606ee0f4565722e38c2cdd/AndroidManifest.xml:26:9-28:38
+	android:value
+		ADDED from [com.android.support:support-v4:26.1.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/01ae3a47a1ea5a53e15a574b8b41f3e6/AndroidManifest.xml:28:13-35
+	android:name
+		ADDED from [com.android.support:support-v4:26.1.0] /Users/carigan/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/01ae3a47a1ea5a53e15a574b8b41f3e6/AndroidManifest.xml:27:13-51
