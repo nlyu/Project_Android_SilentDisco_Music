@@ -15,6 +15,7 @@ public class CreateParty extends AppCompatActivity {
     ImageView mHelpButton;
     Button createPartyButton;
 
+    String mUsername;
     double latitude;
     double longitude;
 
@@ -31,6 +32,7 @@ public class CreateParty extends AppCompatActivity {
             public void onClick(View v) {
                 Intent myIntent = new Intent(CreateParty.this, MusicPlayerActivity.class);
                 // myIntent.putExtra("key", value); //Optional parameters
+                myIntent.putExtra("username", mUsername);
                 startActivity(myIntent);
             }
         });
@@ -39,6 +41,7 @@ public class CreateParty extends AppCompatActivity {
             public void onClick(View v) {
                 Intent myIntent = new Intent(CreateParty.this, UserProfile.class);
                 // myIntent.putExtra("key", value); //Optional parameters
+                myIntent.putExtra("username", mUsername);
                 startActivity(myIntent);
             }
         });
@@ -48,6 +51,7 @@ public class CreateParty extends AppCompatActivity {
             public void onClick(View v) {
                 Intent myIntent = new Intent(CreateParty.this, HelpActivity.class);
                 // myIntent.putExtra("key", value); //Optional parameters
+                myIntent.putExtra("username", mUsername);
                 startActivity(myIntent);
             }
         });
@@ -68,6 +72,7 @@ public class CreateParty extends AppCompatActivity {
         Intent intent = getIntent();
         // use intent bundle to set values
         // String value = intent.getStringExtra("key");
+        mUsername = intent.getStringExtra("username");
         latitude = intent.getDoubleExtra("latitude", 0.0);
         longitude = intent.getDoubleExtra("longitude", 0.0);
     }

@@ -47,6 +47,7 @@ public class ChooseParty extends AppCompatActivity {
     TextView mJoinPartyButton;
     TextView mCreatePartyButton;
 
+    String mUsername;
 
     private static final String TAG = ChooseParty.class.getSimpleName();
 
@@ -56,10 +57,6 @@ public class ChooseParty extends AppCompatActivity {
     private static final long FASTEST_UPDATE_INTERVAL_IN_MILLISECONDS =
             UPDATE_INTERVAL_IN_MILLISECONDS / 2;
 
-    private final static String KEY_REQUESTING_LOCATION_UPDATES = "requesting-location-updates";
-    private final static String KEY_LOCATION = "location";
-    private final static String KEY_LAST_UPDATED_TIME_STRING = "last-updated-time-string";
-
     private FusedLocationProviderClient mFusedLocationClient;
     private SettingsClient mSettingsClient;
     private LocationRequest mLocationRequest;
@@ -67,7 +64,6 @@ public class ChooseParty extends AppCompatActivity {
     private LocationCallback mLocationCallback;
     private Location mCurrentLocation;
 
-    private String mLastUpdateTime;
     private Boolean mRequestingLocationUpdates;
 
 
@@ -88,7 +84,6 @@ public class ChooseParty extends AppCompatActivity {
         setOnClickListeners();
 
         // gets current location
-        mLastUpdateTime = "";
         mRequestingLocationUpdates = true;
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         mSettingsClient = LocationServices.getSettingsClient(this);
@@ -102,6 +97,8 @@ public class ChooseParty extends AppCompatActivity {
         Intent intent = getIntent();
         // use intent bundle to set values
         // String value = intent.getStringExtra("key");
+        mUsername = intent.getStringExtra("username");
+
     }
 
     public void setOnClickListeners() {
@@ -111,6 +108,7 @@ public class ChooseParty extends AppCompatActivity {
                 // go to profile i.e.
                 Intent myIntent = new Intent(ChooseParty.this, UserProfile.class);
                 // myIntent.putExtra("key", value); //Optional parameters
+                myIntent.putExtra("username", mUsername);
                 startActivity(myIntent);
             }
         });
@@ -121,6 +119,7 @@ public class ChooseParty extends AppCompatActivity {
                 // go to help screen i.e.
                 Intent myIntent = new Intent(ChooseParty.this, HelpActivity.class);
                 // myIntent.putExtra("key", value); //Optional parameters
+                myIntent.putExtra("username", mUsername);
                 startActivity(myIntent);
             }
         });
@@ -138,6 +137,7 @@ public class ChooseParty extends AppCompatActivity {
                 while (mCurrentLocation == null) {
                     createLocationCallback();
                 }
+                myIntent.putExtra("username", mUsername);
                 myIntent.putExtra("latitude", mCurrentLocation.getLatitude());
                 myIntent.putExtra("longitude", mCurrentLocation.getLongitude());
                 startActivity(myIntent);
@@ -156,6 +156,7 @@ public class ChooseParty extends AppCompatActivity {
                 while (mCurrentLocation == null) {
                     createLocationCallback();
                 }
+                myIntent.putExtra("username", mUsername);
                 myIntent.putExtra("latitude", mCurrentLocation.getLatitude());
                 myIntent.putExtra("longitude", mCurrentLocation.getLongitude());
 
@@ -172,12 +173,6 @@ public class ChooseParty extends AppCompatActivity {
         mCreatePartyButton = findViewById(R.id.choose_party_create_party);
     }
 
-//    public void onSaveInstanceState(Bundle savedInstanceState) {
-//        savedInstanceState.putBoolean(KEY_REQUESTING_LOCATION_UPDATES, mRequestingLocationUpdates);
-//        savedInstanceState.putParcelable(KEY_LOCATION, mCurrentLocation);
-//        savedInstanceState.putString(KEY_LAST_UPDATED_TIME_STRING, mLastUpdateTime);
-//        super.onSaveInstanceState(savedInstanceState);
-//    }
 
     @SuppressLint("RestrictedApi")
     private void createLocationRequest() {

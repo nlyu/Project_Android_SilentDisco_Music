@@ -18,6 +18,7 @@ public class JoinParty extends AppCompatActivity {
     ConstraintLayout trendingPanel;
     ConstraintLayout AllPanel;
 
+    String mUsername;
     double latitude;
     double longitude;
 
@@ -39,6 +40,7 @@ public class JoinParty extends AppCompatActivity {
             public void onClick(View v) {
                 Intent myIntent = new Intent(JoinParty.this, MusicPlayerActivity.class);
                 // myIntent.putExtra("key", value); //Optional parameters
+                myIntent.putExtra("username", mUsername);
                 startActivity(myIntent);
             }
         });
@@ -49,6 +51,7 @@ public class JoinParty extends AppCompatActivity {
             public void onClick(View v) {
                 Intent myIntent = new Intent(JoinParty.this, MusicPlayerActivity.class);
                 // myIntent.putExtra("key", value); //Optional parameters
+                myIntent.putExtra("username", mUsername);
                 startActivity(myIntent);
             }
         });
@@ -59,6 +62,7 @@ public class JoinParty extends AppCompatActivity {
             public void onClick(View v) {
                 Intent myIntent = new Intent(JoinParty.this, UserProfile.class);
                 // myIntent.putExtra("key", value); //Optional parameters
+                myIntent.putExtra("username", mUsername);
                 startActivity(myIntent);
             }
         });
@@ -69,6 +73,7 @@ public class JoinParty extends AppCompatActivity {
             public void onClick(View v) {
                 Intent myIntent = new Intent(JoinParty.this, HelpActivity.class);
                 // myIntent.putExtra("key", value); //Optional parameters
+                myIntent.putExtra("username", mUsername);
                 startActivity(myIntent);
             }
         });
@@ -88,6 +93,7 @@ public class JoinParty extends AppCompatActivity {
         Intent intent = getIntent();
         // use intent bundle to set values
         // String value = intent.getStringExtra("key");
+        mUsername = intent.getStringExtra("username");
         latitude = intent.getDoubleExtra("latitude", 0.0);
         longitude = intent.getDoubleExtra("longitude", 0.0);
     }
