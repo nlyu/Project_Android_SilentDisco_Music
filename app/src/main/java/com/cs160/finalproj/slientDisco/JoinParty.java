@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 public class JoinParty extends AppCompatActivity {
 
@@ -17,12 +18,16 @@ public class JoinParty extends AppCompatActivity {
     ConstraintLayout trendingPanel;
     ConstraintLayout AllPanel;
 
+    double latitude;
+    double longitude;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join_party);
 
         getComponents();
+        getExtrasFromBundle();
 
         //TODO, ONLY FOR DEMO USE
         trendingPanel = findViewById(R.id.Join_Party_Trending);
@@ -67,11 +72,23 @@ public class JoinParty extends AppCompatActivity {
                 startActivity(myIntent);
             }
         });
+
+
+        String location = latitude + ", " + longitude;
+        Toast.makeText(JoinParty.this, location, Toast.LENGTH_LONG).show();
     }
 
     public void getComponents() {
         mProfileButton = findViewById(R.id.join_party_account_icon);
         mHelpButton = findViewById(R.id.join_party_help_icon);
         //createPartyButton = findViewById(R.id.join_party_create_button);
+    }
+
+    public void getExtrasFromBundle() {
+        Intent intent = getIntent();
+        // use intent bundle to set values
+        // String value = intent.getStringExtra("key");
+        latitude = intent.getDoubleExtra("latitude", 0.0);
+        longitude = intent.getDoubleExtra("longitude", 0.0);
     }
 }
