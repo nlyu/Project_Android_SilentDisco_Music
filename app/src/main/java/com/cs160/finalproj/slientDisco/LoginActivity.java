@@ -303,12 +303,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
-        if (!password.equals(actualPassword)) {
-            mPasswordView.setError("Invalid password");
-            focusView = mPasswordView;
-            cancel[0] = true;
-        }
-
         if (cancel[0]) {
             // There was an error; don't attempt login and focus the first
             // form field with an error.
