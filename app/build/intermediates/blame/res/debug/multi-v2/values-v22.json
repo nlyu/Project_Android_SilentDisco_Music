@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/carigan/school/cs160/silentdisco/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v22/values-v22.xml",
+            "outputFile": "/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v22/values-v22.xml",
             "map": [
                 {
-                    "source": "/Users/carigan/.gradle/caches/transforms-2/files-2.1/e547f9526b71273cc1f9988e72d5518c/res/values-v22/values-v22.xml",
+                    "source": "/Users/graceychin/.gradle/caches/transforms-2/files-2.1/a41342ce3398ad49548e91b1dadef4e1/res/values-v22/values-v22.xml",
                     "from": {
                         "startLines": "2,3,4,9",
                         "startColumns": "4,4,4,4",

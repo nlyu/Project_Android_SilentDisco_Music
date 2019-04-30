@@ -1155,6 +1155,8 @@ id chronometer
 id clip_horizontal
 id clip_vertical
 id collapseActionView
+id com_spotify_sdk_login_webview
+id com_spotify_sdk_login_webview_container
 id constraintLayout
 id container
 id content
@@ -1448,6 +1450,8 @@ layout activity_login
 layout activity_music_player
 layout activity_open_in_spotify
 layout activity_user_profile
+layout com_spotify_sdk_login_activity
+layout com_spotify_sdk_login_dialog
 layout content_help
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -1535,6 +1539,9 @@ string back_home
 string bottom_sheet_behavior
 string character_counter_content_description
 string character_counter_pattern
+string com_spotify_sdk_login_progress
+string com_spotify_sdk_redirect_host
+string com_spotify_sdk_redirect_scheme
 string common_google_play_services_enable_button
 string common_google_play_services_enable_text
 string common_google_play_services_enable_title

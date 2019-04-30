@@ -37,6 +37,24 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
+import com.spotify.android.appremote.api.ConnectionParams;
+import com.spotify.android.appremote.api.Connector;
+import com.spotify.android.appremote.api.SpotifyAppRemote;
+
+import com.spotify.protocol.client.Subscription;
+import com.spotify.protocol.types.PlayerState;
+import com.spotify.protocol.types.Track;
+import com.spotify.sdk.android.authentication.AuthenticationClient;
+import com.spotify.sdk.android.authentication.AuthenticationRequest;
+import com.spotify.sdk.android.authentication.AuthenticationResponse;
+
+import kaaes.spotify.webapi.android.SpotifyApi;
+import kaaes.spotify.webapi.android.SpotifyService;
+import kaaes.spotify.webapi.android.models.Album;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
+
 public class ChooseParty extends AppCompatActivity {
 
     /**
@@ -66,6 +84,18 @@ public class ChooseParty extends AppCompatActivity {
 
     private Boolean mRequestingLocationUpdates;
 
+    //Connect to spotify
+    private static final String CLIENT_ID = "9e037ab44be34a088b8cadf33b25b906";
+    private static final String REDIRECT_URI = "http://com.example.spotify/callback";
+    private SpotifyAppRemote mSpotifyAppRemote;
+
+    private static final int SPOTIFY_REQUEST_CODE = 1337;
+
+    AuthenticationRequest.Builder builder =
+            new AuthenticationRequest.Builder(CLIENT_ID, AuthenticationResponse.Type.TOKEN, REDIRECT_URI);
+
+    private static String accessToken;
+
 
     // todo : init any instance vars that come from previous activity @lyu
 
@@ -91,6 +121,12 @@ public class ChooseParty extends AppCompatActivity {
         createLocationCallback();
         createLocationRequest();
         buildLocationSettingsRequest();
+
+        //Connect to Spotify
+        builder.setScopes(new String[]{"streaming"});
+        AuthenticationRequest request = builder.build();
+
+        AuthenticationClient.openLoginActivity(this, SPOTIFY_REQUEST_CODE, request);
     }
 
     public void getExtrasFromBundle() {
@@ -201,6 +237,7 @@ public class ChooseParty extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
         switch (requestCode) {
             // Check for the integer request code originally supplied to startResolutionForResult().
             case REQUEST_CHECK_SETTINGS:
@@ -215,6 +252,25 @@ public class ChooseParty extends AppCompatActivity {
                         break;
                 }
                 break;
+            case SPOTIFY_REQUEST_CODE:
+                AuthenticationResponse response = AuthenticationClient.getResponse(resultCode, data);
+                switch (response.getType()) {
+                    // Response was successful and contains auth token
+                    case TOKEN:
+                        // Handle successful response
+                        accessToken = response.getAccessToken();
+                        System.out.println("GOT ACCESS TOKEN");
+                        break;
+
+                    // Auth flow returned an error
+                    case ERROR:
+                        // Handle error response
+                        break;
+
+                    // Most likely auth flow was cancelled
+                    default:
+                        // Handle other cases
+            }
         }
     }
 
@@ -346,5 +402,70 @@ public class ChooseParty extends AppCompatActivity {
             }
         }
     }
+
+    //CONNECT TO SPOTIFY
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        builder.setScopes(new String[]{"streaming"});
+        AuthenticationRequest request = builder.build();
+
+        AuthenticationClient.openLoginActivity(this, SPOTIFY_REQUEST_CODE, request);
+
+        ConnectionParams connectionParams =
+                new ConnectionParams.Builder(CLIENT_ID)
+                        .setRedirectUri(REDIRECT_URI)
+                        .showAuthView(true)
+                        .build();
+
+        SpotifyAppRemote.connect(this, connectionParams,
+                new Connector.ConnectionListener() {
+
+                    @Override
+                    public void onConnected(SpotifyAppRemote spotifyAppRemote) {
+                        mSpotifyAppRemote = spotifyAppRemote;
+                        Log.d("MainActivity", "Connected! Yay!");
+
+                        // Now you can start interacting with App Remote
+                        connected();
+                    }
+
+                    @Override
+                    public void onFailure(Throwable throwable) {
+                        Log.e("MainActivity", throwable.getMessage(), throwable);
+
+                        // Something went wrong when attempting to connect! Handle errors here
+                    }
+                });
+        // We will start writing our code here.
+    }
+
+    private void connected() {
+        SpotifyApi api = new SpotifyApi();
+        api.setAccessToken(accessToken);
+
+        final SpotifyService spotify = api.getService();
+
+        spotify.getAlbum("2dIGnmEIy1WZIcZCFSj6i8", new Callback<Album>() {
+            @Override
+            public void success(Album album, Response response) {
+                Log.d("Album success", album.name);
+                System.out.println("YAY");
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Log.d("Album failure", error.toString());
+            }
+        });
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        SpotifyAppRemote.disconnect(mSpotifyAppRemote);
+    }
+
 }
 
