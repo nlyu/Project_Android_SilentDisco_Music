@@ -8,7 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 public class JoinParty extends AppCompatActivity {
 
@@ -17,6 +19,12 @@ public class JoinParty extends AppCompatActivity {
     //TODO, ONLY FOR DEMO USE
     ConstraintLayout trendingPanel;
     ConstraintLayout AllPanel;
+
+    private ImageView mBackButton;
+    private TextView mBackText;
+
+    private ToggleButton mSortByDist;
+    private ToggleButton mSortByNum;
 
     String mUsername;
     double latitude;
@@ -29,6 +37,7 @@ public class JoinParty extends AppCompatActivity {
 
         getComponents();
         getExtrasFromBundle();
+        setOnClickListeners();
 
         //TODO, ONLY FOR DEMO USE
         trendingPanel = findViewById(R.id.Join_Party_Trending);
@@ -84,10 +93,44 @@ public class JoinParty extends AppCompatActivity {
     }
 
     public void getComponents() {
+
         mProfileButton = findViewById(R.id.join_party_account_icon);
         mHelpButton = findViewById(R.id.join_party_help_icon);
+
         //createPartyButton = findViewById(R.id.join_party_create_button);
+        mBackButton = findViewById(R.id.join_party_back_arrow);
+        mBackText = findViewById(R.id.join_party_back_text);
+
+        // get toggle buttons
+        mSortByDist = findViewById(R.id.sort_by_distance);
+        mSortByNum = findViewById(R.id.sort_by_people);
     }
+
+    // TODO: move above onClickListeners here
+    public void setOnClickListeners() {
+        mBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // go back here
+                Intent myIntent = new Intent(JoinParty.this, ChooseParty.class);
+                // myIntent.putExtra("key", value); //Optional parameters
+                myIntent.putExtra("username", mUsername);
+                startActivity(myIntent);
+            }
+        });
+        mBackText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // go back here
+                Intent myIntent = new Intent(JoinParty.this, ChooseParty.class);
+                // myIntent.putExtra("key", value); //Optional parameters
+                myIntent.putExtra("username", mUsername);
+                startActivity(myIntent);
+            }
+        });
+    }
+
+
 
     public void getExtrasFromBundle() {
         Intent intent = getIntent();
