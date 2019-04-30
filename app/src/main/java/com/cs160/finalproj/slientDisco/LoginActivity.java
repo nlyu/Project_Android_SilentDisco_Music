@@ -105,6 +105,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
+        Button mUserRegisterButton = (Button) findViewById(R.id.username_register_button);
+        mUserRegisterButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                attemptRegister();
+            }
+        });
+
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
 
@@ -199,11 +207,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.child(username).exists()) {
-                    actualPassword = dataSnapshot.child(username).child("password").getValue().toString();
+                    if(dataSnapshot.child(username).child("password").getValue() != null){
+                        actualPassword = dataSnapshot.child(username).child("password").getValue().toString();
+                    }
                 } else {
                     // TODO: move to register page
-                    DatabaseReference user = usersRef.child(username);
-                    user.child("password").setValue(password);
+//                    DatabaseReference user = usersRef.child(username);
+//                    user.child("password").setValue(password);
+                    Toast.makeText(getBaseContext(),(String)"User does not exist!",
+                            Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -231,6 +243,82 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mAuthTask.execute((Void) null);
         }
     }
+
+
+    private void attemptRegister() {
+        if (mAuthTask != null) {
+            return;
+        }
+
+        // Reset errors.
+        mUsernameView.setError(null);
+        mPasswordView.setError(null);
+
+        // Store values at the time of the login attempt.
+        String username = mUsernameView.getText().toString();
+        String password = mPasswordView.getText().toString();
+
+        final boolean[] cancel = {false};
+        View focusView = null;
+
+        // Check for a valid password, if the user entered one.
+        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
+            mPasswordView.setError(getString(R.string.error_invalid_password));
+            focusView = mPasswordView;
+            cancel[0] = true;
+        }
+
+        // Check for a valid username address.
+        if (TextUtils.isEmpty(username)) {
+            mUsernameView.setError(getString(R.string.error_field_required));
+            focusView = mUsernameView;
+            cancel[0] = true;
+        } else if (!isUsernameValid(username)) {
+            mUsernameView.setError(getString(R.string.error_invalid_username));
+            focusView = mUsernameView;
+            cancel[0] = true;
+        }
+
+        usersRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.child(username).exists()) {
+                    if(dataSnapshot.child(username).child("password").getValue() != null){
+                        Toast.makeText(getBaseContext(),(String)"User already exist!",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    // TODO: move to register page
+                    DatabaseReference user = usersRef.child(username);
+                    user.child("password").setValue(password);
+                    Toast.makeText(getBaseContext(),(String)"Register successful!",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError firebaseError) {
+                Toast.makeText(LoginActivity.this, "Database error", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        if (!password.equals(actualPassword)) {
+            mPasswordView.setError("Invalid password");
+            focusView = mPasswordView;
+            cancel[0] = true;
+        }
+
+        if (cancel[0]) {
+            // There was an error; don't attempt login and focus the first
+            // form field with an error.
+            focusView.requestFocus();
+        } else {
+            // Show a progress spinner, and kick off a background task to
+            // perform the user login attempt.
+
+        }
+    }
+
 
     private boolean isUsernameValid(String username) {
         //TODO: Replace this with your own logic
