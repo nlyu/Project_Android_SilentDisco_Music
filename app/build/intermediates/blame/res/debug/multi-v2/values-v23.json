@@ -1,10 +1,21 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v23/values-v23.xml",
+            "outputFile": "/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v23/values-v23.xml",
             "map": [
                 {
-                    "source": "/Users/graceychin/.gradle/caches/transforms-2/files-2.1/2efca4f2e6bfc57bff933dd4da3b27e6/res/values-v23/values-v23.xml",
+                    "source": "/Users/Aidan/.gradle/caches/transforms-2/files-2.1/b9885284f96bfcdfa98befba387bf9e1/res/values-v23/values-v23.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,19,32,33,34,35,36",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,190,325,400,487,1277,2079,2206,2311,2426,2533",
+                        "endLines": "2,3,4,5,18,31,32,33,34,35,36",
+                        "endColumns": "134,134,74,86,12,12,126,104,114,106,112",
+                        "endOffsets": "185,320,395,482,1272,2074,2201,2306,2421,2528,2641"
+                    }
+                },
+                {
+                    "source": "/Users/Aidan/.gradle/caches/transforms-2/files-2.1/46afbc36fe40a2647bf1119f8d56c431/res/values-v23/values-v23.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -20,17 +31,6 @@
                         "endLines": "39",
                         "endColumns": "12",
                         "endOffsets": "2791"
-                    }
-                },
-                {
-                    "source": "/Users/graceychin/.gradle/caches/transforms-2/files-2.1/a41342ce3398ad49548e91b1dadef4e1/res/values-v23/values-v23.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,19,32,33,34,35,36",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,190,325,400,487,1277,2079,2206,2311,2426,2533",
-                        "endLines": "2,3,4,5,18,31,32,33,34,35,36",
-                        "endColumns": "134,134,74,86,12,12,126,104,114,106,112",
-                        "endOffsets": "185,320,395,482,1272,2074,2201,2306,2421,2528,2641"
                     }
                 }
             ]

@@ -1,4 +1,4 @@
-#Tue Apr 30 02:34:10 PDT 2019
-base.0=/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/transforms/dexMerger/debug/6
+#Tue Apr 30 15:33:51 PDT 2019
+base.0=/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/transforms/dexMerger/debug/6
 path.0=classes.dex
 renamed.0=classes.dex

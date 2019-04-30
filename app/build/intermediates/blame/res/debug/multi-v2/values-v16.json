@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v16/values-v16.xml",
+            "outputFile": "/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "/Users/graceychin/.gradle/caches/transforms-2/files-2.1/d7b0422af075e509b8e42d7fbfb96c08/res/values-v16/values-v16.xml",
+                    "source": "/Users/Aidan/.gradle/caches/transforms-2/files-2.1/ac87180aa5106c063a58d9a15463edc7/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "/Users/graceychin/.gradle/caches/transforms-2/files-2.1/a41342ce3398ad49548e91b1dadef4e1/res/values-v16/values-v16.xml",
+                    "source": "/Users/Aidan/.gradle/caches/transforms-2/files-2.1/b9885284f96bfcdfa98befba387bf9e1/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

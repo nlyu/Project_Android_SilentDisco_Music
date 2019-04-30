@@ -1063,6 +1063,12 @@ drawable disco
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable help
+drawable help1
+drawable help2
+drawable help3
+drawable help4
+drawable help5
+drawable help6
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_mtrl_chip_checked_black
@@ -1386,6 +1392,7 @@ id user_profile_song_list
 id user_profile_song_list_linear
 id username
 id username_login_form
+id username_register_button
 id username_sign_in_button
 id view
 id view_offset_helper
@@ -1530,6 +1537,7 @@ string abc_searchview_description_voice
 string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
+string action_register
 string action_settings
 string action_sign_in
 string action_sign_in_short

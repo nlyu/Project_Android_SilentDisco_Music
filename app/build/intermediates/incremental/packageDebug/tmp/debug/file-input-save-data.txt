@@ -1,18 +1,18 @@
 #Internal package file, do not edit.
-#Tue Apr 30 02:34:11 PDT 2019
+#Tue Apr 30 15:33:51 PDT 2019
 4.path=classes.dex
 8.set=DEX
 6.path=classes.dex
 0.baseType=DIRECTORY
 10.path=classes.dex
 5.baseType=DIRECTORY
-1.base=/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/transforms/dexMerger/debug/18
+1.base=/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/transforms/dexMerger/debug/13
 8.path=classes.dex
-3.base=/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/transforms/dexMerger/debug/16
+3.base=/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/transforms/dexMerger/debug/15
 4.set=DEX
-5.base=/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/transforms/dexMerger/debug/17
-7.base=/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/transforms/dexMerger/debug/11
-9.base=/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/transforms/dexMerger/debug/20
+5.base=/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/transforms/dexMerger/debug/17
+7.base=/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/transforms/dexMerger/debug/19
+9.base=/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/transforms/dexMerger/debug/18
 1.baseType=DIRECTORY
 0.set=DEX
 6.baseType=DIRECTORY
@@ -25,16 +25,16 @@
 3.path=classes.dex
 10.set=DEX
 5.path=classes.dex
-0.base=/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/transforms/dexMerger/debug/15
+0.base=/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/transforms/dexMerger/debug/11
 7.path=classes.dex
 9.path=classes.dex
 6.set=DEX
-2.base=/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/transforms/dexMerger/debug/13
-4.base=/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/transforms/dexMerger/debug/19
+2.base=/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/transforms/dexMerger/debug/21
+4.base=/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/transforms/dexMerger/debug/12
 3.baseType=DIRECTORY
-6.base=/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/transforms/dexMerger/debug/21
-10.base=/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/transforms/dexMerger/debug/12
-8.base=/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/transforms/dexMerger/debug/14
+6.base=/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/transforms/dexMerger/debug/14
+10.base=/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/transforms/dexMerger/debug/20
+8.base=/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/transforms/dexMerger/debug/16
 2.set=DEX
 8.baseType=DIRECTORY
 9.set=DEX
