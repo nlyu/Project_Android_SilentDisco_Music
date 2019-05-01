@@ -123,10 +123,12 @@
     <string name="action_sign_in">Sign in</string>
     <string name="action_register">Register</string>
     <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_username">This username is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
+    <string name="register_invalid_username">Usernames can only contain letters, numbers, -, and _</string>
+    <string name="register_username_taken">Username is already taken</string>
+    <string name="register_invalid_password">This password is too short</string>
+    <string name="login_incorrect_password">This password is incorrect</string>
+    <string name="login_invalid_username">Username does not exist</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>

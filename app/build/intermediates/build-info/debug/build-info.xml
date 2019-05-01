@@ -1,133 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
     abi="x86"
-    api-level="28"
+    api-level="27"
     build-mode="COLD"
     density="420dpi"
     format="10"
+    ir-eligibility="R_CLASS_CHANGE"
     plugin-version="3.2.1"
-    timestamp="1556617844403"
-    token="-5138882912215828362"
-    verifier="CLASS_ADDED" >
+    timestamp="1556671771677"
+    token="3569295992693056460"
+    verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="5532" />
+        duration="1307" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="69" />
+        duration="43" />
     <task
         name="verifier"
-        duration="47" />
+        duration="9" />
 
     <artifact
-        location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
+        location="/Users/carigan/school/cs160/silentdisco/app/build/intermediates/resources/instant-run/debug/resources-debug.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/carigan/school/cs160/silentdisco/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/carigan/school/cs160/silentdisco/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/carigan/school/cs160/silentdisco/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
         type="SPLIT" />
 
     <build
         build-mode="FULL"
-        timestamp="1556615780953"
+        timestamp="1556667348489"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
-            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/resources/instant-run/debug/resources-debug.apk"
+            location="/Users/carigan/school/cs160/silentdisco/app/build/intermediates/resources/instant-run/debug/resources-debug.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
+            location="/Users/carigan/school/cs160/silentdisco/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
+            location="/Users/carigan/school/cs160/silentdisco/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
+            location="/Users/carigan/school/cs160/silentdisco/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
+            location="/Users/carigan/school/cs160/silentdisco/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
+            location="/Users/carigan/school/cs160/silentdisco/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
+            location="/Users/carigan/school/cs160/silentdisco/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
+            location="/Users/carigan/school/cs160/silentdisco/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
+            location="/Users/carigan/school/cs160/silentdisco/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
+            location="/Users/carigan/school/cs160/silentdisco/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
+            location="/Users/carigan/school/cs160/silentdisco/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
+            location="/Users/carigan/school/cs160/silentdisco/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
+            location="/Users/carigan/school/cs160/silentdisco/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
             type="SPLIT_MAIN" />
     </build>
     <build
         build-mode="COLD"
-        ir-eligibility="COMPATIBLE"
-        timestamp="1556616684331"
+        ir-eligibility="R_CLASS_CHANGE"
+        timestamp="1556671545715"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/reload-dex/debug/classes.dex"
-            type="RELOAD_DEX" />
-        <artifact
-            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/resources/instant-run/debug/resources-debug.apk"
+            location="/Users/carigan/school/cs160/silentdisco/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
+            location="/Users/carigan/school/cs160/silentdisco/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
+            location="/Users/carigan/school/cs160/silentdisco/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
+            location="/Users/carigan/school/cs160/silentdisco/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
+            location="/Users/carigan/school/cs160/silentdisco/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
+            location="/Users/carigan/school/cs160/silentdisco/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
-            type="SPLIT" />
-        <artifact
-            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
-            type="SPLIT" />
-        <artifact
-            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
-            type="SPLIT" />
-        <artifact
-            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
+            location="/Users/carigan/school/cs160/silentdisco/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
             type="SPLIT_MAIN" />
     </build>
     <build
         build-mode="COLD"
-        ir-eligibility="CLASS_ADDED"
-        timestamp="1556617724378"
+        ir-eligibility="R_CLASS_CHANGE"
+        timestamp="1556671771677"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
+            location="/Users/carigan/school/cs160/silentdisco/app/build/intermediates/resources/instant-run/debug/resources-debug.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
+            location="/Users/carigan/school/cs160/silentdisco/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
             type="SPLIT" />
-    </build>
-    <build
-        build-mode="COLD"
-        timestamp="1556617844403"
-        verifier="CLASS_ADDED" >
         <artifact
-            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
+            location="/Users/carigan/school/cs160/silentdisco/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/carigan/school/cs160/silentdisco/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
             type="SPLIT" />
     </build>
 
