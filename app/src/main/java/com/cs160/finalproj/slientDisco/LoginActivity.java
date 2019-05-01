@@ -75,6 +75,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mLoginFormView;
 
     DatabaseReference usersRef;
+    DatabaseReference cur_userRef;
     String mUsername;
     String mPassword;
 
@@ -119,6 +120,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
 
         usersRef = FirebaseDatabase.getInstance().getReference("users");
+        cur_userRef = FirebaseDatabase.getInstance().getReference("cur_user");
+
+        cur_userRef.setValue("nobody");
     }
 
     private void populateAutoComplete() {
@@ -207,7 +211,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             } else {
                 // Show a progress spinner, and kick off a background task to
                 // perform the user login attempt.
+                cur_userRef.setValue(mUsername);
                 showProgress(true);
+
+                // record the current user
                 Intent intent = new Intent(LoginActivity.this, ChooseParty.class);
                 intent.putExtra("username", mUsername);
                 startActivity(intent);

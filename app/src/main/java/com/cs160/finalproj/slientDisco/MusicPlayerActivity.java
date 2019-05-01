@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -234,6 +235,15 @@ public class MusicPlayerActivity extends AppCompatActivity {
 
         UIUtils.colorizeImage(previousTrack, false);
         UIUtils.colorizeImage(nextTrack, false);
+
+        //set back button
+        ImageView back_arrow = findViewById(R.id.music_party_back_arrow);
+        back_arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     public void getExtrasFromBundle() {
