@@ -165,6 +165,7 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <android.support.v7.widget.RecyclerView
+                android:id="@+id/join_party_trending_recycler_vew"
                 android:layout_width="320dp"
                 android:layout_height="100dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -205,6 +206,7 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <android.support.v7.widget.RecyclerView
+                android:id="@+id/join_party_all_recycler_vew"
                 android:layout_width="320dp"
                 android:layout_height="100dp"
                 app:layout_constraintBottom_toBottomOf="parent"
