@@ -27,13 +27,9 @@ proguard/
 # Log Files
 *.log
 
-# Android Studio Navigation editor temp files
+# Android Studio
 .navigation/
-
-# Android Studio captures folder
 captures/
-
-# IntelliJ
 *.iml
 .idea/
 
@@ -69,3 +65,6 @@ lint/generated/
 lint/outputs/
 lint/tmp/
 # lint/reports/
+
+# OSX files
+.DS_Store
