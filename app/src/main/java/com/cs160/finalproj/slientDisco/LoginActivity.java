@@ -67,7 +67,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
-    private UserLoginTask mAuthTask = null;
 
     // UI references.
     private AutoCompleteTextView mUsernameView;
@@ -76,7 +75,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mLoginFormView;
 
     DatabaseReference usersRef;
-    String actualPassword;
+    String mUsername;
+    String mPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -171,158 +171,133 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * errors are presented and no actual login attempt is made.
      */
     private void attemptLogin() {
-        if (mAuthTask != null) {
-            return;
-        }
-
         // Reset errors.
         mUsernameView.setError(null);
         mPasswordView.setError(null);
 
         // Store values at the time of the login attempt.
-        String username = mUsernameView.getText().toString();
-        String password = mPasswordView.getText().toString();
+        mUsername = mUsernameView.getText().toString();
+        mPassword = mPasswordView.getText().toString();
 
-        final boolean[] cancel = {false};
-        View focusView = null;
-
-        // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-            mPasswordView.setError(getString(R.string.error_invalid_password));
-            focusView = mPasswordView;
-            cancel[0] = true;
-        }
-
-        // Check for a valid username address.
-        if (TextUtils.isEmpty(username)) {
-            mUsernameView.setError(getString(R.string.error_field_required));
-            focusView = mUsernameView;
-            cancel[0] = true;
-        } else if (!isUsernameValid(username)) {
-            mUsernameView.setError(getString(R.string.error_invalid_username));
-            focusView = mUsernameView;
-            cancel[0] = true;
-        }
-
-        usersRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.child(username).exists()) {
-                    if(dataSnapshot.child(username).child("password").getValue() != null){
-                        actualPassword = dataSnapshot.child(username).child("password").getValue().toString();
-                    }
-                } else {
-                    // TODO: move to register page
-//                    DatabaseReference user = usersRef.child(username);
-//                    user.child("password").setValue(password);
-                    Toast.makeText(getBaseContext(),(String)"User does not exist!",
-                            Toast.LENGTH_SHORT).show();
-                }
+        // Retrieves password from database if exists
+        readData(actualPassword -> {
+            boolean cancel = false;
+            View focusView = null;
+            if (TextUtils.isEmpty(mUsername)) {
+                // Check if username is empty.
+                mUsernameView.setError(getString(R.string.error_field_required));
+                focusView = mUsernameView;
+                cancel = true;
+            } else if (actualPassword == null) {
+                // Check if username is stored in database.
+                mUsernameView.setError(getString(R.string.login_invalid_username));
+                focusView = mUsernameView;
+                cancel = true;
+            } else if (!mPassword.equals(actualPassword)) {
+                // CHeck if password matches stored password.
+                mPasswordView.setError(getString(R.string.login_incorrect_password));
+                focusView = mPasswordView;
+                cancel = true;
             }
 
-            @Override
-            public void onCancelled(DatabaseError firebaseError) {
-                Toast.makeText(LoginActivity.this, "Database error", Toast.LENGTH_SHORT).show();
+            if (cancel) {
+                // There was an error; don't attempt login and focus the first
+                // form field with an error.
+                focusView.requestFocus();
+            } else {
+                // Show a progress spinner, and kick off a background task to
+                // perform the user login attempt.
+                showProgress(true);
+                Intent intent = new Intent(LoginActivity.this, ChooseParty.class);
+                intent.putExtra("username", mUsername);
+                startActivity(intent);
             }
         });
-
-        if (!password.equals(actualPassword)) {
-            mPasswordView.setError("Invalid password");
-            focusView = mPasswordView;
-            cancel[0] = true;
-        }
-
-        if (cancel[0]) {
-            // There was an error; don't attempt login and focus the first
-            // form field with an error.
-            focusView.requestFocus();
-        } else {
-            // Show a progress spinner, and kick off a background task to
-            // perform the user login attempt.
-            showProgress(true);
-            mAuthTask = new UserLoginTask(username, password);
-            mAuthTask.execute((Void) null);
-        }
     }
 
 
     private void attemptRegister() {
-        if (mAuthTask != null) {
-            return;
-        }
-
         // Reset errors.
         mUsernameView.setError(null);
         mPasswordView.setError(null);
 
         // Store values at the time of the login attempt.
-        String username = mUsernameView.getText().toString();
-        String password = mPasswordView.getText().toString();
+        mUsername = mUsernameView.getText().toString();
+        mPassword = mPasswordView.getText().toString();
 
-        final boolean[] cancel = {false};
-        View focusView = null;
 
-        // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-            mPasswordView.setError(getString(R.string.error_invalid_password));
-            focusView = mPasswordView;
-            cancel[0] = true;
-        }
+        readData(actualPassword -> {
+            boolean cancel = false;
+            View focusView = null;
+            if (TextUtils.isEmpty(mUsername)) {
+                mUsernameView.setError(getString(R.string.error_field_required));
+                focusView = mUsernameView;
+                cancel = true;
+            } else if (!isUsernameValid(mUsername)) {
+                mUsernameView.setError(getString(R.string.register_invalid_username));
+                focusView = mUsernameView;
+                cancel = true;
+            } else if (actualPassword != null) {
+                mUsernameView.setError(getString(R.string.register_username_taken));
+                focusView = mUsernameView;
+                cancel = true;
+            } else if (!TextUtils.isEmpty(mPassword) && !isPasswordValid(mPassword)) {
+                // Check for a valid password, if the user entered one.
+                mPasswordView.setError(getString(R.string.register_invalid_password));
+                focusView = mPasswordView;
+                cancel = true;
+            }
 
-        // Check for a valid username address.
-        if (TextUtils.isEmpty(username)) {
-            mUsernameView.setError(getString(R.string.error_field_required));
-            focusView = mUsernameView;
-            cancel[0] = true;
-        } else if (!isUsernameValid(username)) {
-            mUsernameView.setError(getString(R.string.error_invalid_username));
-            focusView = mUsernameView;
-            cancel[0] = true;
-        }
 
+            if (cancel) {
+                // There was an error; don't attempt login and focus the first
+                // form field with an error.
+                focusView.requestFocus();
+            } else {
+                // Stores new user in database
+                DatabaseReference user = usersRef.child(mUsername);
+                user.child("password").setValue(mPassword);
+                Toast.makeText(getBaseContext(), (String) "Register successful!",
+                        Toast.LENGTH_SHORT).show();
+
+
+                // Show a progress spinner, and kick off a background task to
+                // perform the user login attempt.
+                showProgress(true);
+                Intent intent = new Intent(LoginActivity.this, ChooseParty.class);
+                intent.putExtra("username", mUsername);
+                startActivity(intent);
+
+            }
+        });
+
+
+    }
+
+
+    private boolean isUsernameValid(String username) {
+        return username.length() > 4 && username.length() < 20 && username.matches("^[a-zA-Z0-9_]*$");
+    }
+
+    private boolean isPasswordValid(String password) {
+        return password.length() > 4;
+    }
+
+    public void readData(@NonNull SimpleCallback<String> finishedCallback) {
         usersRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.child(username).exists()) {
-                    if(dataSnapshot.child(username).child("password").getValue() != null){
-                        Toast.makeText(getBaseContext(),(String)"User already exist!",
-                                Toast.LENGTH_SHORT).show();
-                    }
+                if (dataSnapshot.hasChild(mUsername)) {
+                    finishedCallback.callback((String) dataSnapshot.child(mUsername).child("password").getValue());
                 } else {
-                    // TODO: move to register page
-                    DatabaseReference user = usersRef.child(username);
-                    user.child("password").setValue(password);
-                    Toast.makeText(getBaseContext(),(String)"Register successful!",
-                            Toast.LENGTH_SHORT).show();
+                    finishedCallback.callback(null);
                 }
             }
 
             @Override
             public void onCancelled(DatabaseError firebaseError) {
-                Toast.makeText(LoginActivity.this, "Database error", Toast.LENGTH_SHORT).show();
             }
         });
-
-        if (cancel[0]) {
-            // There was an error; don't attempt login and focus the first
-            // form field with an error.
-            focusView.requestFocus();
-        } else {
-            // Show a progress spinner, and kick off a background task to
-            // perform the user login attempt.
-
-        }
-    }
-
-
-    private boolean isUsernameValid(String username) {
-        //TODO: Replace this with your own logic
-        return true;
-    }
-
-    private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
-        return password.length() > 4;
     }
 
     /**
@@ -415,67 +390,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         int IS_PRIMARY = 1;
     }
 
-    /**
-     * Represents an asynchronous login/registration task used to authenticate
-     * the user.
-     */
-    public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
-
-        private final String mUsername;
-        private final String mPassword;
-
-        UserLoginTask(String username, String password) {
-            mUsername = username;
-            mPassword = password;
-        }
-
-        @Override
-        protected Boolean doInBackground(Void... params) {
-            // TODO: attempt authentication against a network service.
-
-            try {
-                // Simulate network access.
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                return false;
-            }
-
-            for (String credential : DUMMY_CREDENTIALS) {
-                String[] pieces = credential.split(":");
-                if (pieces[0].equals(mUsername)) {
-                    // Account exists, return true if the password matches.
-                    return pieces[1].equals(mPassword);
-                }
-            }
-
-            // TODO: register the new account here.
-            return true;
-        }
-
-        @Override
-        protected void onPostExecute(final Boolean success) {
-            mAuthTask = null;
-            showProgress(false);
-
-            if (success) {
-                Intent myIntent = new Intent(LoginActivity.this, ChooseParty.class);
-                // myIntent.putExtra("key", value); //Optional parameters
-
-                myIntent.putExtra("username", mUsername);
-                startActivity(myIntent);
-            } else {
-                mPasswordView.setError(getString(R.string.error_incorrect_password));
-                mPasswordView.requestFocus();
-            }
-        }
-
-        @Override
-        protected void onCancelled() {
-            mAuthTask = null;
-            showProgress(false);
-        }
+    public interface SimpleCallback<T> {
+        void callback(T data);
     }
 
 
-}
 
+
+}

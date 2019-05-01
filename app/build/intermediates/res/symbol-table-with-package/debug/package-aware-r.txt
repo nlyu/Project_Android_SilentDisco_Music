@@ -1577,9 +1577,6 @@ string create_party
 string create_party_name
 string default_web_client_id
 string error_field_required
-string error_incorrect_password
-string error_invalid_password
-string error_invalid_username
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
 string find_genres
@@ -1594,6 +1591,8 @@ string hide_bottom_view_on_scroll_behavior
 string join_party
 string join_party_enter_code_hint
 string large_text
+string login_incorrect_password
+string login_invalid_username
 string mtrl_chip_close_icon_content_description
 string music_dorectory_error
 string option_select
@@ -1612,6 +1611,9 @@ string project_id
 string prompt_password
 string prompt_username
 string public_button
+string register_invalid_password
+string register_invalid_username
+string register_username_taken
 string search_menu_title
 string sort_distance
 string sort_people

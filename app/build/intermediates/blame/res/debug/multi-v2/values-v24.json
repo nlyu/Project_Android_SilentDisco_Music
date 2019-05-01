@@ -1,6 +1,12 @@
 {
     "logs": [
         {
+<<<<<<< HEAD
+            "outputFile": "/Users/carigan/school/cs160/silentdisco/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v24/values-v24.xml",
+            "map": [
+                {
+                    "source": "/Users/carigan/.gradle/caches/transforms-2/files-2.1/1983c418c628ff13ef1bc6005d5b3c3b/res/values-v24/values-v24.xml",
+=======
             "outputFile": "/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v24/values-v24.xml",
             "map": [
                 {
@@ -15,6 +21,7 @@
                 },
                 {
                     "source": "/Users/Aidan/.gradle/caches/transforms-2/files-2.1/d1b55d0c067825d8f01fbdb98e5f0416/res/values-v24/values-v24.xml",
+>>>>>>> 3226221a5c8eef9509558d86aa1e60b5d53477f1
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
@@ -29,6 +36,19 @@
                         "endColumns": "65,60,65,66",
                         "endOffsets": "408,469,535,602"
                     }
+<<<<<<< HEAD
+                },
+                {
+                    "source": "/Users/carigan/.gradle/caches/transforms-2/files-2.1/554aa78b01d767e875df82c4415f4328/res/values-v24/values-v24.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,212",
+                        "endColumns": "156,134",
+                        "endOffsets": "207,342"
+                    }
+=======
+>>>>>>> 3226221a5c8eef9509558d86aa1e60b5d53477f1
                 }
             ]
         }

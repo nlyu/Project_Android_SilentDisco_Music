@@ -125,7 +125,11 @@ public final class R {
     public static final class string {
         private string() {}
 
+<<<<<<< HEAD
+        public static final int status_bar_notification_info_overflow = 0x7f0e0073;
+=======
         public static final int status_bar_notification_info_overflow = 0x7f0e0071;
+>>>>>>> 3226221a5c8eef9509558d86aa1e60b5d53477f1
     }
     public static final class style {
         private style() {}

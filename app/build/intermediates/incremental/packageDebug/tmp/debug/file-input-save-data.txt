@@ -1,4 +1,9 @@
 #Internal package file, do not edit.
+<<<<<<< HEAD
+#Tue Apr 30 17:59:15 PDT 2019
+0.baseType=DIRECTORY
+0.base=/Users/carigan/school/cs160/silentdisco/app/build/intermediates/transforms/dexMerger/debug/0
+=======
 #Tue Apr 30 15:33:51 PDT 2019
 4.path=classes.dex
 8.set=DEX
@@ -42,6 +47,7 @@ count=11
 4.baseType=DIRECTORY
 5.set=DEX
 9.baseType=DIRECTORY
+>>>>>>> 3226221a5c8eef9509558d86aa1e60b5d53477f1
 0.path=classes.dex
-1.set=DEX
-2.path=classes.dex
+0.set=DEX
+count=1
