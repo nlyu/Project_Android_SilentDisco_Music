@@ -1229,10 +1229,12 @@ id invisible
 id italic
 id item_touch_helper_previous_elevation
 id join_party_account_icon
+id join_party_all_recycler_vew
 id join_party_back_arrow
 id join_party_back_text
 id join_party_enter_code
 id join_party_help_icon
+id join_party_trending_recycler_vew
 id labeled
 id largeLabel
 id left
@@ -1278,6 +1280,8 @@ id parallax
 id parent
 id parentPanel
 id parent_matrix
+id party_item_party_info
+id party_item_party_name
 id party_name
 id party_now_playing
 id password
@@ -1491,6 +1495,7 @@ layout notification_template_media
 layout notification_template_media_custom
 layout notification_template_part_chronometer
 layout notification_template_part_time
+layout party_item
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material

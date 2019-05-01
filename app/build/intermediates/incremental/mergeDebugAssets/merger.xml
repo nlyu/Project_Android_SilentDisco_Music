@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/carigan/school/cs160/silentdisco/app/src/main/assets"/><source path="/Users/carigan/school/cs160/silentdisco/app/build/intermediates/shader_assets/debug/compileDebugShaders/out"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/carigan/school/cs160/silentdisco/app/src/debug/assets"/></dataSet></merger>
+=======
+<merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/src/main/assets"/><source path="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/shader_assets/debug/compileDebugShaders/out"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/src/debug/assets"/></dataSet></merger>
+>>>>>>> 3226221a5c8eef9509558d86aa1e60b5d53477f1

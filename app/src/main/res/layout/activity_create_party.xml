@@ -185,7 +185,8 @@
         android:layout_marginStart="33dp"
         android:layout_marginBottom="22dp"
         android:background="@drawable/btn_rounded_corner"
-        android:text="@string/public_button"
+        android:textOff="@string/public_button"
+        android:textOn="@string/public_button"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toTopOf="@+id/create_party_create_button"
         app:layout_constraintStart_toStartOf="parent" />
@@ -198,6 +199,8 @@
         android:layout_marginBottom="22dp"
         android:background="@drawable/btn_rounded_corner"
         android:text="@string/private_button"
+        android:textOff="@string/private_button"
+        android:textOn="@string/private_button"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toTopOf="@+id/create_party_create_button"
         app:layout_constraintEnd_toEndOf="parent" />
