@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -44,6 +45,8 @@ public class JoinParty extends AppCompatActivity {
     private ArrayList<PartyContainer> trendingPartyData;
     private ArrayList<PartyContainer> allPartyData;
 
+    private String song_uri;
+
 
     String mUsername;
     double latitude;
@@ -74,6 +77,7 @@ public class JoinParty extends AppCompatActivity {
                 Intent myIntent = new Intent(JoinParty.this, MusicPlayerActivity.class);
                 // myIntent.putExtra("key", value); //Optional parameters
                 myIntent.putExtra("username", mUsername);
+                myIntent.putExtra("partyName", "Bob"); //TODO, just for demo
                 startActivity(myIntent);
             }
         });
@@ -85,12 +89,11 @@ public class JoinParty extends AppCompatActivity {
                 Intent myIntent = new Intent(JoinParty.this, MusicPlayerActivity.class);
                 // myIntent.putExtra("key", value); //Optional parameters
                 myIntent.putExtra("username", mUsername);
+                myIntent.putExtra("partyName", "Bob"); //TODO, just for demo
+                Log.d("Spotify", "join party to play music");
                 startActivity(myIntent);
             }
         });
-
-
-
 
         String location = latitude + ", " + longitude;
         Toast.makeText(JoinParty.this, location, Toast.LENGTH_LONG).show();
@@ -172,11 +175,12 @@ public class JoinParty extends AppCompatActivity {
             public void onItemClick(int position) {
                 PartyContainer pc = allPartyData.get(position);
                 // go to the specified party
-                //Intent intent = new Intent(BearFeedActivity.this, CommentFeedActivity.class);
-                //intent.putExtra("username", username);
-                //startActivity(intent);
                 Toast toast=Toast.makeText(getApplicationContext(),pc.getPartyName(),Toast.LENGTH_SHORT);
                 toast.show();
+                Intent intent = new Intent(JoinParty.this, MusicPlayerActivity.class);
+                intent.putExtra("partyName", "Bob"); //TODO, just for demo
+                intent.putExtra("songUri", "spotify:track:4lIxdJw6W3Fg4vUIYCB0S5"); //TODO, just for demo, play tyler swift's style
+                startActivity(intent);
             }
         });
 

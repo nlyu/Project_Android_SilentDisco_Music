@@ -23,6 +23,9 @@ import com.cs160.finalproj.slientDisco.support.Constants;
 import com.cs160.finalproj.slientDisco.support.utils.AppUtils;
 import com.cs160.finalproj.slientDisco.support.utils.PlayerUtils;
 import com.cs160.finalproj.slientDisco.support.utils.UIUtils;
+import com.spotify.android.appremote.api.ConnectionParams;
+import com.spotify.android.appremote.api.Connector;
+import com.spotify.android.appremote.api.SpotifyAppRemote;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +33,12 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import kaaes.spotify.webapi.android.SpotifyApi;
+import kaaes.spotify.webapi.android.SpotifyService;
+import kaaes.spotify.webapi.android.models.Album;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 public class MusicPlayerActivity extends AppCompatActivity {
 
@@ -61,6 +70,12 @@ public class MusicPlayerActivity extends AppCompatActivity {
     private boolean isTimeListenerSet;
 
     private Handler timeHandler = new Handler();
+    private String song_uri;
+    private String accessToken;
+    private String party_name;
+    private SpotifyAppRemote mSpotifyAppRemote;
+    private static final String CLIENT_ID = "b966d335ca304ac7a2a5ef6fd455b088";
+    private static final String REDIRECT_URI = "http://com.example.spotify/callback";
 
     String mUsername;
 
@@ -244,6 +259,10 @@ public class MusicPlayerActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        //TODO, set party name, just for demo
+        TextView mpartyName = findViewById(R.id.music_party_name);
+        mpartyName.setText(party_name + "'s Party");
     }
 
     public void getExtrasFromBundle() {
@@ -251,7 +270,44 @@ public class MusicPlayerActivity extends AppCompatActivity {
         // use intent bundle to set values
         // String value = intent.getStringExtra("key");
         mUsername = intent.getStringExtra("username");
-
+        accessToken = intent.getStringExtra("token");
+        party_name = intent.getStringExtra("partyName"); //just for demo use
+        song_uri = intent.getStringExtra("songUri"); //get song from the creator
     }
 
+    //CONNECT TO SPOTIFY
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        ConnectionParams connectionParams =
+                new ConnectionParams.Builder(CLIENT_ID)
+                        .setRedirectUri(REDIRECT_URI)
+                        .showAuthView(true)
+                        .build();
+
+        mSpotifyAppRemote.connect(this, connectionParams,
+                new Connector.ConnectionListener() {
+
+                    @Override
+                    public void onConnected(SpotifyAppRemote spotifyAppRemote) {
+                        mSpotifyAppRemote = spotifyAppRemote;
+                        connected();
+                    }
+
+                    @Override
+                    public void onFailure(Throwable throwable) {
+                        Log.e("Spotify: ", throwable.getMessage(), throwable);
+                    }
+                });
+    }
+
+    private void connected() {
+        SpotifyApi api = new SpotifyApi();
+        api.setAccessToken(accessToken);
+
+        //play an example music
+        Log.d("Spotify: ", "play music page" + song_uri);
+        mSpotifyAppRemote.getPlayerApi().play(song_uri);
+    }
 }

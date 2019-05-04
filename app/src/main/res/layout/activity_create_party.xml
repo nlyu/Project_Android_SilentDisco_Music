@@ -104,7 +104,7 @@
         android:layout_marginTop="60dp"
         android:layout_marginEnd="64dp"
         android:background="@drawable/btn_rounded_transparent"
-        android:hint="@string/create_party_name"
+        android:hint="@string/find_songs"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
@@ -126,7 +126,7 @@
         android:layout_marginTop="36dp"
         android:layout_marginEnd="64dp"
         android:background="@drawable/btn_rounded_transparent"
-        android:hint="@string/find_songs"
+        android:hint="@string/create_party_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/create_party_find_genres" />
 

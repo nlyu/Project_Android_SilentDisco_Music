@@ -214,7 +214,7 @@ public class UserProfile extends AppCompatActivity {
                 // go to the spotify
                 Intent intent = new Intent(UserProfile.this, OpenInSpotify.class);
                 intent.putExtra("song", pc.getMusicName());
-                //startActivity(intent);
+                startActivity(intent);
                 Toast toast=Toast.makeText(getApplicationContext(),pc.getMusicName(),Toast.LENGTH_SHORT);
                 toast.show();
             }
