@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CreateParty"
-    android:background="@color/background">
+    android:background="@color/colorPrimaryPurple">
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -76,10 +76,10 @@
 
     <ImageView
         android:id="@+id/create_party_disco"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="91dp"
-        android:layout_marginTop="155dp"
+        android:layout_width="79dp"
+        android:layout_height="77dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="156dp"
         android:src="@drawable/disco"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -88,106 +88,70 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="8dp"
         android:fontFamily="sans-serif-medium"
         android:text="@string/app_name"
         android:textColor="@color/colorPrimaryDarkPurple"
-        android:textSize="24dp"
+        android:textSize="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/create_party_disco"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     <AutoCompleteTextView
         android:id="@+id/create_party_create_party_name"
-        android:layout_width="190dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="64dp"
-        android:background="@drawable/btn_rounded_transparent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
         android:hint="@string/find_songs"
+        android:maxLines="1"
+        android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <AutoCompleteTextView
         android:id="@+id/create_party_find_genres"
-        android:layout_width="190dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="64dp"
-        android:background="@drawable/btn_rounded_transparent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="50dp"
         android:hint="@string/find_genres"
+        android:maxLines="1"
+        android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/create_party_create_party_name" />
 
     <AutoCompleteTextView
         android:id="@+id/create_party_find_songs"
-        android:layout_width="190dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="64dp"
-        android:background="@drawable/btn_rounded_transparent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="50dp"
         android:hint="@string/create_party_name"
+        android:maxLines="1"
+        android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/create_party_find_genres" />
-
-    <TextView
-        android:id="@+id/create_party_party_name_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="16dp"
-        android:gravity="center"
-        android:text="Party Name: "
-        android:textColor="@color/colorPrimaryDarkPurple"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/create_party_create_party_name"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="270dp" />
-
-    <TextView
-        android:id="@+id/create_party_genre_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="16dp"
-        android:gravity="center"
-        android:text="Genre: "
-        android:textColor="@color/colorPrimaryDarkPurple"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/create_party_find_genres"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="348dp" />
-
-    <TextView
-        android:id="@+id/create_party_song_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="16dp"
-        android:gravity="center"
-        android:text="Song: "
-        android:textColor="@color/colorPrimaryDarkPurple"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/create_party_find_songs"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="421dp" />
 
     <ToggleButton
         android:id="@+id/create_party_public_button"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="33dp"
+        android:layout_marginStart="31dp"
         android:layout_marginBottom="22dp"
         android:background="@drawable/btn_rounded_corner"
+        android:textColor="@android:color/white"
         android:textOff="@string/public_button"
         android:textOn="@string/public_button"
-        android:textColor="@android:color/white"
         app:layout_constraintBottom_toTopOf="@+id/create_party_create_button"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -195,22 +159,20 @@
         android:id="@+id/create_party_private_button"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="33dp"
+        android:layout_marginEnd="31dp"
         android:layout_marginBottom="22dp"
         android:background="@drawable/btn_rounded_corner"
         android:text="@string/private_button"
+        android:textColor="@android:color/white"
         android:textOff="@string/private_button"
         android:textOn="@string/private_button"
-        android:textColor="@android:color/white"
         app:layout_constraintBottom_toTopOf="@+id/create_party_create_button"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/create_party_create_button"
-        android:layout_width="222dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginBottom="60dp"
         android:background="@drawable/btn_rounded_no_edge"
         android:text="Create Party"
