@@ -14,6 +14,10 @@ public class PartyContainer {
         this.songName = songName;
     }
 
+    public String songToString() {
+        return this.songName;
+    }
+
     public String getSongName() {
         return songName;
     }

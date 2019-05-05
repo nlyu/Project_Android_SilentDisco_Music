@@ -330,7 +330,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
         mDatabase.child("parties").child(mPartyName).child("party_name").setValue(
                 pd.getPartyName().toString());
         mDatabase.child("parties").child(mPartyName).child("song").setValue(
-                pd.getSongName().toString());
+                pd.songToString());
         mDatabase.child("parties").child(mPartyName).child("num_people").setValue(
                 Integer.toString(pd.getNumPeople()));
     }
