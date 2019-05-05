@@ -44,6 +44,8 @@ public class JoinParty extends AppCompatActivity {
     private ArrayList<PartyContainer> trendingPartyData;
     private ArrayList<PartyContainer> allPartyData;
 
+    private String mPartyName;
+
 
     String mUsername;
     double latitude;
@@ -74,6 +76,7 @@ public class JoinParty extends AppCompatActivity {
                 Intent myIntent = new Intent(JoinParty.this, MusicPlayerActivity.class);
                 // myIntent.putExtra("key", value); //Optional parameters
                 myIntent.putExtra("username", mUsername);
+                myIntent.putExtra("partyname", mPartyName);
                 startActivity(myIntent);
             }
         });
@@ -155,8 +158,17 @@ public class JoinParty extends AppCompatActivity {
                 //Intent intent = new Intent(BearFeedActivity.this, CommentFeedActivity.class);
                 //intent.putExtra("username", username);
                 //startActivity(intent);
-                Toast toast=Toast.makeText(getApplicationContext(),pc.getPartyName(),Toast.LENGTH_SHORT);
-                toast.show();
+
+                // set party name
+                mPartyName = pc.getPartyName();
+                Intent myIntent = new Intent(JoinParty.this, MusicPlayerActivity.class);
+                // myIntent.putExtra("key", value); //Optional parameters
+                myIntent.putExtra("username", mUsername);
+                myIntent.putExtra("partyname", mPartyName);
+                startActivity(myIntent);
+
+                //Toast toast=Toast.makeText(getApplicationContext(),pc.getPartyName(),Toast.LENGTH_SHORT);
+                //toast.show();
             }
         });
 
@@ -175,8 +187,17 @@ public class JoinParty extends AppCompatActivity {
                 //Intent intent = new Intent(BearFeedActivity.this, CommentFeedActivity.class);
                 //intent.putExtra("username", username);
                 //startActivity(intent);
-                Toast toast=Toast.makeText(getApplicationContext(),pc.getPartyName(),Toast.LENGTH_SHORT);
-                toast.show();
+
+                // set party name
+                mPartyName = pc.getPartyName();
+                Intent myIntent = new Intent(JoinParty.this, MusicPlayerActivity.class);
+                // myIntent.putExtra("key", value); //Optional parameters
+                myIntent.putExtra("username", mUsername);
+                myIntent.putExtra("partyname", mPartyName);
+                startActivity(myIntent);
+
+                //Toast toast=Toast.makeText(getApplicationContext(),pc.getPartyName(),Toast.LENGTH_SHORT);
+                //toast.show();
             }
         });
 

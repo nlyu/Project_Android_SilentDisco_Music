@@ -69,6 +69,8 @@ public class MusicPlayerActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager mLayoutManager;
     private UserAdapter mAdapter;
     private ArrayList<String> mNames;
+    private String mPartyName;
+    private TextView partyHeader;
 
     String mUsername;
 
@@ -189,7 +191,9 @@ public class MusicPlayerActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         getExtrasFromBundle();
 
+
         getComponents();
+        setTitleHeader();
         setUpRecyclerView();
 
         tracks = new ArrayList<>();
@@ -262,16 +266,24 @@ public class MusicPlayerActivity extends AppCompatActivity {
         // use intent bundle to set values
         // String value = intent.getStringExtra("key");
         mUsername = intent.getStringExtra("username");
+        mPartyName = intent.getStringExtra("partyname");
 
     }
 
     public void getComponents() {
+
+        partyHeader = findViewById(R.id.music_party_name);
         mUserRV = findViewById(R.id.music_player_recyclerview_names);
+
         mNames = new ArrayList<>();
         mNames.add("jimbo");
         mNames.add("slice");
         mNames.add("test");
 
+    }
+
+    public void setTitleHeader() {
+        partyHeader.setText(mPartyName);
     }
 
     public void setUpRecyclerView() {
@@ -282,5 +294,4 @@ public class MusicPlayerActivity extends AppCompatActivity {
         mUserRV.setLayoutManager(mLayoutManager);
         mUserRV.setAdapter(mAdapter);
     }
-
 }

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
@@ -24,8 +25,11 @@ public class CreateParty extends AppCompatActivity {
     private ToggleButton mPrivateButton;
     private ToggleButton mPublicButton;
 
+    private AutoCompleteTextView createPartyName;
+
 
     String mUsername;
+    private String mPartyName;
     double latitude;
     double longitude;
 
@@ -41,10 +45,18 @@ public class CreateParty extends AppCompatActivity {
         createPartyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(CreateParty.this, MusicPlayerActivity.class);
-                // myIntent.putExtra("key", value); //Optional parameters
-                myIntent.putExtra("username", mUsername);
-                startActivity(myIntent);
+                mPartyName = createPartyName.getText().toString();
+                if (mPartyName.isEmpty()) {
+                    String msg = "Please enter a party name";
+                    Toast toast=Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
+                    toast.show();
+                } else {
+                    Intent myIntent = new Intent(CreateParty.this, MusicPlayerActivity.class);
+                    // myIntent.putExtra("key", value); //Optional parameters
+                    myIntent.putExtra("username", mUsername);
+                    myIntent.putExtra("partyname", mPartyName);
+                    startActivity(myIntent);
+                }
             }
         });
         mProfileButton.setOnClickListener(new View.OnClickListener() {
@@ -102,6 +114,9 @@ public class CreateParty extends AppCompatActivity {
 
 
     public void getComponents() {
+
+        createPartyName = findViewById(R.id.create_party_create_party_name);
+
         // get profile, help, create party buttons
         mProfileButton = findViewById(R.id.create_party_account_icon);
         mHelpButton = findViewById(R.id.create_party_help_icon);
