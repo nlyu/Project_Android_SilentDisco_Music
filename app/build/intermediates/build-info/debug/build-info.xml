@@ -5,27 +5,32 @@
     build-mode="COLD"
     density="420dpi"
     format="10"
+    ir-eligibility="COMPATIBLE"
     plugin-version="3.2.1"
-    timestamp="1557051390481"
+    timestamp="1557052350792"
     token="6634540956759782403"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="0" />
+        duration="3069" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="0" />
+        duration="61" />
     <task
         name="verifier"
-        duration="0" />
+        duration="27" />
+
+    <artifact
+        location="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
+        type="SPLIT" />
 
     <build
         build-mode="FULL"
-        timestamp="1557051248335"
+        timestamp="1557052203228"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
@@ -69,16 +74,12 @@
     </build>
     <build
         build-mode="COLD"
-        ir-eligibility="METHOD_DELETED"
-        timestamp="1557051361212"
+        ir-eligibility="COMPATIBLE"
+        timestamp="1557052350792"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
             type="SPLIT" />
     </build>
-    <build
-        build-mode="COLD"
-        timestamp="1557051390481"
-        verifier="COLD_SWAP_REQUESTED" />
 
 </instant-run>

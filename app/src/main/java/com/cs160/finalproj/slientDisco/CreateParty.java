@@ -26,9 +26,13 @@ public class CreateParty extends AppCompatActivity {
     private ToggleButton mPublicButton;
 
     private AutoCompleteTextView createPartyName;
+    private AutoCompleteTextView createPartyGenre;
+    private AutoCompleteTextView createPartySong;
 
 
     String mUsername;
+    private String mGenre;
+    private String mSong;
     private String mPartyName;
     double latitude;
     double longitude;
@@ -46,8 +50,11 @@ public class CreateParty extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mPartyName = createPartyName.getText().toString();
-                if (mPartyName.isEmpty()) {
-                    String msg = "Please enter a party name";
+                mGenre = createPartyGenre.getText().toString();
+                mSong = createPartySong.getText().toString();
+
+                if (mPartyName.isEmpty() || mGenre.isEmpty() || mSong.isEmpty()) {
+                    String msg = "Please complete all the fields";
                     Toast toast=Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
                     toast.show();
                 } else {
@@ -55,6 +62,8 @@ public class CreateParty extends AppCompatActivity {
                     // myIntent.putExtra("key", value); //Optional parameters
                     myIntent.putExtra("username", mUsername);
                     myIntent.putExtra("partyname", mPartyName);
+                    myIntent.putExtra("genrename", mGenre);
+                    myIntent.putExtra("songname", mSong);
                     startActivity(myIntent);
                 }
             }
@@ -116,6 +125,8 @@ public class CreateParty extends AppCompatActivity {
     public void getComponents() {
 
         createPartyName = findViewById(R.id.create_party_create_party_name);
+        createPartyGenre = findViewById(R.id.create_party_find_genres);
+        createPartySong = findViewById(R.id.create_party_find_songs);
 
         // get profile, help, create party buttons
         mProfileButton = findViewById(R.id.create_party_account_icon);

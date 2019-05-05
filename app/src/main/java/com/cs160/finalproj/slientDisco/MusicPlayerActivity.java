@@ -26,6 +26,8 @@ import com.cs160.finalproj.slientDisco.support.Constants;
 import com.cs160.finalproj.slientDisco.support.utils.AppUtils;
 import com.cs160.finalproj.slientDisco.support.utils.PlayerUtils;
 import com.cs160.finalproj.slientDisco.support.utils.UIUtils;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,6 +73,12 @@ public class MusicPlayerActivity extends AppCompatActivity {
     private ArrayList<String> mNames;
     private String mPartyName;
     private TextView partyHeader;
+
+    private String mGenreName;
+    private String mSongName;
+    private PartyContainer mPartyData;
+    private DatabaseReference mDatabase;
+
 
     String mUsername;
 
@@ -195,6 +203,8 @@ public class MusicPlayerActivity extends AppCompatActivity {
         getComponents();
         setTitleHeader();
         setUpRecyclerView();
+        mPartyData = new PartyContainer(mPartyName, 1, mGenreName, mSongName);
+        pushPartyFirebase(mPartyData);
 
         tracks = new ArrayList<>();
 
@@ -267,6 +277,8 @@ public class MusicPlayerActivity extends AppCompatActivity {
         // String value = intent.getStringExtra("key");
         mUsername = intent.getStringExtra("username");
         mPartyName = intent.getStringExtra("partyname");
+        mGenreName = intent.getStringExtra("genrename");
+        mSongName = intent.getStringExtra("songname");
 
     }
 
@@ -293,5 +305,21 @@ public class MusicPlayerActivity extends AppCompatActivity {
         mAdapter = new UserAdapter(mNames);
         mUserRV.setLayoutManager(mLayoutManager);
         mUserRV.setAdapter(mAdapter);
+    }
+
+    public void pushPartyFirebase(PartyContainer pd) {
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        // set audience
+        mDatabase.child("parties").child(mPartyName).child("audience").setValue(mUsername);
+        mDatabase.child("parties").child(mPartyName).child("loc").setValue("LOCATION");
+        mDatabase.child("parties").child(mPartyName).child("other_data").setValue("yadayada");
+        mDatabase.child("parties").child(mPartyName).child("owner").setValue(mUsername);
+        mDatabase.child("parties").child(mPartyName).child("party_name").setValue(
+                pd.getPartyName().toString());
+        mDatabase.child("parties").child(mPartyName).child("song").setValue(
+                pd.getSongName().toString());
+        mDatabase.child("parties").child(mPartyName).child("num_people").setValue(
+                Integer.toString(pd.getNumPeople()));
+
     }
 }
