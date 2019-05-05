@@ -1266,6 +1266,8 @@ id music_party_back_text
 id music_party_help_icon
 id music_party_name
 id music_party_name_text
+id music_player_recyclerview_names
+id name_item_name
 id navigation_header_container
 id never
 id next_track
@@ -1483,6 +1485,7 @@ layout design_text_input_password_icon
 layout mtrl_layout_snackbar
 layout mtrl_layout_snackbar_include
 layout music_item
+layout name_item
 layout notification_action
 layout notification_action_tombstone
 layout notification_media_action

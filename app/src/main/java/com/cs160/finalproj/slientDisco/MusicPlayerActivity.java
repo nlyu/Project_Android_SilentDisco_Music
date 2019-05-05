@@ -8,10 +8,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -61,6 +64,11 @@ public class MusicPlayerActivity extends AppCompatActivity {
     private boolean isTimeListenerSet;
 
     private Handler timeHandler = new Handler();
+
+    private RecyclerView mUserRV;
+    private RecyclerView.LayoutManager mLayoutManager;
+    private UserAdapter mAdapter;
+    private ArrayList<String> mNames;
 
     String mUsername;
 
@@ -181,6 +189,9 @@ public class MusicPlayerActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         getExtrasFromBundle();
 
+        getComponents();
+        setUpRecyclerView();
+
         tracks = new ArrayList<>();
 
         trackTimeline.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -252,6 +263,24 @@ public class MusicPlayerActivity extends AppCompatActivity {
         // String value = intent.getStringExtra("key");
         mUsername = intent.getStringExtra("username");
 
+    }
+
+    public void getComponents() {
+        mUserRV = findViewById(R.id.music_player_recyclerview_names);
+        mNames = new ArrayList<>();
+        mNames.add("jimbo");
+        mNames.add("slice");
+        mNames.add("test");
+
+    }
+
+    public void setUpRecyclerView() {
+        // set trending recycler view
+        mUserRV.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(this);
+        mAdapter = new UserAdapter(mNames);
+        mUserRV.setLayoutManager(mLayoutManager);
+        mUserRV.setAdapter(mAdapter);
     }
 
 }
