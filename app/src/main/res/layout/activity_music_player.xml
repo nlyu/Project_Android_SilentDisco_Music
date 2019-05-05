@@ -405,33 +405,13 @@
             android:layout_marginBottom="10dp"
             android:background="#858585" />
 
-        <TextView
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/music_player_recyclerview_names"
             android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:layout_marginStart="10dp"
-            android:text="Bob"
-            android:textColor="#858585" />
+            android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:layout_marginStart="10dp"
-            android:text="Peter"
-            android:textColor="#858585" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:layout_marginStart="10dp"
-            android:text="Lisa"
-            android:textColor="#858585" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:layout_marginStart="10dp"
-            android:text="Jin"
-            android:textColor="#858585" />
+        </android.support.v7.widget.RecyclerView>
 
     </LinearLayout>
 
