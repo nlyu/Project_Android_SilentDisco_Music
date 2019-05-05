@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-#Tue Apr 30 17:59:15 PDT 2019
-base.0=/Users/carigan/school/cs160/silentdisco/app/build/intermediates/transforms/dexMerger/debug/0
-path.0=classes.dex
-renamed.0=classes.dex
-=======
-#Tue Apr 30 15:33:51 PDT 2019
+#Sun May 05 02:16:54 PDT 2019
 path.1=classes.dex
 path.0=classes.dex
 renamed.10=classes11.dex
@@ -38,4 +32,3 @@ path.5=classes.dex
 path.4=classes.dex
 path.3=classes.dex
 path.2=classes.dex
->>>>>>> 3226221a5c8eef9509558d86aa1e60b5d53477f1

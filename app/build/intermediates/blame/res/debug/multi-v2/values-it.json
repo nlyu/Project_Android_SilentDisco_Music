@@ -1,12 +1,6 @@
 {
     "logs": [
         {
-<<<<<<< HEAD
-            "outputFile": "/Users/carigan/school/cs160/silentdisco/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-it/values-it.xml",
-            "map": [
-                {
-                    "source": "/Users/carigan/.gradle/caches/transforms-2/files-2.1/14e0088ba9f6531ff14d928bfec4abd2/res/values-it/values.xml",
-=======
             "outputFile": "/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-it/values-it.xml",
             "map": [
                 {
@@ -45,7 +39,6 @@
                 },
                 {
                     "source": "/Users/Aidan/.gradle/caches/transforms-2/files-2.1/b4d22d74639d46605a05e36095b15abe/res/values-it/values.xml",
->>>>>>> 3226221a5c8eef9509558d86aa1e60b5d53477f1
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -62,45 +55,7 @@
                     }
                 },
                 {
-<<<<<<< HEAD
-                    "source": "/Users/carigan/.gradle/caches/transforms-2/files-2.1/554aa78b01d767e875df82c4415f4328/res/values-it/values-it.xml",
-=======
                     "source": "/Users/Aidan/.gradle/caches/transforms-2/files-2.1/ac87180aa5106c063a58d9a15463edc7/res/values-it/values-it.xml",
->>>>>>> 3226221a5c8eef9509558d86aa1e60b5d53477f1
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "48",
-                        "startColumns": "4",
-                        "startOffsets": "5617",
-                        "endColumns": "100",
-                        "endOffsets": "5713"
-                    }
-                },
-                {
-                    "source": "/Users/carigan/.gradle/caches/transforms-2/files-2.1/a771eb877a8a7e12e41d79e4714353c5/res/values-it/values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "247",
-                        "endColumns": "194",
-                        "endOffsets": "441"
-                    },
-                    "to": {
-                        "startLines": "37",
-                        "startColumns": "4",
-                        "startOffsets": "3980",
-                        "endColumns": "194",
-                        "endOffsets": "4170"
-                    }
-                },
-                {
-                    "source": "/Users/carigan/.gradle/caches/transforms-2/files-2.1/362fcbf36355b8c67b4dc17273e3e7b8/res/values-it/values-it.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
