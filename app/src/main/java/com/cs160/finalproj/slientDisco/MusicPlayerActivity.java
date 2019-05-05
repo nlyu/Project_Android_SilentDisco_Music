@@ -26,11 +26,21 @@ import com.cs160.finalproj.slientDisco.support.Constants;
 import com.cs160.finalproj.slientDisco.support.utils.AppUtils;
 import com.cs160.finalproj.slientDisco.support.utils.PlayerUtils;
 import com.cs160.finalproj.slientDisco.support.utils.UIUtils;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import org.w3c.dom.Comment;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -78,6 +88,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
     private String mSongName;
     private PartyContainer mPartyData;
     private DatabaseReference mDatabase;
+    Map<String, HashMap<String, String>> allPartyData;
 
 
     String mUsername;
@@ -203,6 +214,8 @@ public class MusicPlayerActivity extends AppCompatActivity {
         getComponents();
         setTitleHeader();
         setUpRecyclerView();
+        setDatabaseListener();
+
         mPartyData = new PartyContainer(mPartyName, 1, mGenreName, mSongName);
         pushPartyFirebase(mPartyData);
 
@@ -320,6 +333,38 @@ public class MusicPlayerActivity extends AppCompatActivity {
                 pd.getSongName().toString());
         mDatabase.child("parties").child(mPartyName).child("num_people").setValue(
                 Integer.toString(pd.getNumPeople()));
+    }
 
+    public void setDatabaseListener() {
+        /*
+        mDatabase = FirebaseDatabase.getInstance().getReference("parties");
+        ValueEventListener myDataListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+
+                allPartyData = (HashMap<String, HashMap<String, String>>) dataSnapshot.getValue();
+
+                if (allPartyData != null) {
+
+                    for (Map.Entry<String, HashMap<String, String>> entry : allPartyData.entrySet()) {
+                        //System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
+                        String key = entry.getKey();
+                        HashMap<String, String> value = (HashMap<String, String>) entry.getValue();
+
+
+                    }
+
+                }
+
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d("0", "cancelled");
+            }
+        };
+        // try changing `someRef` here
+        mDatabase.addValueEventListener(myDataListener);
+        */
     }
 }
