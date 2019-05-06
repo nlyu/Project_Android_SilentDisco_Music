@@ -46,7 +46,7 @@ public class JoinParty extends AppCompatActivity {
     private ArrayList<PartyContainer> allPartyData;
 
     private String song_uri;
-
+    private String mPartyName;
 
     String mUsername;
     double latitude;
@@ -78,6 +78,8 @@ public class JoinParty extends AppCompatActivity {
                 // myIntent.putExtra("key", value); //Optional parameters
                 myIntent.putExtra("username", mUsername);
                 myIntent.putExtra("partyName", "Bob"); //TODO, just for demo
+                myIntent.putExtra("partyname", mPartyName);
+
                 startActivity(myIntent);
             }
         });
@@ -104,15 +106,15 @@ public class JoinParty extends AppCompatActivity {
         // populate dummy view
         // partyName, numPeople, genre
         PartyContainer e1 = new PartyContainer("It's litty again",
-                64, "hip hop");
+                64, "hip hop", "cola");
         PartyContainer e2 = new PartyContainer("Popular kids",
-                32, "rock");
+                32, "rock", "cola");
         PartyContainer e3 = new PartyContainer("Bob's party",
-                12, "pop");
+                12, "pop", "cola");
         PartyContainer e4 = new PartyContainer("Basic taste club",
-                12, "pop");
+                12, "pop", "cola");
         PartyContainer e5 = new PartyContainer("Deep and dank",
-                4, "house");
+                4, "house", "cola");
         trendingPartyData.add(e1);
         trendingPartyData.add(e2);
         trendingPartyData.add(e3);
@@ -120,15 +122,15 @@ public class JoinParty extends AppCompatActivity {
         trendingPartyData.add(e5);
 
         PartyContainer e6 = new PartyContainer("Babab",
-                1, "hip hop");
+                1, "hip hop", "cola");
         PartyContainer e7 = new PartyContainer("Amortized",
-                2, "rock");
+                2, "rock", "cola");
         PartyContainer e8 = new PartyContainer("party123",
-                4, "classical");
+                4, "classical", "cola");
         PartyContainer e9 = new PartyContainer("tyygaa",
-                2, "classical");
+                2, "classical", "cola");
         PartyContainer e10 = new PartyContainer("i heart radio",
-                4, "pop");
+                4, "pop", "cola");
         allPartyData.add(e6);
         allPartyData.add(e7);
         allPartyData.add(e8);
@@ -158,8 +160,17 @@ public class JoinParty extends AppCompatActivity {
                 //Intent intent = new Intent(BearFeedActivity.this, CommentFeedActivity.class);
                 //intent.putExtra("username", username);
                 //startActivity(intent);
-                Toast toast=Toast.makeText(getApplicationContext(),pc.getPartyName(),Toast.LENGTH_SHORT);
-                toast.show();
+
+                // set party name
+                mPartyName = pc.getPartyName();
+                Intent myIntent = new Intent(JoinParty.this, MusicPlayerActivity.class);
+                // myIntent.putExtra("key", value); //Optional parameters
+                myIntent.putExtra("username", mUsername);
+                myIntent.putExtra("partyname", mPartyName);
+                startActivity(myIntent);
+
+                //Toast toast=Toast.makeText(getApplicationContext(),pc.getPartyName(),Toast.LENGTH_SHORT);
+                //toast.show();
             }
         });
 
@@ -174,13 +185,18 @@ public class JoinParty extends AppCompatActivity {
             @Override
             public void onItemClick(int position) {
                 PartyContainer pc = allPartyData.get(position);
-                // go to the specified party
+                // set party name
                 Toast toast=Toast.makeText(getApplicationContext(),pc.getPartyName(),Toast.LENGTH_SHORT);
                 toast.show();
-                Intent intent = new Intent(JoinParty.this, MusicPlayerActivity.class);
+                mPartyName = pc.getPartyName();
+                Intent myIntent = new Intent(JoinParty.this, MusicPlayerActivity.class);
+                // myIntent.putExtra("key", value); //Optional parameters
+                myIntent.putExtra("username", mUsername);
+                myIntent.putExtra("partyname", mPartyName);
                 intent.putExtra("partyName", "Bob"); //TODO, just for demo
                 intent.putExtra("songUri", "spotify:track:4lIxdJw6W3Fg4vUIYCB0S5"); //TODO, just for demo, play tyler swift's style
-                startActivity(intent);
+                
+                startActivity(myIntent);
             }
         });
 
@@ -252,8 +268,6 @@ public class JoinParty extends AppCompatActivity {
             }
         });
     }
-
-
 
     public void getExtrasFromBundle() {
         Intent intent = getIntent();

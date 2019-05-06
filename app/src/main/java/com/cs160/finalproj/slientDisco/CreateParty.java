@@ -62,7 +62,16 @@ public class CreateParty extends AppCompatActivity {
     private AutoCompleteTextView mCreate_party_song_text;
     private AutoCompleteTextView mCreate_party_genres_text;
 
+    //TODO, same as the top, would refactorized the code after
+    private AutoCompleteTextView createPartyName;
+    private AutoCompleteTextView createPartyGenre;
+    private AutoCompleteTextView createPartySong;
+
+
     String mUsername;
+    private String mGenre;
+    private String mSong;
+    private String mPartyName;
     double latitude;
     double longitude;
 
@@ -84,15 +93,31 @@ public class CreateParty extends AppCompatActivity {
         createPartyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(CreateParty.this, MusicPlayerActivity.class);
-                // myIntent.putExtra("key", value); //Optional parameters
-                myIntent.putExtra("username", mUsername);
-                myIntent.putExtra("token", accessToken);
-                myIntent.putExtra("songUri", song_uri);
-                myIntent.putExtra("partyName", mUsername); //TODO, just for demo
-                startActivity(myIntent);
+                mPartyName = createPartyName.getText().toString();
+                mGenre = createPartyGenre.getText().toString();
+                mSong = createPartySong.getText().toString();
+
+                if (mPartyName.isEmpty() || mSong.isEmpty()) {
+                    String msg = "Please complete song and party name fields";
+                    Toast toast=Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
+                    toast.show();
+                } else {
+                    Intent myIntent = new Intent(CreateParty.this, MusicPlayerActivity.class);
+                    // myIntent.putExtra("key", value); //Optional parameters
+                    myIntent.putExtra("username", mUsername);
+                    myIntent.putExtra("partyname", mPartyName);
+                    myIntent.putExtra("genrename", mGenre);
+                    myIntent.putExtra("songname", mSong);
+                  
+                    //spotify
+                    myIntent.putExtra("token", accessToken);
+                    myIntent.putExtra("songUri", song_uri);
+                    myIntent.putExtra("partyName", mUsername); //TODO, just for demo
+                    startActivity(myIntent);
+                }
             }
         });
+      
         mProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -162,7 +187,7 @@ public class CreateParty extends AppCompatActivity {
         mCreate_party_name_text.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //Toast.makeText(getApplicationContext(),"song" + song_name_uri_list[position] + " selected", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"song" + song_name_uri_list[position] + " selected", Toast.LENGTH_LONG).show();
                 song_uri = song_name_uri_list[position];
             }
         });
@@ -197,6 +222,11 @@ public class CreateParty extends AppCompatActivity {
 
 
     public void getComponents() {
+
+        createPartyName = findViewById(R.id.create_party_create_party_name);
+        createPartyGenre = findViewById(R.id.create_party_find_genres);
+        createPartySong = findViewById(R.id.create_party_find_songs);
+
         // get profile, help, create party buttons
         mProfileButton = findViewById(R.id.create_party_account_icon);
         mHelpButton = findViewById(R.id.create_party_help_icon);

@@ -1256,6 +1256,9 @@ id mini
 id mtrl_child_content_container
 id mtrl_internal_children_alpha_tag
 id multiply
+id music_item_music_icon
+id music_item_music_name
+id music_list_recycler_view
 id music_party_account_icon
 id music_party_audienceList
 id music_party_back_arrow
@@ -1263,6 +1266,8 @@ id music_party_back_text
 id music_party_help_icon
 id music_party_name
 id music_party_name_text
+id music_player_recyclerview_names
+id name_item_name
 id navigation_header_container
 id never
 id next_track
@@ -1282,13 +1287,13 @@ id parentPanel
 id parent_matrix
 id party_item_party_info
 id party_item_party_name
-id party_name
 id party_now_playing
 id password
 id percent
 id pin
 id play_or_pause
 id previous_track
+id profile_name
 id progress_circular
 id progress_horizontal
 id radio
@@ -1393,7 +1398,6 @@ id user_profile_log_off
 id user_profile_middle_line
 id user_profile_name
 id user_profile_song_list
-id user_profile_song_list_linear
 id username
 id username_login_form
 id username_register_button
@@ -1480,6 +1484,8 @@ layout design_navigation_menu_item
 layout design_text_input_password_icon
 layout mtrl_layout_snackbar
 layout mtrl_layout_snackbar_include
+layout music_item
+layout name_item
 layout notification_action
 layout notification_action_tombstone
 layout notification_media_action

@@ -2,74 +2,36 @@
 <instant-run
     abi="x86"
     api-level="28"
-    build-mode="FULL"
+    build-mode="COLD"
     density="420dpi"
     format="10"
+    ir-eligibility="METHOD_ADDED"
     plugin-version="3.2.1"
-    timestamp="1556670845790"
+    timestamp="1557053864888"
     token="6634540956759782403"
-    verifier="FULL_BUILD_REQUESTED" >
+    verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="23467" />
+        duration="6059" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="172" />
+        duration="122" />
     <task
         name="verifier"
-        duration="124" />
+        duration="85" />
 
     <artifact
         location="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
         type="SPLIT" />
-    <artifact
-        location="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
-        type="SPLIT" />
-    <artifact
-        location="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
-        type="SPLIT" />
-    <artifact
-        location="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
-        type="SPLIT" />
-    <artifact
-        location="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/resources/instant-run/debug/resources-debug.apk"
-        type="SPLIT" />
-    <artifact
-        location="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
-        type="SPLIT" />
-    <artifact
-        location="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
-        type="SPLIT" />
-    <artifact
-        location="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
-        type="SPLIT" />
-    <artifact
-        location="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
-        type="SPLIT" />
-    <artifact
-        location="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
-        type="SPLIT" />
-    <artifact
-        location="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
-        type="SPLIT" />
-    <artifact
-        location="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
-        type="SPLIT" />
-    <artifact
-        location="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
-        type="SPLIT_MAIN" />
 
     <build
         build-mode="FULL"
-        timestamp="1556670845790"
+        timestamp="1557053717575"
         verifier="FULL_BUILD_REQUESTED" >
-        <artifact
-            location="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
-            type="SPLIT" />
         <artifact
             location="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
             type="SPLIT" />
@@ -98,6 +60,9 @@
             location="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
             type="SPLIT" />
         <artifact
+            location="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
+            type="SPLIT" />
+        <artifact
             location="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
             type="SPLIT" />
         <artifact
@@ -106,6 +71,15 @@
         <artifact
             location="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
             type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="COLD"
+        ir-eligibility="METHOD_ADDED"
+        timestamp="1557053864888"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
+            type="SPLIT" />
     </build>
 
 </instant-run>

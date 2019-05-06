@@ -5,11 +5,25 @@ public class PartyContainer {
     private String partyName;
     private int numPeople;
     private String genre;
+    private String songName;
 
-    public PartyContainer(String partyName, int numPeople, String genre) {
+    public PartyContainer(String partyName, int numPeople, String genre, String songName) {
         this.partyName = partyName;
         this.numPeople = numPeople;
         this.genre = genre;
+        this.songName = songName;
+    }
+
+    public String songToString() {
+        return this.songName;
+    }
+
+    public String getSongName() {
+        return songName;
+    }
+
+    public void setSongName(String songName) {
+        this.songName = songName;
     }
 
     public String getPartyName() {

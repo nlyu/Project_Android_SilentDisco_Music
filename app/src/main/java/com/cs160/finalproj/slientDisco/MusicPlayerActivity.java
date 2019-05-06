@@ -15,6 +15,7 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -26,19 +27,29 @@ import com.cs160.finalproj.slientDisco.support.Constants;
 import com.cs160.finalproj.slientDisco.support.utils.AppUtils;
 import com.cs160.finalproj.slientDisco.support.utils.PlayerUtils;
 import com.cs160.finalproj.slientDisco.support.utils.UIUtils;
+
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
 import com.spotify.android.appremote.api.ConnectionParams;
 import com.spotify.android.appremote.api.Connector;
 import com.spotify.android.appremote.api.SpotifyAppRemote;
 import com.spotify.protocol.client.CallResult;
 import com.spotify.protocol.types.PlayerState;
+import com.google.firebase.database.ValueEventListener;
+
+import org.w3c.dom.Comment;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -54,8 +65,6 @@ public class MusicPlayerActivity extends AppCompatActivity {
 
     //TODO, this music play will play all local file in the internal storage/Music directory
     //TODO, need to add backend in future
-
-
     @BindView(R.id.track_cover) protected ImageView trackCover;
     @BindView(R.id.previous_track) protected ImageView previousTrack;
     @BindView(R.id.play_or_pause) protected ImageView playOrPause;
@@ -91,8 +100,20 @@ public class MusicPlayerActivity extends AppCompatActivity {
     private static final String CLIENT_ID = "b966d335ca304ac7a2a5ef6fd455b088";
     private static final String REDIRECT_URI = "http://com.example.spotify/callback";
 
-    String mUsername;
+    private RecyclerView mUserRV;
+    private RecyclerView.LayoutManager mLayoutManager;
+    private UserAdapter mAdapter;
+    private ArrayList<String> mNames;
+    private String mPartyName;
+    private TextView partyHeader;
 
+    private String mGenreName;
+    private String mSongName;
+    private PartyContainer mPartyData;
+    private DatabaseReference mDatabase;
+    Map<String, HashMap<String, String>> allPartyData;
+
+    String mUsername;
 
     private void setPositionListener() {
         isTimeListenerSet = true;
@@ -183,6 +204,14 @@ public class MusicPlayerActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         getExtrasFromBundle();
 
+        getComponents();
+        setTitleHeader();
+        setUpRecyclerView();
+        setDatabaseListener();
+
+        mPartyData = new PartyContainer(mPartyName, 1, mGenreName, mSongName);
+        pushPartyFirebase(mPartyData);
+
         tracks = new ArrayList<>();
 
         trackTimeline.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -244,9 +273,9 @@ public class MusicPlayerActivity extends AppCompatActivity {
             }
         });
 
-        //TODO, set party name, just for demo
-        TextView mpartyName = findViewById(R.id.music_party_name);
-        mpartyName.setText(party_name + "'s Party");
+        //TODO, set party name, just for demo, now from firebase
+        //TextView mpartyName = findViewById(R.id.music_party_name);
+        //mpartyName.setText(party_name + "'s Party");
 
         //slide up song list
         mSlideUpMusic = findViewById(R.id.music_list_recycler_view);
@@ -314,12 +343,16 @@ public class MusicPlayerActivity extends AppCompatActivity {
     public void getExtrasFromBundle() {
         Intent intent = getIntent();
         // use intent bundle to set values
-        // String value = intent.getStringExtra("key");
         mUsername = intent.getStringExtra("username");
         accessToken = intent.getStringExtra("token");
         party_name = intent.getStringExtra("partyName"); //just for demo use
         song_uri = intent.getStringExtra("songUri"); //get song from the creator
+        
+        mPartyName = intent.getStringExtra("partyname");
+        mGenreName = intent.getStringExtra("genrename");
+        mSongName = intent.getStringExtra("songUri");
     }
+
 
     //CONNECT TO SPOTIFYplay_or_pause
     @Override
@@ -370,5 +403,75 @@ public class MusicPlayerActivity extends AppCompatActivity {
                 });
             }
         }, 1000);
+    
+    public void getComponents() {
+        partyHeader = findViewById(R.id.music_party_name);
+        mUserRV = findViewById(R.id.music_player_recyclerview_names);
+
+        mNames = new ArrayList<>();
+        mNames.add("jimbo");
+        mNames.add("slice");
+        mNames.add("test");
+    }
+
+    public void setTitleHeader() {
+        partyHeader.setText(mPartyName);
+    }
+
+    public void setUpRecyclerView() {
+        // set trending recycler view
+        mUserRV.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(this);
+        mAdapter = new UserAdapter(mNames);
+        mUserRV.setLayoutManager(mLayoutManager);
+        mUserRV.setAdapter(mAdapter);
+    }
+
+    public void pushPartyFirebase(PartyContainer pd) {
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        // set audience
+        mDatabase.child("parties").child(mPartyName).child("audience").setValue(mUsername);
+        mDatabase.child("parties").child(mPartyName).child("loc").setValue("LOCATION");
+        mDatabase.child("parties").child(mPartyName).child("other_data").setValue("yadayada");
+        mDatabase.child("parties").child(mPartyName).child("owner").setValue(mUsername);
+        mDatabase.child("parties").child(mPartyName).child("party_name").setValue(
+                pd.getPartyName().toString());
+        mDatabase.child("parties").child(mPartyName).child("song").setValue(
+                pd.songToString());
+        mDatabase.child("parties").child(mPartyName).child("num_people").setValue(
+                Integer.toString(pd.getNumPeople()));
+    }
+
+    public void setDatabaseListener() {
+        /*
+        mDatabase = FirebaseDatabase.getInstance().getReference("parties");
+        ValueEventListener myDataListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+
+                allPartyData = (HashMap<String, HashMap<String, String>>) dataSnapshot.getValue();
+
+                if (allPartyData != null) {
+
+                    for (Map.Entry<String, HashMap<String, String>> entry : allPartyData.entrySet()) {
+                        //System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
+                        String key = entry.getKey();
+                        HashMap<String, String> value = (HashMap<String, String>) entry.getValue();
+
+
+                    }
+
+                }
+
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d("0", "cancelled");
+            }
+        };
+        // try changing `someRef` here
+        mDatabase.addValueEventListener(myDataListener);
+        */
     }
 }
