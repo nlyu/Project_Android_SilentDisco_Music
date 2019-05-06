@@ -211,12 +211,11 @@
 
             <ImageView
                 android:id="@+id/previous_track"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/common_padding"
-                android:tint="#ffffff"
+                android:layout_width="41dp"
+                android:layout_height="41dp"
                 android:color="#ffffff"
-                app:srcCompat="@drawable/ic_previous_track" />
+                android:padding="@dimen/common_padding"
+                app:srcCompat="@drawable/spotify" />
 
             <ImageView
                 android:id="@+id/play_or_pause"
@@ -228,11 +227,9 @@
 
             <ImageView
                 android:id="@+id/next_track"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/common_padding"
-                android:tint="#ffffff"
-                app:srcCompat="@drawable/ic_next_track" />
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:srcCompat="@drawable/favorite_icon" />
 
         </LinearLayout>
 
@@ -261,115 +258,24 @@
             android:background="#ffffff"
             android:translationZ="5dp"/>
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="30dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="44dp"
-                android:layout_height="match_parent"
-                android:tint="#ffffff"
-                app:srcCompat="@drawable/ic_music_note" />
-
-            <TextView
+            android:layout_height="wrap_content">
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Example Music XX                 3:02"
-                android:textColor="#ffffff"
-                android:textSize="20dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="30dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="44dp"
-                android:layout_height="match_parent"
-                android:tint="#ffffff"
-                app:srcCompat="@drawable/ic_music_note" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Example Music XX                 3:02"
-                android:textColor="#ffffff"
-                android:textSize="20dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="30dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="44dp"
-                android:layout_height="match_parent"
-                android:tint="#ffffff"
-                app:srcCompat="@drawable/ic_music_note" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Example Music XX                 3:02"
-                android:textColor="#ffffff"
-                android:textSize="20dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="30dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="44dp"
-                android:layout_height="match_parent"
-                android:tint="#ffffff"
-                app:srcCompat="@drawable/ic_music_note" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Example Music XX                 3:02"
-                android:textColor="#ffffff"
-                android:textSize="20dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="30dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="44dp"
-                android:layout_height="match_parent"
-                android:tint="#ffffff"
-                app:srcCompat="@drawable/ic_music_note" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Example Music XX                 3:02"
-                android:textColor="#ffffff"
-                android:textSize="20dp" />
-        </LinearLayout>
+                android:orientation="vertical">
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/music_list_recycler_view"
+                    android:layout_width="320dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </LinearLayout>
+        </ScrollView>
 
     </LinearLayout>
 

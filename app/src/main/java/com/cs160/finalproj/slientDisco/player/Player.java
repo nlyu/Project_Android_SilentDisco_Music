@@ -67,19 +67,11 @@ public class Player {
     }
 
     public void resume() {
-        if (!defaultMediaPlayer.isPlaying()) {
-            defaultMediaPlayer.seekTo(currentTime);
-            defaultMediaPlayer.start();
             isPausing = false;
-        }
     }
 
     public void pause() {
-        if (defaultMediaPlayer.isPlaying()) {
-            currentTime = defaultMediaPlayer.getCurrentPosition();
-            defaultMediaPlayer.pause();
             isPausing = true;
-        }
     }
 
     public void stop() {

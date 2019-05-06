@@ -85,7 +85,7 @@ public class ChooseParty extends AppCompatActivity {
     private Boolean mRequestingLocationUpdates;
 
     //Connect to spotify
-    private static final String CLIENT_ID = "9e037ab44be34a088b8cadf33b25b906";
+    private static final String CLIENT_ID = "b966d335ca304ac7a2a5ef6fd455b088";
     private static final String REDIRECT_URI = "http://com.example.spotify/callback";
     private SpotifyAppRemote mSpotifyAppRemote;
 
@@ -143,7 +143,7 @@ public class ChooseParty extends AppCompatActivity {
             public void onClick(View v) {
                 // go to profile i.e.
                 Intent myIntent = new Intent(ChooseParty.this, UserProfile.class);
-                // myIntent.putExtra("key", value); //Optional parameters
+                //
                 myIntent.putExtra("username", mUsername);
                 startActivity(myIntent);
             }
@@ -176,6 +176,7 @@ public class ChooseParty extends AppCompatActivity {
                 myIntent.putExtra("username", mUsername);
                 myIntent.putExtra("latitude", mCurrentLocation.getLatitude());
                 myIntent.putExtra("longitude", mCurrentLocation.getLongitude());
+                myIntent.putExtra("token", accessToken); //Optional parameters
                 startActivity(myIntent);
             }
         });
@@ -195,7 +196,7 @@ public class ChooseParty extends AppCompatActivity {
                 myIntent.putExtra("username", mUsername);
                 myIntent.putExtra("latitude", mCurrentLocation.getLatitude());
                 myIntent.putExtra("longitude", mCurrentLocation.getLongitude());
-
+                myIntent.putExtra("token", accessToken); //Optional parameters
                 startActivity(myIntent);
             }
         });
@@ -259,9 +260,20 @@ public class ChooseParty extends AppCompatActivity {
                     case TOKEN:
                         // Handle successful response
                         accessToken = response.getAccessToken();
-                        System.out.println("GOT ACCESS TOKEN");
-                        break;
+                        try{
+                            System.out.println("GOT ACCESS TOKEN:n" + data.toString());
+                            Bundle bundle = data.getExtras();
+                            if (bundle != null) {
+                                for (String key : bundle.keySet()) {
+                                    Object value = bundle.get(key);
+                                    Log.d(TAG, String.format("%s %s (%s)", key,
+                                            value.toString(), value.getClass().getName()));
+                                }
+                            }
+                        } catch (NullPointerException e){
 
+                        }
+                        break;
                     // Auth flow returned an error
                     case ERROR:
                         // Handle error response
@@ -408,10 +420,11 @@ public class ChooseParty extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        builder.setScopes(new String[]{"streaming"});
-        AuthenticationRequest request = builder.build();
+        //builder.setScopes(new String[]{"streaming"});
+        //AuthenticationRequest request = builder.build();
 
-        AuthenticationClient.openLoginActivity(this, SPOTIFY_REQUEST_CODE, request);
+        //Spotify API login ! Now send the request code
+        //AuthenticationClient.openLoginActivity(this, SPOTIFY_REQUEST_CODE, request);
 
         ConnectionParams connectionParams =
                 new ConnectionParams.Builder(CLIENT_ID)
@@ -419,13 +432,13 @@ public class ChooseParty extends AppCompatActivity {
                         .showAuthView(true)
                         .build();
 
-        SpotifyAppRemote.connect(this, connectionParams,
+        mSpotifyAppRemote.connect(this, connectionParams,
                 new Connector.ConnectionListener() {
 
                     @Override
                     public void onConnected(SpotifyAppRemote spotifyAppRemote) {
                         mSpotifyAppRemote = spotifyAppRemote;
-                        Log.d("MainActivity", "Connected! Yay!");
+                        Log.d("Spotify:", "Connected! Yay!");
 
                         // Now you can start interacting with App Remote
                         connected();
@@ -433,17 +446,17 @@ public class ChooseParty extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Throwable throwable) {
-                        Log.e("MainActivity", throwable.getMessage(), throwable);
+                        Log.e("Spotify:", throwable.getMessage(), throwable);
 
                         // Something went wrong when attempting to connect! Handle errors here
                     }
                 });
-        // We will start writing our code here.
     }
 
     private void connected() {
         SpotifyApi api = new SpotifyApi();
         api.setAccessToken(accessToken);
+
 
         final SpotifyService spotify = api.getService();
 
@@ -459,6 +472,10 @@ public class ChooseParty extends AppCompatActivity {
                 Log.d("Album failure", error.toString());
             }
         });
+
+        Log.d("Spotify: ", "music played, tocken is " + accessToken);
+        //play an example music
+        //mSpotifyAppRemote.getPlayerApi().play("spotify:track:7cbZIBLhfD9taMBgEsIhIp"); //DEMO, play thanks from seventeenth
     }
 
     @Override

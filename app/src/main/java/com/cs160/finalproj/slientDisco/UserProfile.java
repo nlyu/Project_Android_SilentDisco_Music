@@ -27,6 +27,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Vector;
 
 import butterknife.BindView;
@@ -51,6 +53,7 @@ public class UserProfile extends AppCompatActivity {
     DatabaseReference curUserRef;
     ArrayList<String> songList;
     ArrayList<MusicContainer> mLikedMusics;
+    Map<String, String> mLikedMusicsUri = new HashMap<String, String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -132,7 +135,6 @@ public class UserProfile extends AppCompatActivity {
     }
 
 
-
     public void getExtrasFromBundle() {
         Intent intent = getIntent();
         // use intent bundle to set values
@@ -148,8 +150,10 @@ public class UserProfile extends AppCompatActivity {
             public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
                 // A new comment has been added, add it to the displayed list
                 String song = dataSnapshot.getValue(String.class);
+                String song_uri = dataSnapshot.getKey();
                 MusicContainer tmp = new MusicContainer(song);
                 mLikedMusics.add(tmp);
+                mLikedMusicsUri.put(song, song_uri);
                 mAdapter.notifyItemInserted(mLikedMusics.size() - 1);
             }
 
@@ -185,17 +189,7 @@ public class UserProfile extends AppCompatActivity {
         DatabaseReference songRef = FirebaseDatabase.getInstance().getReference("users").child("nlyu2").child("song");
         songRef.addChildEventListener(childEventListener);
         //demo
-//        MusicContainer e1 = new MusicContainer("this is a song1");
-//        MusicContainer e2 = new MusicContainer("this is a song2");
-//        MusicContainer e3 = new MusicContainer("this is a song3");
-//        MusicContainer e4 = new MusicContainer("this is a song4");
-//        MusicContainer e5 = new MusicContainer("this is a song5");
         MusicContainer e6 = new MusicContainer("this is a song6");
-//
-//        mLikedMusics.add(e1);
-//        mLikedMusics.add(e2);
-//        mLikedMusics.add(e3);
-//        mLikedMusics.add(e4);
 //        mLikedMusics.add(e5);
     }
 
@@ -214,7 +208,8 @@ public class UserProfile extends AppCompatActivity {
                 // go to the spotify
                 Intent intent = new Intent(UserProfile.this, OpenInSpotify.class);
                 intent.putExtra("song", pc.getMusicName());
-                //startActivity(intent);
+                intent.putExtra("songUri", mLikedMusicsUri.get(pc.getMusicName()));
+                startActivity(intent);
                 Toast toast=Toast.makeText(getApplicationContext(),pc.getMusicName(),Toast.LENGTH_SHORT);
                 toast.show();
             }
