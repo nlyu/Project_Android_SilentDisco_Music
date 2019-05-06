@@ -474,8 +474,8 @@ public class ChooseParty extends AppCompatActivity {
         });
 
         Log.d("Spotify: ", "music played, tocken is " + accessToken);
-        //play an example music
-        //mSpotifyAppRemote.getPlayerApi().play("spotify:track:7cbZIBLhfD9taMBgEsIhIp"); //DEMO, play thanks from seventeenth
+        //in this screen, should not play any music
+        mSpotifyAppRemote.getPlayerApi().pause();
     }
 
     @Override

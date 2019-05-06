@@ -112,7 +112,7 @@ public class CreateParty extends AppCompatActivity {
                     //spotify
                     myIntent.putExtra("token", accessToken);
                     myIntent.putExtra("songUri", song_uri);
-                    myIntent.putExtra("partyName", mUsername); //TODO, just for demo
+                    myIntent.putExtra("mode", "create");
                     startActivity(myIntent);
                 }
             }
@@ -147,7 +147,7 @@ public class CreateParty extends AppCompatActivity {
         api.setAccessToken(accessToken);
         spotify = api.getService();
         //search song list
-        mCreate_party_name_text.addTextChangedListener(new TextWatcher() {
+        mCreate_party_song_text.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -172,7 +172,7 @@ public class CreateParty extends AppCompatActivity {
 
                         //set style and text of the complete list
                         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_dropdown_item_1line, song_name_list);
-                        mCreate_party_name_text.setAdapter(adapter);
+                        mCreate_party_song_text.setAdapter(adapter);
                     }
 
                     @Override
@@ -184,7 +184,7 @@ public class CreateParty extends AppCompatActivity {
         });
 
 
-        mCreate_party_name_text.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        mCreate_party_song_text.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(getApplicationContext(),"song" + song_name_uri_list[position] + " selected", Toast.LENGTH_LONG).show();

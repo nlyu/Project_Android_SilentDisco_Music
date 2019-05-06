@@ -80,11 +80,10 @@ public class MusicPlayerActivity extends AppCompatActivity {
 
     @BindView(R.id.track_timeline) protected SeekBar trackTimeline;
 
-    private List<Track> tracks;
     private RecyclerView mSlideUpMusic;
     ArrayList<MusicContainer> mSlideUpMusics;
-    private MusicAdapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
+    private MusicAdapter mMusicAdapter;
+    private RecyclerView.LayoutManager mMusicLayoutManager;
 
     private int position;
     private int oldPosition;
@@ -101,40 +100,20 @@ public class MusicPlayerActivity extends AppCompatActivity {
     private static final String REDIRECT_URI = "http://com.example.spotify/callback";
 
     private RecyclerView mUserRV;
-    private RecyclerView.LayoutManager mLayoutManager;
-    private UserAdapter mAdapter;
+    private RecyclerView.LayoutManager mUserLayoutManager;
+    private UserAdapter mUserAdapter;
     private ArrayList<String> mNames;
     private String mPartyName;
     private TextView partyHeader;
 
     private String mGenreName;
     private String mSongName;
+    private String mMode;  //create party or join party
     private PartyContainer mPartyData;
     private DatabaseReference mDatabase;
     Map<String, HashMap<String, String>> allPartyData;
 
     String mUsername;
-
-    private void setPositionListener() {
-        isTimeListenerSet = true;
-        runOnUiThread(() -> {
-            if (oldPosition != position) {
-                oldPosition = position;
-                trackTimeline.setMax(PlayerUtils.toSeconds(Player.getInstance().getTrackEndTime()));
-            }
-
-            trackTimeline.setProgress(PlayerUtils.toSeconds(Player.getInstance().getTrackTimePosition()));
-            trackProgress.setText(PlayerUtils.toMinutes(Player.getInstance()
-                    .getTrackTimePosition()));
-
-            if (Player.getInstance().endPlaying()) {
-                next();
-            }
-
-            timeHandler.postDelayed(this::setPositionListener, Constants.TIME.TRACK_PROGRESS_DELAY_IN_MILLIS);
-        });
-    }
-
 
     private void playOrPause() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -155,20 +134,6 @@ public class MusicPlayerActivity extends AppCompatActivity {
         }
     }
 
-    private void next() {
-        if (position < tracks.size() - 1) {
-            Player.getInstance().stop();
-            ++position;
-            Player.getInstance().play(tracks.get(position));
-            UIUtils.setImageDrawable(playOrPause, R.drawable.ic_pause);
-            UIUtils.setBitmapCover(trackCover, Player.getInstance().getCover(tracks.get(position), this));
-            trackTitle.setText(tracks.get(position).getTitle());
-            trackDuration.setText(PlayerUtils.toMinutes(Player.getInstance().getTrackEndTime()));
-        }
-        if (position == tracks.size() - 1) {
-            UIUtils.colorizeImage(nextTrack, false);
-        }
-    }
 
     //this is the spotify button
     @OnClick(R.id.previous_track)
@@ -204,15 +169,19 @@ public class MusicPlayerActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         getExtrasFromBundle();
 
+        //Set up audience list
         getComponents();
+
+        //Set the Name of the party text
         setTitleHeader();
-        setUpRecyclerView();
-        setDatabaseListener();
+        setUpUserRecyclerView();
 
-        mPartyData = new PartyContainer(mPartyName, 1, mGenreName, mSongName);
-        pushPartyFirebase(mPartyData);
-
-        tracks = new ArrayList<>();
+        if(mMode == "create") {
+            //Push the data from create party to firebase
+            setDatabaseListener();
+            mPartyData = new PartyContainer(mPartyName, 1, mGenreName, mSongName);
+            pushPartyFirebase(mPartyData);
+        }
 
         trackTimeline.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override public void onProgressChanged(SeekBar seekBar, int length, boolean state) {}
@@ -274,14 +243,11 @@ public class MusicPlayerActivity extends AppCompatActivity {
         });
 
         //TODO, set party name, just for demo, now from firebase
-        //TextView mpartyName = findViewById(R.id.music_party_name);
-        //mpartyName.setText(party_name + "'s Party");
-
         //slide up song list
         mSlideUpMusic = findViewById(R.id.music_list_recycler_view);
         mSlideUpMusics = new ArrayList<MusicContainer>();
         populateRecyclerViewData();
-        setUpRecyclerView(mSlideUpMusics);
+        setUpMusicRecyclerView(mSlideUpMusics);
     }
 
 
@@ -294,7 +260,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
                 String song = dataSnapshot.getValue(String.class);
                 MusicContainer tmp = new MusicContainer(song);
                 mSlideUpMusics.add(tmp);
-                mAdapter.notifyItemInserted(mSlideUpMusics.size() - 1);
+                mMusicAdapter.notifyItemInserted(mSlideUpMusics.size() - 1);
             }
 
             @Override
@@ -331,13 +297,13 @@ public class MusicPlayerActivity extends AppCompatActivity {
     }
 
 
-    public void setUpRecyclerView(ArrayList<MusicContainer> mLikedMusics) {
+    public void setUpMusicRecyclerView(ArrayList<MusicContainer> mLikedMusics) {
         // set trending recycler view
         mSlideUpMusic.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(this);
-        mAdapter = new MusicAdapter(mSlideUpMusics);
-        mSlideUpMusic.setLayoutManager(mLayoutManager);
-        mSlideUpMusic.setAdapter(mAdapter);
+        mMusicLayoutManager = new LinearLayoutManager(this);
+        mMusicAdapter = new MusicAdapter(mSlideUpMusics);
+        mSlideUpMusic.setLayoutManager(mMusicLayoutManager);
+        mSlideUpMusic.setAdapter(mMusicAdapter);
     }
 
     public void getExtrasFromBundle() {
@@ -345,12 +311,12 @@ public class MusicPlayerActivity extends AppCompatActivity {
         // use intent bundle to set values
         mUsername = intent.getStringExtra("username");
         accessToken = intent.getStringExtra("token");
-        party_name = intent.getStringExtra("partyName"); //just for demo use
         song_uri = intent.getStringExtra("songUri"); //get song from the creator
         
         mPartyName = intent.getStringExtra("partyname");
         mGenreName = intent.getStringExtra("genrename");
         mSongName = intent.getStringExtra("songUri");
+        mMode = intent.getStringExtra("mode"); //from create party or join party
     }
 
 
@@ -381,7 +347,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
                 });
     }
 
-    private void connected() {
+    private void connected(){
         SpotifyApi api = new SpotifyApi();
         api.setAccessToken(accessToken);
 
@@ -403,8 +369,9 @@ public class MusicPlayerActivity extends AppCompatActivity {
                 });
             }
         }, 1000);
+    }
     
-    public void getComponents() {
+    public void getComponents(){
         partyHeader = findViewById(R.id.music_party_name);
         mUserRV = findViewById(R.id.music_player_recyclerview_names);
 
@@ -418,13 +385,13 @@ public class MusicPlayerActivity extends AppCompatActivity {
         partyHeader.setText(mPartyName);
     }
 
-    public void setUpRecyclerView() {
+    public void setUpUserRecyclerView() {
         // set trending recycler view
         mUserRV.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(this);
-        mAdapter = new UserAdapter(mNames);
-        mUserRV.setLayoutManager(mLayoutManager);
-        mUserRV.setAdapter(mAdapter);
+        mUserLayoutManager = new LinearLayoutManager(this);
+        mUserAdapter = new UserAdapter(mNames);
+        mUserRV.setLayoutManager(mUserLayoutManager);
+        mUserRV.setAdapter(mUserAdapter);
     }
 
     public void pushPartyFirebase(PartyContainer pd) {

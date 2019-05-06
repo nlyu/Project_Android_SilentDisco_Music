@@ -70,33 +70,6 @@ public class JoinParty extends AppCompatActivity {
         trendingPanel = findViewById(R.id.Join_Party_Trending);
         AllPanel = findViewById(R.id.Join_Party_All);
 
-        //TODO, ONLY FOR DEMO USE, show all the trending party
-        trendingPanel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent myIntent = new Intent(JoinParty.this, MusicPlayerActivity.class);
-                // myIntent.putExtra("key", value); //Optional parameters
-                myIntent.putExtra("username", mUsername);
-                myIntent.putExtra("partyName", "Bob"); //TODO, just for demo
-                myIntent.putExtra("partyname", mPartyName);
-
-                startActivity(myIntent);
-            }
-        });
-
-        //TODO, ONLY FOR DEMO USE, show all the party
-        AllPanel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent myIntent = new Intent(JoinParty.this, MusicPlayerActivity.class);
-                // myIntent.putExtra("key", value); //Optional parameters
-                myIntent.putExtra("username", mUsername);
-                myIntent.putExtra("partyName", "Bob"); //TODO, just for demo
-                Log.d("Spotify", "join party to play music");
-                startActivity(myIntent);
-            }
-        });
-
         String location = latitude + ", " + longitude;
         Toast.makeText(JoinParty.this, location, Toast.LENGTH_LONG).show();
     }
@@ -156,10 +129,6 @@ public class JoinParty extends AppCompatActivity {
             @Override
             public void onItemClick(int position) {
                 PartyContainer pc = trendingPartyData.get(position);
-                // go to the specified party
-                //Intent intent = new Intent(BearFeedActivity.this, CommentFeedActivity.class);
-                //intent.putExtra("username", username);
-                //startActivity(intent);
 
                 // set party name
                 mPartyName = pc.getPartyName();
@@ -167,6 +136,9 @@ public class JoinParty extends AppCompatActivity {
                 // myIntent.putExtra("key", value); //Optional parameters
                 myIntent.putExtra("username", mUsername);
                 myIntent.putExtra("partyname", mPartyName);
+                myIntent.putExtra("songUri", "spotify:track:4lIxdJw6W3Fg4vUIYCB0S5"); //TODO, just for demo, play tyler swift's style
+
+                myIntent.putExtra("mode", "join");
                 startActivity(myIntent);
 
                 //Toast toast=Toast.makeText(getApplicationContext(),pc.getPartyName(),Toast.LENGTH_SHORT);
@@ -193,9 +165,10 @@ public class JoinParty extends AppCompatActivity {
                 // myIntent.putExtra("key", value); //Optional parameters
                 myIntent.putExtra("username", mUsername);
                 myIntent.putExtra("partyname", mPartyName);
-                intent.putExtra("partyName", "Bob"); //TODO, just for demo
-                intent.putExtra("songUri", "spotify:track:4lIxdJw6W3Fg4vUIYCB0S5"); //TODO, just for demo, play tyler swift's style
-                
+                myIntent.putExtra("songUri", "spotify:track:4lIxdJw6W3Fg4vUIYCB0S5"); //TODO, just for demo, play tyler swift's style
+
+                //it is join party mode, firebase read only
+                myIntent.putExtra("mode", "join");
                 startActivity(myIntent);
             }
         });
