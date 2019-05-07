@@ -1,6 +1,9 @@
 package com.cs160.finalproj.slientDisco;
 
 import android.content.Intent;
+import android.location.Location;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,12 +13,22 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 public class JoinParty extends AppCompatActivity {
@@ -29,19 +42,21 @@ public class JoinParty extends AppCompatActivity {
     private ImageView mBackButton;
     private TextView mBackText;
 
-    private ToggleButton mSortByDist;
-    private ToggleButton mSortByNum;
+    private RadioButton mSortByDist;
+    private RadioButton mSortByNum;
 
     private RecyclerView mTrendingRV;
     private RecyclerView mAllRV;
 
-    private PartyAdapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
+    private PartyAdapter mTrendingAdapter;
+    private RecyclerView.LayoutManager mTrendingLayoutManager;
 
-    private PartyAdapter mAdapter2;
-    private RecyclerView.LayoutManager mLayoutManager2;
+    private PartyAdapter mAllAdapter;
+    private RecyclerView.LayoutManager mAllLayoutManager;
 
     // trending party data TODO: replace with real firebase data
+    DatabaseReference partiesRef;
+
     private ArrayList<PartyContainer> trendingPartyData;
     private ArrayList<PartyContainer> allPartyData;
 
@@ -49,8 +64,8 @@ public class JoinParty extends AppCompatActivity {
     private String mPartyName;
 
     String mUsername;
-    double latitude;
-    double longitude;
+    double mLatitude;
+    double mLongitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,74 +76,40 @@ public class JoinParty extends AppCompatActivity {
         getExtrasFromBundle();
         setOnClickListeners();
 
+        // TODO: add firebase
+        partiesRef = FirebaseDatabase.getInstance().getReference("parties");
+
         trendingPartyData = new ArrayList<PartyContainer>();
         allPartyData = new ArrayList<PartyContainer>();
-        populateRecyclerViewData();
-        setUpRecyclerView(trendingPartyData);
+//        populateRecyclerViewData();
+        populateRecyclerViewData(gotData -> {
+            setUpRecyclerView();
+        });
 
         //TODO, ONLY FOR DEMO USE
         trendingPanel = findViewById(R.id.Join_Party_Trending);
         AllPanel = findViewById(R.id.Join_Party_All);
 
-        String location = latitude + ", " + longitude;
-        Toast.makeText(JoinParty.this, location, Toast.LENGTH_LONG).show();
     }
 
-    public void populateRecyclerViewData() {
-        // mTrendingRV
-        // populate dummy view
-        // partyName, numPeople, genre
-        PartyContainer e1 = new PartyContainer("It's litty again",
-                64, "hip hop", "cola");
-        PartyContainer e2 = new PartyContainer("Popular kids",
-                32, "rock", "cola");
-        PartyContainer e3 = new PartyContainer("Bob's party",
-                12, "pop", "cola");
-        PartyContainer e4 = new PartyContainer("Basic taste club",
-                12, "pop", "cola");
-        PartyContainer e5 = new PartyContainer("Deep and dank",
-                4, "house", "cola");
-        trendingPartyData.add(e1);
-        trendingPartyData.add(e2);
-        trendingPartyData.add(e3);
-        trendingPartyData.add(e4);
-        trendingPartyData.add(e5);
-
-        PartyContainer e6 = new PartyContainer("Babab",
-                1, "hip hop", "cola");
-        PartyContainer e7 = new PartyContainer("Amortized",
-                2, "rock", "cola");
-        PartyContainer e8 = new PartyContainer("party123",
-                4, "classical", "cola");
-        PartyContainer e9 = new PartyContainer("tyygaa",
-                2, "classical", "cola");
-        PartyContainer e10 = new PartyContainer("i heart radio",
-                4, "pop", "cola");
-        allPartyData.add(e6);
-        allPartyData.add(e7);
-        allPartyData.add(e8);
-        allPartyData.add(e9);
-        allPartyData.add(e10);
-        allPartyData.add(e1);
-        allPartyData.add(e2);
-        allPartyData.add(e3);
-        allPartyData.add(e4);
-        allPartyData.add(e5);
-
-    }
-
-    public void setUpRecyclerView(ArrayList<PartyContainer> trendingPartyData) {
+    public void setUpRecyclerView() {
         // set trending recycler view
         mTrendingRV.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(this);
-        mAdapter = new PartyAdapter(trendingPartyData);
-        mTrendingRV.setLayoutManager(mLayoutManager);
-        mTrendingRV.setAdapter(mAdapter);
+        mTrendingLayoutManager = new LinearLayoutManager(this);
+        mTrendingAdapter = new PartyAdapter(trendingPartyData);
+        mTrendingRV.setLayoutManager(mTrendingLayoutManager);
+        mTrendingRV.setAdapter(mTrendingAdapter);
 
-        mAdapter.setOnItemClickedListener(new PartyAdapter.onItemClickedListener() {
+        mTrendingAdapter.setOnItemClickedListener(new PartyAdapter.onItemClickedListener() {
             @Override
             public void onItemClick(int position) {
                 PartyContainer pc = trendingPartyData.get(position);
+
+                // if greater than 5000m, can't click in
+                if (pc.getDistance() > 5000) {
+                    Toast.makeText(JoinParty.this, "Too far", Toast.LENGTH_LONG).show();
+                    return;
+                }
 
                 // set party name
                 mPartyName = pc.getPartyName();
@@ -148,15 +129,23 @@ public class JoinParty extends AppCompatActivity {
 
         // set all recycler view
         mAllRV.setHasFixedSize(true);
-        mLayoutManager2 = new LinearLayoutManager(this);
-        mAdapter2 = new PartyAdapter(allPartyData);
-        mAllRV.setLayoutManager(mLayoutManager2);
-        mAllRV.setAdapter(mAdapter2);
+        mAllLayoutManager = new LinearLayoutManager(this);
+        mAllAdapter = new PartyAdapter(allPartyData);
+        mAllRV.setLayoutManager(mAllLayoutManager);
+        mAllRV.setAdapter(mAllAdapter);
 
-        mAdapter2.setOnItemClickedListener(new PartyAdapter.onItemClickedListener() {
+        mAllAdapter.setOnItemClickedListener(new PartyAdapter.onItemClickedListener() {
             @Override
             public void onItemClick(int position) {
                 PartyContainer pc = allPartyData.get(position);
+
+
+                // if greater than 5000m, can't click in
+                if (pc.getDistance() > 5000) {
+                    Toast.makeText(JoinParty.this, "Party over 5km away", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
                 // set party name
                 Toast toast=Toast.makeText(getApplicationContext(),pc.getPartyName(),Toast.LENGTH_SHORT);
                 toast.show();
@@ -240,6 +229,22 @@ public class JoinParty extends AppCompatActivity {
                 startActivity(myIntent);
             }
         });
+
+        mSortByDist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Collections.sort(allPartyData, new SortbyDistance());
+                mAllAdapter.notifyDataSetChanged();
+            }
+        });
+
+        mSortByNum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Collections.sort(allPartyData, new SortbyNumPeople());
+                mAllAdapter.notifyDataSetChanged();
+            }
+        });
     }
 
     public void getExtrasFromBundle() {
@@ -247,7 +252,60 @@ public class JoinParty extends AppCompatActivity {
         // use intent bundle to set values
         // String value = intent.getStringExtra("key");
         mUsername = intent.getStringExtra("username");
-        latitude = intent.getDoubleExtra("latitude", 0.0);
-        longitude = intent.getDoubleExtra("longitude", 0.0);
+        mLatitude = intent.getDoubleExtra("latitude", 0.0);
+        mLongitude = intent.getDoubleExtra("longitude", 0.0);
     }
+
+    public int partyDistance(double partyLat, double partyLon) {
+        if (mLatitude == 0 || mLongitude == 0) {
+            return 99999;
+        }
+
+        float[] results = new float[3];
+        Location.distanceBetween(mLatitude, mLongitude, partyLat, partyLon, results);
+
+        return (int) results[0];
+    }
+
+    public void populateRecyclerViewData(@NonNull LoginActivity.SimpleCallback<Boolean> finishedCallback) {
+        partiesRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            String partyName = (String) snapshot.child("party_name").getValue();
+                            int numPeople = 0;
+                            try {
+                                numPeople = ((Number) snapshot.child("num_people").getValue()).intValue();
+                            } catch (ClassCastException e) {
+                                System.out.println(e);
+                            }
+                            String genre = (String) snapshot.child("genre").getValue();
+                            String songName = (String) snapshot.child("song").getValue();
+                            double latitude = ((Number) snapshot.child("latitude").getValue()).doubleValue();
+                            double longitude = ((Number) snapshot.child("longitude").getValue()).doubleValue();
+                            int distance = partyDistance(latitude, longitude);
+
+                            PartyContainer pc = new PartyContainer(partyName, numPeople, genre, songName, distance);
+                            allPartyData.add(pc);
+                        }
+
+
+                        // adds top 5 parties with most people to trending parties
+                        Collections.sort(allPartyData, new SortbyNumPeople());
+                        for(int i = 0; i < 5; i++) {
+                            trendingPartyData.add(allPartyData.get(i));
+                        }
+
+                        // sorts all parties alphabetically for initial display
+                        Collections.sort(allPartyData, new SortbyPartyName());
+
+                        finishedCallback.callback(true);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                    }
+                });
+    }
+
 }

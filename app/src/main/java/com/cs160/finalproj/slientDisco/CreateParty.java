@@ -62,8 +62,8 @@ public class CreateParty extends AppCompatActivity {
     private String mSong;
     private String mPartyName;
     private boolean mPublic;
-    double latitude;
-    double longitude;
+    double mLatitude;
+    double mLongitude;
 
     SpotifyApi api;
     SpotifyService spotify;
@@ -118,6 +118,8 @@ public class CreateParty extends AppCompatActivity {
                     myIntent.putExtra("genrename", mGenre);
                     myIntent.putExtra("songname", mSong);
                     myIntent.putExtra("public", mPublic);
+                    myIntent.putExtra("latitude", mLatitude);
+                    myIntent.putExtra("longitude", mLongitude);
                   
                     //spotify
                     myIntent.putExtra("token", accessToken);
@@ -257,8 +259,8 @@ public class CreateParty extends AppCompatActivity {
         // use intent bundle to set values
         // String value = intent.getStringExtra("key");
         mUsername = intent.getStringExtra("username");
-        latitude = intent.getDoubleExtra("latitude", 0.0);
-        longitude = intent.getDoubleExtra("longitude", 0.0);
+        mLatitude = intent.getDoubleExtra("latitude", 0.0);
+        mLongitude = intent.getDoubleExtra("longitude", 0.0);
         accessToken = intent.getStringExtra("token");
     }
 

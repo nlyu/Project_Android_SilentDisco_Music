@@ -21,7 +21,7 @@
             android:layout_height="35dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:src="@drawable/account"
+            app:srcCompat="@drawable/account"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,7 +31,7 @@
             android:layout_height="35dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="8dp"
-            android:src="@drawable/help"
+            app:srcCompat="@drawable/help"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/join_party_account_icon" />
 
@@ -68,7 +68,7 @@
             android:layout_height="20dp"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="16dp"
-            android:src="@drawable/back"
+            app:srcCompat="@drawable/back"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -85,67 +85,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
-    <ToggleButton
-        android:id="@+id/sort_by_people"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/btn_toggle"
-        android:textOff=""
-        android:textOn=""
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Join_Party_All" />
-
-    <ToggleButton
-        android:id="@+id/sort_by_distance"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="80dp"
-        android:background="@drawable/btn_toggle"
-        android:textOff=""
-        android:textOn=""
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sort_by_people" />
-
-    <TextView
-        android:id="@+id/sort_by_people_text"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:text="@string/sort_people"
-        android:textColor="@android:color/black"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/sort_by_people"
-        app:layout_constraintTop_toBottomOf="@+id/Join_Party_All" />
-
-    <TextView
-        android:id="@+id/sort_by_distance_text"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginBottom="80dp"
-        android:gravity="center"
-        android:text="@string/sort_distance"
-        android:textColor="@android:color/black"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/sort_by_distance"
-        app:layout_constraintTop_toBottomOf="@+id/sort_by_people" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/Join_Party_Trending"
@@ -173,7 +112,7 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.51" />
+                app:layout_constraintVertical_bias="1.0" />
         </android.support.constraint.ConstraintLayout>
 
         <TextView
@@ -226,7 +165,95 @@
             android:textColor="@android:color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
     </android.support.constraint.ConstraintLayout>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/sort_layout"
+        android:layout_width="259dp"
+        android:layout_height="84dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Join_Party_All">
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="34dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RadioButton
+                android:id="@+id/sort_by_distance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/btn_toggle"
+                android:textOff=""
+                android:textOn=""
+                tools:layout_conversion_absoluteHeight="0dp"
+                tools:layout_conversion_absoluteWidth="34dp"
+                tools:layout_conversion_wrapHeight="84"
+                tools:layout_conversion_wrapWidth="88" />
+
+            <RadioButton
+                android:id="@+id/sort_by_people"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/btn_toggle"
+                android:textOff=""
+                android:textOn=""
+                tools:layout_conversion_absoluteHeight="32dp"
+                tools:layout_conversion_absoluteWidth="34dp"
+                tools:layout_conversion_wrapHeight="84"
+                tools:layout_conversion_wrapWidth="88" />
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/sort_by_people_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/sort_people"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/radioGroup"
+            app:layout_constraintTop_toBottomOf="@+id/sort_by_distance_text"
+            tools:layout_conversion_absoluteHeight="26dp"
+            tools:layout_conversion_absoluteWidth="187dp"
+            tools:layout_conversion_wrapHeight="50"
+            tools:layout_conversion_wrapWidth="483" />
+
+        <TextView
+            android:id="@+id/sort_by_distance_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="@string/sort_distance"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/radioGroup"
+            app:layout_constraintTop_toTopOf="@+id/radioGroup"
+            tools:layout_conversion_absoluteHeight="24dp"
+            tools:layout_conversion_absoluteWidth="110dp"
+            tools:layout_conversion_wrapHeight="50"
+            tools:layout_conversion_wrapWidth="269" />
+
+    </android.support.constraint.ConstraintLayout>
+
+
 
 
 </android.support.constraint.ConstraintLayout>
