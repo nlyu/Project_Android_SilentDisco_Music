@@ -1060,6 +1060,7 @@ drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
 drawable disco
+drawable favorite_icon
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable help
@@ -1081,6 +1082,7 @@ drawable ic_play
 drawable ic_previous_track
 drawable mtrl_snackbar_background
 drawable mtrl_tabs_default_indicator
+drawable musicicon
 drawable my_btn_toggle_off
 drawable my_btn_toggle_on
 drawable navigation_empty_icon
@@ -1096,9 +1098,11 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable spotify
 drawable spotify_512
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
+drawable user
 id ALT
 id CTRL
 id FUNCTION
@@ -1176,12 +1180,9 @@ id create_party_create_party_name
 id create_party_disco
 id create_party_find_genres
 id create_party_find_songs
-id create_party_genre_textview
 id create_party_help_icon
-id create_party_party_name_textview
 id create_party_private_button
 id create_party_public_button
-id create_party_song_textview
 id create_party_title
 id custom
 id customPanel
