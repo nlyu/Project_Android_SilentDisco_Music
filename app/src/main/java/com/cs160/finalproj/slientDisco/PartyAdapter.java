@@ -70,7 +70,14 @@ public class PartyAdapter extends RecyclerView.Adapter<PartyAdapter.PartyViewHol
         holder.mPartyName.setText(currentParty.getPartyName());
         String numPeople = Integer.toString(currentParty.getNumPeople());
         String genre = currentParty.getGenre();
-        String info = numPeople + " peeps, " + genre;
+        int distance = currentParty.getDistance();
+        String info;
+        if (distance < 5000) {
+            double roundedDistance = Math.round(distance / 1000.0);
+            info = numPeople + " peeps, " + genre + ", " + distance + "km";
+        } else {
+            info = numPeople + " peeps, " + genre + ", too far";
+        }
         holder.mPartyInfo.setText(info);
     }
 

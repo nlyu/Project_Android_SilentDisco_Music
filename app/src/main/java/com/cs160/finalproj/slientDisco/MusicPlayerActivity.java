@@ -7,6 +7,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.service.carrier.CarrierMessagingService;
+import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -109,6 +110,9 @@ public class MusicPlayerActivity extends AppCompatActivity {
     private String mGenreName;
     private String mSongName;
     private String mMode;  //create party or join party
+    private double mLatitude;
+    private double mLongitude;
+    private boolean mPublic;
     private PartyContainer mPartyData;
     private DatabaseReference mDatabase;
     Map<String, HashMap<String, String>> allPartyData;
@@ -179,7 +183,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
         if(mMode == "create") {
             //Push the data from create party to firebase
             setDatabaseListener();
-            mPartyData = new PartyContainer(mPartyName, 1, mGenreName, mSongName);
+            mPartyData = new PartyContainer(mPartyName, 1, mGenreName, mSongName, 0);
             pushPartyFirebase(mPartyData);
         }
 
@@ -317,6 +321,10 @@ public class MusicPlayerActivity extends AppCompatActivity {
         mGenreName = intent.getStringExtra("genrename");
         mSongName = intent.getStringExtra("songUri");
         mMode = intent.getStringExtra("mode"); //from create party or join party
+
+        mPublic = intent.getBooleanExtra("public", true);
+        mLatitude = intent.getDoubleExtra("latitude", 0.0);
+        mLongitude = intent.getDoubleExtra("longitude", 0.0);
     }
 
 
@@ -398,17 +406,31 @@ public class MusicPlayerActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
         // set audience
         mDatabase.child("parties").child(mPartyName).child("audience").setValue(mUsername);
-        mDatabase.child("parties").child(mPartyName).child("loc").setValue("LOCATION");
+        mDatabase.child("parties").child(mPartyName).child("latitude").setValue(mLatitude);
+        mDatabase.child("parties").child(mPartyName).child("longitude").setValue(mLongitude);
         mDatabase.child("parties").child(mPartyName).child("other_data").setValue("yadayada");
         mDatabase.child("parties").child(mPartyName).child("owner").setValue(mUsername);
-        mDatabase.child("parties").child(mPartyName).child("party_name").setValue(
-                pd.getPartyName().toString());
-        mDatabase.child("parties").child(mPartyName).child("song").setValue(
-                pd.songToString());
-        mDatabase.child("parties").child(mPartyName).child("num_people").setValue(
-                Integer.toString(pd.getNumPeople()));
+        mDatabase.child("parties").child(mPartyName).child("party_name").setValue(pd.getPartyName());
+        mDatabase.child("parties").child(mPartyName).child("song").setValue(pd.songToString());
+        mDatabase.child("parties").child(mPartyName).child("num_people").setValue(pd.getNumPeople());
     }
 
+//    public void readData(@NonNull LoginActivity.SimpleCallback<String> finishedCallback) {
+//        partiesRef.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                if (dataSnapshot.hasChild(mUsername)) {
+//                    finishedCallback.callback((String) dataSnapshot.child(mUsername).child("password").getValue());
+//                } else {
+//                    finishedCallback.callback(null);
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError firebaseError) {
+//            }
+//        });
+//    }
     public void setDatabaseListener() {
         /*
         mDatabase = FirebaseDatabase.getInstance().getReference("parties");
