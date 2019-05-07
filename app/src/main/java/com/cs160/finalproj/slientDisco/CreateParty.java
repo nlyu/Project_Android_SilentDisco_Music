@@ -1,32 +1,21 @@
 package com.cs160.finalproj.slientDisco;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.graphics.pdf.PdfDocument;
-import android.os.Trace;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import com.spotify.sdk.android.authentication.AuthenticationClient;
-import com.spotify.sdk.android.authentication.AuthenticationResponse;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import kaaes.spotify.webapi.android.SpotifyApi;
@@ -72,6 +61,7 @@ public class CreateParty extends AppCompatActivity {
     private String mGenre;
     private String mSong;
     private String mPartyName;
+    private boolean mPublic;
     double latitude;
     double longitude;
 
@@ -89,6 +79,25 @@ public class CreateParty extends AppCompatActivity {
         getExtrasFromBundle();
         getComponents();
         setOnClickListeners();
+
+
+        mPublic = true;
+        togglePublicUI();
+        mPrivateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPublic = false;
+                togglePublicUI();
+            }
+        });
+
+        mPublicButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPublic = true;
+                togglePublicUI();
+            }
+        });
 
         createPartyButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,6 +117,7 @@ public class CreateParty extends AppCompatActivity {
                     myIntent.putExtra("partyname", mPartyName);
                     myIntent.putExtra("genrename", mGenre);
                     myIntent.putExtra("songname", mSong);
+                    myIntent.putExtra("public", mPublic);
                   
                     //spotify
                     myIntent.putExtra("token", accessToken);
@@ -138,9 +148,6 @@ public class CreateParty extends AppCompatActivity {
             }
         });
 
-
-        String location = latitude + ", " + longitude;
-        Toast.makeText(CreateParty.this, location, Toast.LENGTH_LONG).show();
 
         //Spotify api
         api = new SpotifyApi();
@@ -215,7 +222,6 @@ public class CreateParty extends AppCompatActivity {
             }
         });
 
-        // TODO: make these radio buttons - mPrivateButton, mPublicButton
 
     }
 
@@ -254,5 +260,16 @@ public class CreateParty extends AppCompatActivity {
         latitude = intent.getDoubleExtra("latitude", 0.0);
         longitude = intent.getDoubleExtra("longitude", 0.0);
         accessToken = intent.getStringExtra("token");
+    }
+
+    public void togglePublicUI() {
+        if (mPublic) {
+            mPrivateButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_rounded_clicked));
+            mPublicButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_rounded_corner));
+        } else {
+            mPublicButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_rounded_clicked));
+            mPrivateButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_rounded_corner));
+        }
+
     }
 }

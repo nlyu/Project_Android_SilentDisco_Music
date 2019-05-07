@@ -50,7 +50,20 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/create_party_back_text"
+            android:id="@+id/accessCode"
+            android:layout_width="115dp"
+            android:layout_height="22dp"
+            android:layout_marginStart="156dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="14dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/create_party_back_arrow" />
+
+        <TextView
+            android:id="@+id/create_party_back_text4"
             android:layout_width="115dp"
             android:layout_height="22dp"
             android:layout_marginBottom="16dp"

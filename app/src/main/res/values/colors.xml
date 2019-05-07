@@ -3,6 +3,7 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryPurple">#66AE52D4</color>
     <color name="colorPrimaryLightPurple">#BB6BD9</color>
+    <color name="colorPrimaryClickedPurple">#30AE52D4</color>
     <color name="colorPrimaryDarkPurple">#7B1FA2</color>
     <color name="colorAccentPurple">#D81B60</color>
     <color name="colorPrimaryDark">#7B1FA2</color>
