@@ -240,7 +240,7 @@ public class CreateParty extends AppCompatActivity {
 
         //get back buttons
         mBackButton = findViewById(R.id.create_party_back_arrow);
-        mBackText = findViewById(R.id.accessCode);
+        mBackText = findViewById(R.id.create_party_back_text);
 
         // get public / private buttons
         mPrivateButton = findViewById(R.id.create_party_private_button);
