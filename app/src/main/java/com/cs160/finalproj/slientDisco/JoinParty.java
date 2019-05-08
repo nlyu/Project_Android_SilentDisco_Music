@@ -11,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -42,6 +43,10 @@ public class JoinParty extends AppCompatActivity {
     private ImageView mBackButton;
     private TextView mBackText;
 
+    private AutoCompleteTextView mCodeView;
+    private Button mCodeButton;
+    private String mCode;
+
     private RadioButton mSortByDist;
     private RadioButton mSortByNum;
 
@@ -55,6 +60,7 @@ public class JoinParty extends AppCompatActivity {
     private RecyclerView.LayoutManager mAllLayoutManager;
 
     DatabaseReference partiesRef;
+    DatabaseReference codesRef;
 
     private ArrayList<PartyContainer> trendingPartyData;
     private ArrayList<PartyContainer> allPartyData;
@@ -75,7 +81,9 @@ public class JoinParty extends AppCompatActivity {
         getExtrasFromBundle();
         setOnClickListeners();
 
-        partiesRef = FirebaseDatabase.getInstance().getReference("parties");
+        FirebaseDatabase databaseRef = FirebaseDatabase.getInstance();
+        partiesRef = databaseRef.getReference("parties");
+        codesRef = databaseRef.getReference("codes");
 
         populateRecyclerViewData(partyData -> {
             allPartyData = partyData;
@@ -186,6 +194,9 @@ public class JoinParty extends AppCompatActivity {
         mTrendingRV = findViewById(R.id.join_party_trending_recycler_vew);
         mAllRV = findViewById(R.id.join_party_all_recycler_vew);
 
+        // get access code
+        mCodeView = findViewById(R.id.join_party_enter_code);
+        mCodeButton = findViewById(R.id.join_party_code_button);
     }
 
     // TODO: move above onClickListeners here
@@ -250,7 +261,28 @@ public class JoinParty extends AppCompatActivity {
                 mAllAdapter.notifyDataSetChanged();
             }
         });
-    }
+
+        mCodeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mCode = mCodeView.getText().toString();
+
+                searchAccessCode(partyName -> {
+                    if (partyName.equals("")) {
+                        Toast.makeText(JoinParty.this, "Invalid code", Toast.LENGTH_LONG).show();
+                    } else {
+                        Intent myIntent = new Intent(JoinParty.this, MusicPlayerActivity.class);
+                        // myIntent.putExtra("key", value); //Optional parameters
+                        myIntent.putExtra("username", mUsername);
+                        myIntent.putExtra("partyname", partyName);
+                        myIntent.putExtra("mode", "join");
+                        startActivity(myIntent);
+
+                    }
+                });
+
+            }
+        });    }
 
     public void getExtrasFromBundle() {
         Intent intent = getIntent();
@@ -279,22 +311,25 @@ public class JoinParty extends AppCompatActivity {
                         ArrayList<PartyContainer> allPartyData = new ArrayList<>();
 
                         for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                            String partyName = (String) snapshot.child("party_name").getValue();
-                            int numPeople = 0;
-                            try {
-                                numPeople = ((Number) snapshot.child("num_people").getValue()).intValue();
-                            } catch (ClassCastException e) {
-                                System.out.println(e);
-                            }
-                            String genre = (String) snapshot.child("genre").getValue();
-                            String songName = (String) snapshot.child("song").getValue();
-                            double latitude = ((Number) snapshot.child("latitude").getValue()).doubleValue();
-                            double longitude = ((Number) snapshot.child("longitude").getValue()).doubleValue();
-                            int distance = partyDistance(latitude, longitude);
+                            // only show public parties
+                            if (!snapshot.hasChild("code")) {
+                                String partyName = (String) snapshot.child("party_name").getValue();
+                                int numPeople = 0;
+                                try {
+                                    numPeople = ((Number) snapshot.child("num_people").getValue()).intValue();
+                                } catch (ClassCastException e) {
+                                    System.out.println(e);
+                                }
+                                String genre = (String) snapshot.child("genre").getValue();
+                                String songName = (String) snapshot.child("song").getValue();
+                                double latitude = ((Number) snapshot.child("latitude").getValue()).doubleValue();
+                                double longitude = ((Number) snapshot.child("longitude").getValue()).doubleValue();
+                                int distance = partyDistance(latitude, longitude);
 
-                            PartyContainer pc = new PartyContainer(partyName, numPeople, genre, songName);
-                            pc.setDistance(distance);
-                            allPartyData.add(pc);
+                                PartyContainer pc = new PartyContainer(partyName, numPeople, genre, songName);
+                                pc.setDistance(distance);
+                                allPartyData.add(pc);
+                            }
                         }
 
                         Collections.sort(allPartyData, new SortbyNumPeople());
@@ -306,6 +341,23 @@ public class JoinParty extends AppCompatActivity {
                     public void onCancelled(DatabaseError databaseError) {
                     }
                 });
+    }
+
+    public void searchAccessCode(@NonNull LoginActivity.SimpleCallback<String> finishedCallback) {
+        codesRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.hasChild(mCode)) {
+                    finishedCallback.callback((String) dataSnapshot.child(mCode).getValue());
+                } else {
+                    finishedCallback.callback("");
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
     }
 
 }

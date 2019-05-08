@@ -109,14 +109,17 @@ public class MusicPlayerActivity extends AppCompatActivity {
     private ArrayList<String> mAudience;
     private String mPartyName;
     private TextView partyHeader;
+    private String mCode;
+    private TextView mCodeView;
 
     private String mGenreName;
     private String mMode;  //create party or join party
     private double mLatitude;
     private double mLongitude;
     private int mNumPeople;
-    private boolean mPublic;
+
     private DatabaseReference partyRef;
+    private DatabaseReference codesRef;
 
     String mUsername;
 
@@ -129,8 +132,9 @@ public class MusicPlayerActivity extends AppCompatActivity {
         getComponents();
         getExtrasFromBundle();
 
-        partyRef = FirebaseDatabase.getInstance().getReference("parties").child(mPartyName);
-        partyRef.child("audience").child(mUsername).setValue(true);
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        partyRef = database.getReference("parties").child(mPartyName);
+        codesRef = database.getReference("codes");
 
         setUpUserRecyclerView();
         setListeners();
@@ -143,9 +147,15 @@ public class MusicPlayerActivity extends AppCompatActivity {
             pushPartyFirebase();
         }
 
+        // add user to party audience
+        partyRef.child("audience").child(mUsername).setValue(true);
         getPartyFirebase(pc -> {
             resetPartyData(pc);
             mUserAdapter.update(mAudience);
+
+            if (mCode != null) {
+                setCode();
+            }
 
             //slide up song list
             mSlideUpMusicList = new ArrayList<MusicContainer>();
@@ -166,7 +176,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
         mGenreName = intent.getStringExtra("genrename");
         mMode = intent.getStringExtra("mode"); //from create party or join party
 
-        mPublic = intent.getBooleanExtra("public", true);
+        mCode = intent.getStringExtra("code");
         mLatitude = intent.getDoubleExtra("latitude", 0.0);
         mLongitude = intent.getDoubleExtra("longitude", 0.0);
     }
@@ -399,10 +409,15 @@ public class MusicPlayerActivity extends AppCompatActivity {
     public void getComponents(){
         partyHeader = findViewById(R.id.music_party_name);
         mUserRV = findViewById(R.id.music_player_recyclerview_names);
+        mCodeView = findViewById(R.id.music_party_code);
     }
 
     public void setTitleHeader() {
         partyHeader.setText(mPartyName);
+    }
+
+    public void setCode() {
+        mCodeView.setText("Code: " + mCode);
     }
 
     public void setUpUserRecyclerView() {
@@ -425,6 +440,11 @@ public class MusicPlayerActivity extends AppCompatActivity {
         partyRef.child("owner").setValue(mUsername);
         partyRef.child("party_name").setValue(mPartyName);
         partyRef.child("song").setValue(song_uri);
+
+        if (mCode != null) {
+            partyRef.child("code").setValue(mCode);
+            codesRef.child(mCode).setValue(mPartyName);
+        }
     }
 
 
@@ -435,6 +455,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
                 String genre = (String) dataSnapshot.child("genre").getValue();
                 String songUri = (String) dataSnapshot.child("song").getValue();
 
+                // TODO: clean when database parties are standardized
                 int numPeople = 1;
                 try {
                     numPeople = ((Number) dataSnapshot.child("num_people").getValue()).intValue();
@@ -446,7 +467,6 @@ public class MusicPlayerActivity extends AppCompatActivity {
                 numPeople++;
                 partyRef.child("num_people").setValue(numPeople);
 
-
                 ArrayList<String> newAudience = new ArrayList<>();
                 for (DataSnapshot snapshot : dataSnapshot.child("audience").getChildren()) {
                     newAudience.add(snapshot.getKey());
@@ -454,6 +474,12 @@ public class MusicPlayerActivity extends AppCompatActivity {
 
                 PartyContainer pc = new PartyContainer(mPartyName, numPeople, genre, songUri);
                 pc.setAudience(newAudience);
+
+
+                if (dataSnapshot.hasChild("code")) {
+                    String code = (String) dataSnapshot.child("code").getValue();
+                    pc.setCode(code);
+                }
 
                 finishedCallback.callback(pc);
 
@@ -470,5 +496,6 @@ public class MusicPlayerActivity extends AppCompatActivity {
         mGenreName = pc.getGenre();
         mNumPeople = pc.getNumPeople();
         song_uri = pc.getSongUri();
+        mCode = pc.getCode();
     }
 }

@@ -14,6 +14,7 @@ public class PartyContainer {
     private String songUri;
     private int distance;
     private ArrayList<String> audience;
+    private String code;
 
     public PartyContainer(String partyName, int numPeople, String genre, String songUri) {
         this.partyName = partyName;
@@ -69,6 +70,14 @@ public class PartyContainer {
 
     public void setAudience(ArrayList<String> audience) {
         this.audience = audience;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 }
 
