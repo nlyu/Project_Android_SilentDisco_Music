@@ -13,8 +13,6 @@ public class PartyContainer {
     private String genre;
     private String songUri;
     private int distance;
-    private double latitude;
-    private double longitude;
     private ArrayList<String> audience;
 
     public PartyContainer(String partyName, int numPeople, String genre, String songUri) {
@@ -63,22 +61,6 @@ public class PartyContainer {
 
     public void setDistance(int distance) {
         this.distance = distance;
-    }
-
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
-
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
-    }
-
-    public double getLatitude() {
-        return this.latitude;
-    }
-
-    public double getLongitude() {
-        return this.longitude;
     }
 
     public ArrayList<String> getAudience() {
