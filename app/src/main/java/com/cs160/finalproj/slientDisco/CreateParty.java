@@ -83,72 +83,6 @@ public class CreateParty extends AppCompatActivity {
 
         mPublic = true;
         togglePublicUI();
-        mPrivateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mPublic = false;
-                togglePublicUI();
-            }
-        });
-
-        mPublicButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mPublic = true;
-                togglePublicUI();
-            }
-        });
-
-        createPartyButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mPartyName = createPartyName.getText().toString();
-                mGenre = createPartyGenre.getText().toString();
-                mSong = createPartySong.getText().toString();
-
-                if (mPartyName.isEmpty() || mSong.isEmpty()) {
-                    String msg = "Please complete song and party name fields";
-                    Toast toast=Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
-                    toast.show();
-                } else {
-                    Intent myIntent = new Intent(CreateParty.this, MusicPlayerActivity.class);
-                    // myIntent.putExtra("key", value); //Optional parameters
-                    myIntent.putExtra("username", mUsername);
-                    myIntent.putExtra("partyname", mPartyName);
-                    myIntent.putExtra("genrename", mGenre);
-                    myIntent.putExtra("songname", mSong);
-                    myIntent.putExtra("public", mPublic);
-                    myIntent.putExtra("latitude", mLatitude);
-                    myIntent.putExtra("longitude", mLongitude);
-                  
-                    //spotify
-                    myIntent.putExtra("token", accessToken);
-                    myIntent.putExtra("songUri", song_uri);
-                    myIntent.putExtra("mode", "create");
-                    startActivity(myIntent);
-                }
-            }
-        });
-      
-        mProfileButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent myIntent = new Intent(CreateParty.this, UserProfile.class);
-                // myIntent.putExtra("key", value); //Optional parameters
-                myIntent.putExtra("username", mUsername);
-                startActivity(myIntent);
-            }
-        });
-
-        mHelpButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent myIntent = new Intent(CreateParty.this, HelpActivity.class);
-                // myIntent.putExtra("key", value); //Optional parameters
-                myIntent.putExtra("username", mUsername);
-                startActivity(myIntent);
-            }
-        });
 
 
         //Spotify api
@@ -225,6 +159,73 @@ public class CreateParty extends AppCompatActivity {
         });
 
 
+
+        mPrivateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPublic = false;
+                togglePublicUI();
+            }
+        });
+
+        mPublicButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPublic = true;
+                togglePublicUI();
+            }
+        });
+
+        createPartyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPartyName = createPartyName.getText().toString();
+                mGenre = createPartyGenre.getText().toString();
+                mSong = createPartySong.getText().toString();
+
+                if (mPartyName.isEmpty() || mSong.isEmpty()) {
+                    String msg = "Please complete song and party name fields";
+                    Toast toast=Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
+                    toast.show();
+                } else {
+                    Intent myIntent = new Intent(CreateParty.this, MusicPlayerActivity.class);
+                    // myIntent.putExtra("key", value); //Optional parameters
+                    myIntent.putExtra("username", mUsername);
+                    myIntent.putExtra("partyname", mPartyName);
+                    myIntent.putExtra("genrename", mGenre);
+                    myIntent.putExtra("songname", mSong);
+                    myIntent.putExtra("public", mPublic);
+                    myIntent.putExtra("latitude", mLatitude);
+                    myIntent.putExtra("longitude", mLongitude);
+
+                    //spotify
+                    myIntent.putExtra("token", accessToken);
+                    myIntent.putExtra("songUri", song_uri);
+                    myIntent.putExtra("mode", "create");
+                    startActivity(myIntent);
+                }
+            }
+        });
+
+        mProfileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(CreateParty.this, UserProfile.class);
+                // myIntent.putExtra("key", value); //Optional parameters
+                myIntent.putExtra("username", mUsername);
+                startActivity(myIntent);
+            }
+        });
+
+        mHelpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(CreateParty.this, HelpActivity.class);
+                // myIntent.putExtra("key", value); //Optional parameters
+                myIntent.putExtra("username", mUsername);
+                startActivity(myIntent);
+            }
+        });
     }
 
 
