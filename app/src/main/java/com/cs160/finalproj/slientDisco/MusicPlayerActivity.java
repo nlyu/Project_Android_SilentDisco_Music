@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.service.carrier.CarrierMessagingService;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -72,6 +73,8 @@ public class MusicPlayerActivity extends AppCompatActivity {
     @BindView(R.id.next_track) protected ImageView nextTrack;
     @BindView(R.id.music_party_help_icon) protected ImageView helpIcon;
     @BindView(R.id.music_party_account_icon) protected ImageView userIcon;
+    @BindView(R.id.music_party_back_arrow) protected ImageView backArrow;
+
 
     @BindView(R.id.SlideUpPanel) protected View slideUpPanel;
 
@@ -81,8 +84,9 @@ public class MusicPlayerActivity extends AppCompatActivity {
 
     @BindView(R.id.track_timeline) protected SeekBar trackTimeline;
 
-    private RecyclerView mSlideUpMusic;
-    ArrayList<MusicContainer> mSlideUpMusics;
+
+    @BindView(R.id.music_list_recycler_view) protected RecyclerView mSlideUpMusic;
+    ArrayList<MusicContainer> mSlideUpMusicList;
     private MusicAdapter mMusicAdapter;
     private RecyclerView.LayoutManager mMusicLayoutManager;
 
@@ -95,29 +99,187 @@ public class MusicPlayerActivity extends AppCompatActivity {
     private Handler timeHandler = new Handler();
     private String song_uri;
     private String accessToken;
-    private String party_name;
     private SpotifyAppRemote mSpotifyAppRemote;
-    private static final String CLIENT_ID = "b966d335ca304ac7a2a5ef6fd455b088";
+    private static final String CLIENT_ID = "8933a96ee220485997e12f9af761f6e9";
     private static final String REDIRECT_URI = "http://com.example.spotify/callback";
 
     private RecyclerView mUserRV;
     private RecyclerView.LayoutManager mUserLayoutManager;
     private UserAdapter mUserAdapter;
-    private ArrayList<String> mNames;
+    private ArrayList<String> mAudience;
     private String mPartyName;
     private TextView partyHeader;
 
     private String mGenreName;
-    private String mSongName;
     private String mMode;  //create party or join party
     private double mLatitude;
     private double mLongitude;
+    private int mNumPeople;
     private boolean mPublic;
-    private PartyContainer mPartyData;
-    private DatabaseReference mDatabase;
+    private DatabaseReference partyRef;
     Map<String, HashMap<String, String>> allPartyData;
 
     String mUsername;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_music_player);
+        ButterKnife.bind(this);
+        getComponents();
+        getExtrasFromBundle();
+
+        partyRef = FirebaseDatabase.getInstance().getReference("parties").child(mPartyName);
+
+        setUpUserRecyclerView();
+        setListeners();
+
+        //Set the Name of the party text
+        setTitleHeader();
+
+        if (mMode.equals("create")) {
+            //Push the data from create party to firebase
+            pushPartyFirebase();
+        }
+
+        getPartyFirebase(audience -> {
+            mAudience = audience;
+            mUserAdapter.update(audience);
+
+
+            //slide up song list
+            mSlideUpMusicList = new ArrayList<MusicContainer>();
+            populateRecyclerViewData();
+            setUpMusicRecyclerView(mSlideUpMusicList);
+
+        });
+    }
+
+    public void getExtrasFromBundle() {
+        Intent intent = getIntent();
+        // use intent bundle to set values
+        mUsername = intent.getStringExtra("username");
+        accessToken = intent.getStringExtra("token");
+        song_uri = intent.getStringExtra("songUri"); //get song from the creator
+
+        mPartyName = intent.getStringExtra("partyname");
+        mGenreName = intent.getStringExtra("genrename");
+        mMode = intent.getStringExtra("mode"); //from create party or join party
+
+        mPublic = intent.getBooleanExtra("public", true);
+        mLatitude = intent.getDoubleExtra("latitude", 0.0);
+        mLongitude = intent.getDoubleExtra("longitude", 0.0);
+    }
+
+    public void setListeners() {
+        slideUpPanel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ViewGroup.LayoutParams params = v.getLayoutParams();
+                float px;
+                Resources r = getResources();
+                if(slideup == 1){
+                    px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 300, r.getDisplayMetrics());
+                    slideup = 0;
+                } else {
+                    px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 55, r.getDisplayMetrics());
+                    slideup = 1;
+                }
+
+                params.height = Math.round(px);
+                v.setLayoutParams(params);
+            }
+        });
+
+        helpIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MusicPlayerActivity.this, HelpActivity.class);
+                intent.putExtra("username", mUsername);
+                startActivity(intent);
+            }
+        });
+
+        userIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MusicPlayerActivity.this, UserProfile.class);
+                intent.putExtra("username", mUsername);
+                startActivity(intent);
+            }
+        });
+
+
+        backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // removes user from firebase party data
+                partyRef.child("audience").child(mUsername).removeValue();
+                mNumPeople = Math.max(0, mNumPeople - 1);
+                partyRef.child("num_people").setValue(mNumPeople);
+
+                Intent intent = new Intent(MusicPlayerActivity.this, ChooseParty.class);
+                intent.putExtra("username", mUsername);
+                startActivity(intent);
+            }
+        });
+
+        trackTimeline.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override public void onProgressChanged(SeekBar seekBar, int length, boolean state) {}
+            @Override public void onStartTrackingTouch(SeekBar seekBar) {}
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                Player.getInstance().toTime(PlayerUtils.toMilliseconds(seekBar.getProgress()));
+            }
+        });
+
+        // If the track title is long - start the running line:
+        trackTitle.setSelected(true);
+
+        partyRef.child("audience").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                ArrayList<String> newAudience = new ArrayList<>();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    newAudience.add(snapshot.getKey());
+                }
+
+                mUserAdapter.update(newAudience);
+                mAudience.clear();
+                mAudience.addAll(newAudience);
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                ArrayList<String> newAudience = new ArrayList<>();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    newAudience.add(snapshot.getKey());
+                }
+
+                mUserAdapter.update(newAudience);
+                mAudience.clear();
+                mAudience.addAll(newAudience);
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
 
     private void playOrPause() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -166,93 +328,6 @@ public class MusicPlayerActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_music_player);
-        ButterKnife.bind(this);
-        getExtrasFromBundle();
-
-        //Set up audience list
-        getComponents();
-
-        //Set the Name of the party text
-        setTitleHeader();
-        setUpUserRecyclerView();
-
-        if(mMode == "create") {
-            //Push the data from create party to firebase
-            setDatabaseListener();
-            mPartyData = new PartyContainer(mPartyName, 1, mGenreName, mSongName, 0);
-            pushPartyFirebase(mPartyData);
-        }
-
-        trackTimeline.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override public void onProgressChanged(SeekBar seekBar, int length, boolean state) {}
-            @Override public void onStartTrackingTouch(SeekBar seekBar) {}
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-                Player.getInstance().toTime(PlayerUtils.toMilliseconds(seekBar.getProgress()));
-            }
-        });
-
-        // If the track title is long - start the running line:
-        trackTitle.setSelected(true);
-
-        slideUpPanel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ViewGroup.LayoutParams params = v.getLayoutParams();
-                float px;
-                Resources r = getResources();
-                if(slideup == 1){
-                    px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 300, r.getDisplayMetrics());
-                    slideup = 0;
-                } else {
-                    px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 55, r.getDisplayMetrics());
-                    slideup = 1;
-                }
-
-                params.height = Math.round(px);
-                v.setLayoutParams(params);
-            }
-        });
-
-        helpIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MusicPlayerActivity.this, HelpActivity.class);
-                intent.putExtra("username", mUsername);
-                startActivity(intent);
-            }
-        });
-
-        userIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MusicPlayerActivity.this, UserProfile.class);
-                intent.putExtra("username", mUsername);
-                startActivity(intent);
-            }
-        });
-
-        //set back button
-        ImageView back_arrow = findViewById(R.id.music_party_back_arrow);
-        back_arrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
-        //TODO, set party name, just for demo, now from firebase
-        //slide up song list
-        mSlideUpMusic = findViewById(R.id.music_list_recycler_view);
-        mSlideUpMusics = new ArrayList<MusicContainer>();
-        populateRecyclerViewData();
-        setUpMusicRecyclerView(mSlideUpMusics);
-    }
 
 
     public void populateRecyclerViewData() {
@@ -263,8 +338,8 @@ public class MusicPlayerActivity extends AppCompatActivity {
                 // A new comment has been added, add it to the displayed list
                 String song = dataSnapshot.getValue(String.class);
                 MusicContainer tmp = new MusicContainer(song);
-                mSlideUpMusics.add(tmp);
-                mMusicAdapter.notifyItemInserted(mSlideUpMusics.size() - 1);
+                mSlideUpMusicList.add(tmp);
+                mMusicAdapter.notifyItemInserted(mSlideUpMusicList.size() - 1);
             }
 
             @Override
@@ -305,27 +380,12 @@ public class MusicPlayerActivity extends AppCompatActivity {
         // set trending recycler view
         mSlideUpMusic.setHasFixedSize(true);
         mMusicLayoutManager = new LinearLayoutManager(this);
-        mMusicAdapter = new MusicAdapter(mSlideUpMusics);
+        mMusicAdapter = new MusicAdapter(mSlideUpMusicList);
         mSlideUpMusic.setLayoutManager(mMusicLayoutManager);
         mSlideUpMusic.setAdapter(mMusicAdapter);
     }
 
-    public void getExtrasFromBundle() {
-        Intent intent = getIntent();
-        // use intent bundle to set values
-        mUsername = intent.getStringExtra("username");
-        accessToken = intent.getStringExtra("token");
-        song_uri = intent.getStringExtra("songUri"); //get song from the creator
-        
-        mPartyName = intent.getStringExtra("partyname");
-        mGenreName = intent.getStringExtra("genrename");
-        mSongName = intent.getStringExtra("songUri");
-        mMode = intent.getStringExtra("mode"); //from create party or join party
 
-        mPublic = intent.getBooleanExtra("public", true);
-        mLatitude = intent.getDoubleExtra("latitude", 0.0);
-        mLongitude = intent.getDoubleExtra("longitude", 0.0);
-    }
 
 
     //CONNECT TO SPOTIFYplay_or_pause
@@ -382,11 +442,6 @@ public class MusicPlayerActivity extends AppCompatActivity {
     public void getComponents(){
         partyHeader = findViewById(R.id.music_party_name);
         mUserRV = findViewById(R.id.music_player_recyclerview_names);
-
-        mNames = new ArrayList<>();
-        mNames.add("jimbo");
-        mNames.add("slice");
-        mNames.add("test");
     }
 
     public void setTitleHeader() {
@@ -397,70 +452,61 @@ public class MusicPlayerActivity extends AppCompatActivity {
         // set trending recycler view
         mUserRV.setHasFixedSize(true);
         mUserLayoutManager = new LinearLayoutManager(this);
-        mUserAdapter = new UserAdapter(mNames);
         mUserRV.setLayoutManager(mUserLayoutManager);
+
+        mAudience = new ArrayList<>();
+        mUserAdapter = new UserAdapter(mAudience);
         mUserRV.setAdapter(mUserAdapter);
     }
 
-    public void pushPartyFirebase(PartyContainer pd) {
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-        // set audience
-        mDatabase.child("parties").child(mPartyName).child("audience").setValue(mUsername);
-        mDatabase.child("parties").child(mPartyName).child("latitude").setValue(mLatitude);
-        mDatabase.child("parties").child(mPartyName).child("longitude").setValue(mLongitude);
-        mDatabase.child("parties").child(mPartyName).child("other_data").setValue("yadayada");
-        mDatabase.child("parties").child(mPartyName).child("owner").setValue(mUsername);
-        mDatabase.child("parties").child(mPartyName).child("party_name").setValue(pd.getPartyName());
-        mDatabase.child("parties").child(mPartyName).child("song").setValue(pd.songToString());
-        mDatabase.child("parties").child(mPartyName).child("num_people").setValue(pd.getNumPeople());
+    public void pushPartyFirebase() {
+        partyRef.child("audience").child(mUsername).setValue(true);
+        partyRef.child("genre").setValue(mGenreName);
+        partyRef.child("latitude").setValue(mLatitude);
+        partyRef.child("longitude").setValue(mLongitude);
+        partyRef.child("num_people").setValue(0);
+        partyRef.child("owner").setValue(mUsername);
+        partyRef.child("party_name").setValue(mPartyName);
+        partyRef.child("song").setValue(song_uri);
     }
 
-//    public void readData(@NonNull LoginActivity.SimpleCallback<String> finishedCallback) {
-//        partiesRef.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                if (dataSnapshot.hasChild(mUsername)) {
-//                    finishedCallback.callback((String) dataSnapshot.child(mUsername).child("password").getValue());
-//                } else {
-//                    finishedCallback.callback(null);
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError firebaseError) {
-//            }
-//        });
-//    }
-    public void setDatabaseListener() {
-        /*
-        mDatabase = FirebaseDatabase.getInstance().getReference("parties");
-        ValueEventListener myDataListener = new ValueEventListener() {
+
+    public void getPartyFirebase(@NonNull LoginActivity.SimpleCallback<ArrayList<String>> finishedCallback) {
+        partyRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                mGenreName = (String) dataSnapshot.child("genre").getValue();
+                mLatitude = ((Number) dataSnapshot.child("latitude").getValue()).doubleValue();
+                mLongitude = ((Number) dataSnapshot.child("longitude").getValue()).doubleValue();
+                song_uri = (String) dataSnapshot.child("song").getValue();
 
-
-                allPartyData = (HashMap<String, HashMap<String, String>>) dataSnapshot.getValue();
-
-                if (allPartyData != null) {
-
-                    for (Map.Entry<String, HashMap<String, String>> entry : allPartyData.entrySet()) {
-                        //System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
-                        String key = entry.getKey();
-                        HashMap<String, String> value = (HashMap<String, String>) entry.getValue();
-
-
-                    }
-
+                mNumPeople = 1;
+                try {
+                    mNumPeople = ((Number) dataSnapshot.child("num_people").getValue()).intValue();
+                } catch (ClassCastException e) {
+                    System.out.println(e);
                 }
 
+
+                partyRef.child("audience").child(mUsername).setValue(true);
+                mNumPeople++;
+                partyRef.child("num_people").setValue(mNumPeople);
+
+
+                ArrayList<String> newAudience = new ArrayList<>();
+                for (DataSnapshot snapshot : dataSnapshot.child("audience").getChildren()) {
+                    newAudience.add(snapshot.getKey());
+                }
+
+                Log.d("Audience: ", mAudience.toString());
+
+                finishedCallback.callback(newAudience);
+
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Log.d("0", "cancelled");
             }
-        };
-        // try changing `someRef` here
-        mDatabase.addValueEventListener(myDataListener);
-        */
+        });
     }
 }

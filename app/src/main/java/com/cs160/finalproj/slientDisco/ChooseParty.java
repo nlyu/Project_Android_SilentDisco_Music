@@ -85,7 +85,7 @@ public class ChooseParty extends AppCompatActivity {
     private Boolean mRequestingLocationUpdates;
 
     //Connect to spotify
-    private static final String CLIENT_ID = "b966d335ca304ac7a2a5ef6fd455b088";
+    private static final String CLIENT_ID = "8933a96ee220485997e12f9af761f6e9";
     private static final String REDIRECT_URI = "http://com.example.spotify/callback";
     private SpotifyAppRemote mSpotifyAppRemote;
 
@@ -447,6 +447,7 @@ public class ChooseParty extends AppCompatActivity {
                     @Override
                     public void onFailure(Throwable throwable) {
                         Log.e("Spotify:", throwable.getMessage(), throwable);
+
 
                         // Something went wrong when attempting to connect! Handle errors here
                     }

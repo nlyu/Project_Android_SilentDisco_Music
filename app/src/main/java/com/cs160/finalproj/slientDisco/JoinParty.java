@@ -54,7 +54,6 @@ public class JoinParty extends AppCompatActivity {
     private PartyAdapter mAllAdapter;
     private RecyclerView.LayoutManager mAllLayoutManager;
 
-    // trending party data TODO: replace with real firebase data
     DatabaseReference partiesRef;
 
     private ArrayList<PartyContainer> trendingPartyData;
@@ -76,12 +75,10 @@ public class JoinParty extends AppCompatActivity {
         getExtrasFromBundle();
         setOnClickListeners();
 
-        // TODO: add firebase
         partiesRef = FirebaseDatabase.getInstance().getReference("parties");
 
         trendingPartyData = new ArrayList<PartyContainer>();
         allPartyData = new ArrayList<PartyContainer>();
-//        populateRecyclerViewData();
         populateRecyclerViewData(gotData -> {
             setUpRecyclerView();
         });

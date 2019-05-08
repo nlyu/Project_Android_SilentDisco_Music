@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -77,6 +78,13 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     public int getItemCount() {
         return mUserList.size();
     }
+
+    public void update(ArrayList<String> newUsers) {
+        mUserList.clear();
+        mUserList.addAll(newUsers);
+        this.notifyDataSetChanged();
+    }
+
 }
 
 
