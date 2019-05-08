@@ -77,9 +77,17 @@ public class JoinParty extends AppCompatActivity {
 
         partiesRef = FirebaseDatabase.getInstance().getReference("parties");
 
-        trendingPartyData = new ArrayList<PartyContainer>();
-        allPartyData = new ArrayList<PartyContainer>();
-        populateRecyclerViewData(gotData -> {
+        populateRecyclerViewData(partyData -> {
+            allPartyData = partyData;
+
+            // adds top 5 parties with most people to trending parties
+            trendingPartyData = new ArrayList<>();
+            for(int i = 0; i < 5; i++) {
+                trendingPartyData.add(allPartyData.get(i));
+            }
+
+            // sorts all parties alphabetically for initial display
+            Collections.sort(allPartyData, new SortbyPartyName());
             setUpRecyclerView();
         });
 
@@ -264,10 +272,12 @@ public class JoinParty extends AppCompatActivity {
         return (int) results[0];
     }
 
-    public void populateRecyclerViewData(@NonNull LoginActivity.SimpleCallback<Boolean> finishedCallback) {
+    public void populateRecyclerViewData(@NonNull LoginActivity.SimpleCallback<ArrayList<PartyContainer>> finishedCallback) {
         partiesRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
+                        ArrayList<PartyContainer> allPartyData = new ArrayList<>();
+
                         for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                             String partyName = (String) snapshot.child("party_name").getValue();
                             int numPeople = 0;
@@ -287,17 +297,9 @@ public class JoinParty extends AppCompatActivity {
                             allPartyData.add(pc);
                         }
 
-
-                        // adds top 5 parties with most people to trending parties
                         Collections.sort(allPartyData, new SortbyNumPeople());
-                        for(int i = 0; i < 5; i++) {
-                            trendingPartyData.add(allPartyData.get(i));
-                        }
 
-                        // sorts all parties alphabetically for initial display
-                        Collections.sort(allPartyData, new SortbyPartyName());
-
-                        finishedCallback.callback(true);
+                        finishedCallback.callback(allPartyData);
                     }
 
                     @Override
