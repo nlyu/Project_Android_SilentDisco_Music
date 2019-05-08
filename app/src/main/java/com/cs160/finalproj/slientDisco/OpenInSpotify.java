@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.cs160.finalproj.slientDisco.player.Player;
 import com.cs160.finalproj.slientDisco.support.utils.UIUtils;
