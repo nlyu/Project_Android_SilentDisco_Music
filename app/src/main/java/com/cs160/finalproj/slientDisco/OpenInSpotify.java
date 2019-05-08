@@ -44,6 +44,15 @@ public class OpenInSpotify extends AppCompatActivity {
                 finish();
             }
         });
+        
+        //set back button
+        ImageView back_arrow = findViewById(R.id.open_spotify_back_arrow);
+        back_arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         //TODO, envoke spotify API, wait 2 second
         Handler handler = new Handler();
