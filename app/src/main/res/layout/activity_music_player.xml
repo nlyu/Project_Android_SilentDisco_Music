@@ -93,9 +93,20 @@
 
             <TextView
                 android:id="@+id/music_party_back_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
+                android:layout_marginBottom="8dp"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-medium"
+                android:text="Leave the party"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/music_party_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="8dp"
                 android:layout_weight="1"
                 android:fontFamily="sans-serif-medium"

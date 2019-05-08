@@ -17,6 +17,7 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import java.util.List;
+import java.util.Random;
 
 import kaaes.spotify.webapi.android.SpotifyApi;
 import kaaes.spotify.webapi.android.SpotifyCallback;
@@ -194,9 +195,15 @@ public class CreateParty extends AppCompatActivity {
                     myIntent.putExtra("partyname", mPartyName);
                     myIntent.putExtra("genrename", mGenre);
                     myIntent.putExtra("songname", mSong);
-                    myIntent.putExtra("public", mPublic);
                     myIntent.putExtra("latitude", mLatitude);
                     myIntent.putExtra("longitude", mLongitude);
+
+                    // create access code if private
+                    if (!mPublic) {
+                        Random rnd = new Random();
+                        String code = Integer.toString((100000 + rnd.nextInt(900000)));
+                        myIntent.putExtra("code", code);
+                    }
 
                     //spotify
                     myIntent.putExtra("token", accessToken);
