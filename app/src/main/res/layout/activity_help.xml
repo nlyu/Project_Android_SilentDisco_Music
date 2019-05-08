@@ -32,14 +32,14 @@
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-            <TextView
-                android:id="@+id/textViewStuck"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:textSize="30dp"
-                android:textColor="@color/white"
-                android:text="Getting Stuck?" />
+            <!--<TextView-->
+                <!--android:id="@+id/textViewStuck"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:textSize="30dp"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:text="Getting Stuck?" />-->
 
 
         </android.support.design.widget.CollapsingToolbarLayout>
