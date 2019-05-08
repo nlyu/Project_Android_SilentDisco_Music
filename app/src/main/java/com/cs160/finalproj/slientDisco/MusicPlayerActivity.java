@@ -117,7 +117,6 @@ public class MusicPlayerActivity extends AppCompatActivity {
     private int mNumPeople;
     private boolean mPublic;
     private DatabaseReference partyRef;
-    Map<String, HashMap<String, String>> allPartyData;
 
     String mUsername;
 
@@ -131,6 +130,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
         getExtrasFromBundle();
 
         partyRef = FirebaseDatabase.getInstance().getReference("parties").child(mPartyName);
+        partyRef.child("audience").child(mUsername).setValue(true);
 
         setUpUserRecyclerView();
         setListeners();
@@ -143,10 +143,9 @@ public class MusicPlayerActivity extends AppCompatActivity {
             pushPartyFirebase();
         }
 
-        getPartyFirebase(audience -> {
-            mAudience = audience;
-            mUserAdapter.update(audience);
-
+        getPartyFirebase(pc -> {
+            resetPartyData(pc);
+            mUserAdapter.update(mAudience);
 
             //slide up song list
             mSlideUpMusicList = new ArrayList<MusicContainer>();
@@ -237,48 +236,6 @@ public class MusicPlayerActivity extends AppCompatActivity {
 
         // If the track title is long - start the running line:
         trackTitle.setSelected(true);
-
-        partyRef.child("audience").addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                ArrayList<String> newAudience = new ArrayList<>();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    newAudience.add(snapshot.getKey());
-                }
-
-                mUserAdapter.update(newAudience);
-                mAudience.clear();
-                mAudience.addAll(newAudience);
-
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-                ArrayList<String> newAudience = new ArrayList<>();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    newAudience.add(snapshot.getKey());
-                }
-
-                mUserAdapter.update(newAudience);
-                mAudience.clear();
-                mAudience.addAll(newAudience);
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
     }
 
     private void playOrPause() {
@@ -471,26 +428,23 @@ public class MusicPlayerActivity extends AppCompatActivity {
     }
 
 
-    public void getPartyFirebase(@NonNull LoginActivity.SimpleCallback<ArrayList<String>> finishedCallback) {
+    public void getPartyFirebase(@NonNull LoginActivity.SimpleCallback<PartyContainer> finishedCallback) {
         partyRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                mGenreName = (String) dataSnapshot.child("genre").getValue();
-                mLatitude = ((Number) dataSnapshot.child("latitude").getValue()).doubleValue();
-                mLongitude = ((Number) dataSnapshot.child("longitude").getValue()).doubleValue();
-                song_uri = (String) dataSnapshot.child("song").getValue();
+                String genre = (String) dataSnapshot.child("genre").getValue();
+                String songUri = (String) dataSnapshot.child("song").getValue();
 
-                mNumPeople = 1;
+                int numPeople = 1;
                 try {
-                    mNumPeople = ((Number) dataSnapshot.child("num_people").getValue()).intValue();
+                    numPeople = ((Number) dataSnapshot.child("num_people").getValue()).intValue();
                 } catch (ClassCastException e) {
                     System.out.println(e);
                 }
 
-
-                partyRef.child("audience").child(mUsername).setValue(true);
-                mNumPeople++;
-                partyRef.child("num_people").setValue(mNumPeople);
+                // adds current user to number of users
+                numPeople++;
+                partyRef.child("num_people").setValue(numPeople);
 
 
                 ArrayList<String> newAudience = new ArrayList<>();
@@ -498,9 +452,10 @@ public class MusicPlayerActivity extends AppCompatActivity {
                     newAudience.add(snapshot.getKey());
                 }
 
-                Log.d("Audience: ", mAudience.toString());
+                PartyContainer pc = new PartyContainer(mPartyName, numPeople, genre, songUri);
+                pc.setAudience(newAudience);
 
-                finishedCallback.callback(newAudience);
+                finishedCallback.callback(pc);
 
             }
 
@@ -508,5 +463,12 @@ public class MusicPlayerActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+    }
+
+    public void resetPartyData(PartyContainer pc) {
+        mAudience = pc.getAudience();
+        mGenreName = pc.getGenre();
+        mNumPeople = pc.getNumPeople();
+        song_uri = pc.getSongUri();
     }
 }

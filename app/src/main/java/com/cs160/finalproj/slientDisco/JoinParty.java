@@ -282,7 +282,8 @@ public class JoinParty extends AppCompatActivity {
                             double longitude = ((Number) snapshot.child("longitude").getValue()).doubleValue();
                             int distance = partyDistance(latitude, longitude);
 
-                            PartyContainer pc = new PartyContainer(partyName, numPeople, genre, songName, distance);
+                            PartyContainer pc = new PartyContainer(partyName, numPeople, genre, songName);
+                            pc.setDistance(distance);
                             allPartyData.add(pc);
                         }
 

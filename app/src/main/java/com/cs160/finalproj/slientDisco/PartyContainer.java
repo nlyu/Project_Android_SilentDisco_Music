@@ -2,6 +2,8 @@ package com.cs160.finalproj.slientDisco;
 
 import android.provider.Telephony;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Comparator;
 
 public class PartyContainer {
@@ -9,27 +11,26 @@ public class PartyContainer {
     private String partyName;
     private int numPeople;
     private String genre;
-    private String songName;
+    private String songUri;
     private int distance;
+    private double latitude;
+    private double longitude;
+    private ArrayList<String> audience;
 
-    public PartyContainer(String partyName, int numPeople, String genre, String songName, int distance) {
+    public PartyContainer(String partyName, int numPeople, String genre, String songUri) {
         this.partyName = partyName;
         this.numPeople = numPeople;
         this.genre = genre;
-        this.songName = songName;
-        this.distance = distance;
+        this.songUri = songUri;
     }
 
-    public String songToString() {
-        return this.songName;
+
+    public String getSongUri() {
+        return songUri;
     }
 
-    public String getSongName() {
-        return songName;
-    }
-
-    public void setSongName(String songName) {
-        this.songName = songName;
+    public void setSongUri(String songUri) {
+        this.songUri = songUri;
     }
 
     public String getPartyName() {
@@ -58,6 +59,34 @@ public class PartyContainer {
 
     public int getDistance() {
         return distance;
+    }
+
+    public void setDistance(int distance) {
+        this.distance = distance;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public double getLatitude() {
+        return this.latitude;
+    }
+
+    public double getLongitude() {
+        return this.longitude;
+    }
+
+    public ArrayList<String> getAudience() {
+        return this.audience;
+    }
+
+    public void setAudience(ArrayList<String> audience) {
+        this.audience = audience;
     }
 }
 
