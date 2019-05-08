@@ -27,7 +27,7 @@ public class OpenInSpotify extends AppCompatActivity {
     private String accessToken;
     private String party_name;
     private SpotifyAppRemote mSpotifyAppRemote;
-    private static final String CLIENT_ID = "8933a96ee220485997e12f9af761f6e9";
+    private static final String CLIENT_ID = "b966d335ca304ac7a2a5ef6fd455b088";
     private static final String REDIRECT_URI = "http://com.example.spotify/callback";
 
     @Override
