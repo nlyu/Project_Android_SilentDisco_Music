@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.service.carrier.CarrierMessagingService;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -98,7 +99,6 @@ public class MusicPlayerActivity extends AppCompatActivity {
     private Handler timeHandler = new Handler();
     private String song_uri;
     private String accessToken;
-    private String party_name;
     private SpotifyAppRemote mSpotifyAppRemote;
     private static final String CLIENT_ID = "8933a96ee220485997e12f9af761f6e9";
     private static final String REDIRECT_URI = "http://com.example.spotify/callback";
@@ -111,7 +111,6 @@ public class MusicPlayerActivity extends AppCompatActivity {
     private TextView partyHeader;
 
     private String mGenreName;
-    private String mSongName;
     private String mMode;  //create party or join party
     private double mLatitude;
     private double mLongitude;
@@ -133,6 +132,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
 
         partyRef = FirebaseDatabase.getInstance().getReference("parties").child(mPartyName);
 
+        setUpUserRecyclerView();
         setListeners();
 
         //Set the Name of the party text
@@ -143,8 +143,10 @@ public class MusicPlayerActivity extends AppCompatActivity {
             pushPartyFirebase();
         }
 
-        getPartyFirebase(gotData -> {
-            setUpUserRecyclerView();
+        getPartyFirebase(audience -> {
+            mAudience = audience;
+            mUserAdapter.update(audience);
+
 
             //slide up song list
             mSlideUpMusicList = new ArrayList<MusicContainer>();
@@ -163,7 +165,6 @@ public class MusicPlayerActivity extends AppCompatActivity {
 
         mPartyName = intent.getStringExtra("partyname");
         mGenreName = intent.getStringExtra("genrename");
-        mSongName = intent.getStringExtra("songUri");
         mMode = intent.getStringExtra("mode"); //from create party or join party
 
         mPublic = intent.getBooleanExtra("public", true);
@@ -236,6 +237,48 @@ public class MusicPlayerActivity extends AppCompatActivity {
 
         // If the track title is long - start the running line:
         trackTitle.setSelected(true);
+
+        partyRef.child("audience").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                ArrayList<String> newAudience = new ArrayList<>();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    newAudience.add(snapshot.getKey());
+                }
+
+                mUserAdapter.update(newAudience);
+                mAudience.clear();
+                mAudience.addAll(newAudience);
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                ArrayList<String> newAudience = new ArrayList<>();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    newAudience.add(snapshot.getKey());
+                }
+
+                mUserAdapter.update(newAudience);
+                mAudience.clear();
+                mAudience.addAll(newAudience);
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void playOrPause() {
@@ -411,6 +454,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
         mUserLayoutManager = new LinearLayoutManager(this);
         mUserRV.setLayoutManager(mUserLayoutManager);
 
+        mAudience = new ArrayList<>();
         mUserAdapter = new UserAdapter(mAudience);
         mUserRV.setAdapter(mUserAdapter);
     }
@@ -427,16 +471,16 @@ public class MusicPlayerActivity extends AppCompatActivity {
     }
 
 
-    public void getPartyFirebase(@NonNull LoginActivity.SimpleCallback<Boolean> finishedCallback) {
+    public void getPartyFirebase(@NonNull LoginActivity.SimpleCallback<ArrayList<String>> finishedCallback) {
         partyRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 mGenreName = (String) dataSnapshot.child("genre").getValue();
                 mLatitude = ((Number) dataSnapshot.child("latitude").getValue()).doubleValue();
                 mLongitude = ((Number) dataSnapshot.child("longitude").getValue()).doubleValue();
-                mSongName = (String) dataSnapshot.child("song").getValue();
+                song_uri = (String) dataSnapshot.child("song").getValue();
 
-                mNumPeople = 0;
+                mNumPeople = 1;
                 try {
                     mNumPeople = ((Number) dataSnapshot.child("num_people").getValue()).intValue();
                 } catch (ClassCastException e) {
@@ -449,12 +493,14 @@ public class MusicPlayerActivity extends AppCompatActivity {
                 partyRef.child("num_people").setValue(mNumPeople);
 
 
-                mAudience = new ArrayList<>();
+                ArrayList<String> newAudience = new ArrayList<>();
                 for (DataSnapshot snapshot : dataSnapshot.child("audience").getChildren()) {
-                    mAudience.add(snapshot.getKey());
+                    newAudience.add(snapshot.getKey());
                 }
 
-                finishedCallback.callback(true);
+                Log.d("Audience: ", mAudience.toString());
+
+                finishedCallback.callback(newAudience);
 
             }
 
@@ -463,6 +509,4 @@ public class MusicPlayerActivity extends AppCompatActivity {
             }
         });
     }
-
-
 }
