@@ -110,7 +110,6 @@
                 android:layout_marginBottom="8dp"
                 android:layout_weight="1"
                 android:fontFamily="sans-serif-medium"
-                android:text="Leave the party"
                 android:textColor="@color/white" />
 
         </LinearLayout>

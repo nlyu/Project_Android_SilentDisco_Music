@@ -18,9 +18,9 @@
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fitsSystemWindows="true"
+            android:layout_height="150dp"
             android:layout_gravity="center"
+            android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:toolbarId="@+id/toolbar">
@@ -32,17 +32,34 @@
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-            <!--<TextView-->
-                <!--android:id="@+id/textViewStuck"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:textSize="30dp"-->
-                <!--android:textColor="@color/white"-->
-                <!--android:text="Getting Stuck?" />-->
-
-
         </android.support.design.widget.CollapsingToolbarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+
+            <ImageView
+                android:id="@+id/user_profile_back_arrow"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="8dp"
+                app:srcCompat="@drawable/back"
+                android:tint="@color/white" />
+
+            <TextView
+                android:id="@+id/user_profile_back_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="8dp"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-medium"
+                android:text="Leave the profile"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
     </android.support.design.widget.AppBarLayout>
 
 
@@ -56,5 +73,7 @@
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|end"
         app:srcCompat="@android:drawable/ic_menu_help" />
+
+
 
 </android.support.design.widget.CoordinatorLayout>
