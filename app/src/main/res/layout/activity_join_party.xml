@@ -76,10 +76,10 @@
 
     <AutoCompleteTextView
         android:id="@+id/join_party_enter_code"
-        android:layout_width="224dp"
+        android:layout_width="220dp"
         android:layout_height="36dp"
         android:layout_marginStart="45dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/btn_rounded_transparent"
         android:hint="@string/join_party_enter_code_hint"
         app:layout_constraintStart_toStartOf="parent"
@@ -91,7 +91,7 @@
         android:layout_width="320dp"
         android:layout_height="140dp"
         android:layout_marginStart="45dp"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="30dp"
         android:background="@color/toggle_button_on"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/join_party_enter_code">
@@ -132,7 +132,7 @@
         android:layout_width="320dp"
         android:layout_height="140dp"
         android:layout_marginStart="45dp"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="24dp"
         android:background="@color/toggle_button_on"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Join_Party_Trending">
@@ -171,10 +171,10 @@
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/sort_layout"
-        android:layout_width="259dp"
+        android:layout_width="300dp"
         android:layout_height="84dp"
         android:layout_marginStart="44dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Join_Party_All">
@@ -255,8 +255,8 @@
 
     <Button
         android:id="@+id/join_party_code_button"
-        android:layout_width="79dp"
-        android:layout_height="35dp"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
         android:layout_marginStart="12dp"
         android:text="@string/enter"
         app:layout_constraintStart_toEndOf="@+id/join_party_enter_code"

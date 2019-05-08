@@ -100,7 +100,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
     private String song_uri;
     private String accessToken;
     private SpotifyAppRemote mSpotifyAppRemote;
-    private static final String CLIENT_ID = "8933a96ee220485997e12f9af761f6e9";
+    private static final String CLIENT_ID = "b966d335ca304ac7a2a5ef6fd455b088";
     private static final String REDIRECT_URI = "http://com.example.spotify/callback";
 
     private RecyclerView mUserRV;
@@ -338,7 +338,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
         };
 
         //TODO get user's song from /user/song in firebase, user need to change
-        DatabaseReference songRef = FirebaseDatabase.getInstance().getReference("users").child("nlyu2").child("song");
+        DatabaseReference songRef = FirebaseDatabase.getInstance().getReference("users").child(mUsername).child("song");
         songRef.addChildEventListener(childEventListener);
     }
 

@@ -12,7 +12,7 @@
     <string name="find_songs">Find songs</string>
     <string name="public_button">Public</string>
     <string name="private_button">Private</string>
-    <string name="join_party_enter_code_hint">Search or enter code</string>
+    <string name="join_party_enter_code_hint">Enter code</string>
     <string name="sort_people">Sort by the number of people</string>
     <string name="sort_distance">Sort by distance</string>
 

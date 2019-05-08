@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="TextView"
+        android:textColor="#CFFFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,6 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="130dp"
         android:text="TextView"
+        android:textColor="#CFFFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

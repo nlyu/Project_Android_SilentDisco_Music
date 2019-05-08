@@ -25,6 +25,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.spotify.android.appremote.api.ConnectionParams;
+import com.spotify.android.appremote.api.Connector;
+import com.spotify.android.appremote.api.SpotifyAppRemote;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,6 +35,12 @@ import java.util.Map;
 import java.util.Vector;
 
 import butterknife.BindView;
+import kaaes.spotify.webapi.android.SpotifyApi;
+import kaaes.spotify.webapi.android.SpotifyService;
+import kaaes.spotify.webapi.android.models.Album;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 public class UserProfile extends AppCompatActivity {
 
@@ -54,6 +63,11 @@ public class UserProfile extends AppCompatActivity {
     ArrayList<String> songList;
     ArrayList<MusicContainer> mLikedMusics;
     Map<String, String> mLikedMusicsUri = new HashMap<String, String>();
+
+    //Connect to spotify
+    private static final String CLIENT_ID = "b966d335ca304ac7a2a5ef6fd455b088";
+    private static final String REDIRECT_URI = "http://com.example.spotify/callback";
+    private SpotifyAppRemote mSpotifyAppRemote;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,6 +126,7 @@ public class UserProfile extends AppCompatActivity {
                 Intent myIntent = new Intent(UserProfile.this, LoginActivity.class);
                 // myIntent.putExtra("key", value); //Optional parameters
                 curUserRef.setValue("nobody");
+                mSpotifyAppRemote.getPlayerApi().pause();
                 startActivity(myIntent);
             }
         });
@@ -186,7 +201,7 @@ public class UserProfile extends AppCompatActivity {
         };
 
         //TODO get user's song from /user/song in firebase, user need to change
-        DatabaseReference songRef = FirebaseDatabase.getInstance().getReference("users").child("nlyu2").child("song");
+        DatabaseReference songRef = FirebaseDatabase.getInstance().getReference("users").child(mUsername).child("song");
         songRef.addChildEventListener(childEventListener);
         //demo
         MusicContainer e6 = new MusicContainer("this is a song6");
@@ -214,5 +229,46 @@ public class UserProfile extends AppCompatActivity {
                 toast.show();
             }
         });
+    }
+
+    //CONNECT TO SPOTIFY
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        //builder.setScopes(new String[]{"streaming"});
+        //AuthenticationRequest request = builder.build();
+
+        //Spotify API login ! Now send the request code
+        //AuthenticationClient.openLoginActivity(this, SPOTIFY_REQUEST_CODE, request);
+
+        ConnectionParams connectionParams =
+                new ConnectionParams.Builder(CLIENT_ID)
+                        .setRedirectUri(REDIRECT_URI)
+                        .showAuthView(true)
+                        .build();
+
+        mSpotifyAppRemote.connect(this, connectionParams,
+                new Connector.ConnectionListener() {
+
+                    @Override
+                    public void onConnected(SpotifyAppRemote spotifyAppRemote) {
+                        mSpotifyAppRemote = spotifyAppRemote;
+                        Log.d("Spotify:", "Connected! Yay!");
+                        // Now you can start interacting with App Remote
+                    }
+
+                    @Override
+                    public void onFailure(Throwable throwable) {
+                        Log.e("Spotify:", throwable.getMessage(), throwable);
+                        // Something went wrong when attempting to connect! Handle errors here
+                    }
+                });
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        SpotifyAppRemote.disconnect(mSpotifyAppRemote);
     }
 }
