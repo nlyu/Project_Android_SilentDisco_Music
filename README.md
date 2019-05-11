@@ -27,8 +27,11 @@ Run the app
    | nlyu2         | password |
    | cari          | password |
    ```
-3. Login to the spotify API
-4. Beause of the internet lag, there are very few chance that the app frezze in the chose party screen the first time you use this app. Simple reopen Silent Disco again and this problem should be solved.
+   <img src="/screenshot/register.png" width="180">
+3. Login to the spotify API  
+   <img src="/screenshot/spotify.png" width="180">
+4. Beause of the internet lag, there are very few chance that the app frezze in the chose party screen the first time you use this app. Simple reopen Silent Disco again and this problem should be solved.  
+   <img src="/screenshot/2.png" width="180">
 5. You are good to go!
 
 # Slient Disco
@@ -44,13 +47,15 @@ TODO list
 - [x] Firebase Login
 
 # Screenshots
-<img src="/screenshot/1.png" width="200">
-<img src="/screenshot/2.png" width="200">
-<img src="/screenshot/3.png" width="200">
-<img src="/screenshot/4.png" width="200">
+<img src="/screenshot/1.png" width="200"> <img src="/screenshot/2.png" width="200">
+<img src="/screenshot/joinparty.png" width="200">
+<img src="/screenshot/create.png" width="200"> <img src="/screenshot/search.png" width="200">
+<img src="/screenshot/playmusic.png" width="200">
+<img src="/screenshot/slideup.png" width="200">
 <img src="/screenshot/5.png" width="200">
-<img src="/screenshot/6.png" width="200">
-<img src="/screenshot/7.png" width="200">
+<img src="/screenshot/help.png" width="200">
+<img src="/screenshot/user.png" width="200">
+<img src="/screenshot/openinspotify.png" width="200">
 
 
 
