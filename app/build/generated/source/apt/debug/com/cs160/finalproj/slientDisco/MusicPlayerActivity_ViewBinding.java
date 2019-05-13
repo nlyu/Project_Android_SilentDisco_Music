@@ -17,11 +17,11 @@ import java.lang.Override;
 public class MusicPlayerActivity_ViewBinding implements Unbinder {
   private MusicPlayerActivity target;
 
+  private View view7f0800c2;
+
   private View view7f0800c1;
 
-  private View view7f0800c0;
-
-  private View view7f0800ab;
+  private View view7f0800ac;
 
   @UiThread
   public MusicPlayerActivity_ViewBinding(MusicPlayerActivity target) {
@@ -36,7 +36,7 @@ public class MusicPlayerActivity_ViewBinding implements Unbinder {
     target.trackCover = Utils.findRequiredViewAsType(source, R.id.track_cover, "field 'trackCover'", ImageView.class);
     view = Utils.findRequiredView(source, R.id.previous_track, "field 'previousTrack' and method 'onPreviousTrackClick'");
     target.previousTrack = Utils.castView(view, R.id.previous_track, "field 'previousTrack'", ImageView.class);
-    view7f0800c1 = view;
+    view7f0800c2 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -45,7 +45,7 @@ public class MusicPlayerActivity_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.play_or_pause, "field 'playOrPause' and method 'onPlayPauseClick'");
     target.playOrPause = Utils.castView(view, R.id.play_or_pause, "field 'playOrPause'", ImageView.class);
-    view7f0800c0 = view;
+    view7f0800c1 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -54,7 +54,7 @@ public class MusicPlayerActivity_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.next_track, "field 'nextTrack' and method 'onNextTrackClick'");
     target.nextTrack = Utils.castView(view, R.id.next_track, "field 'nextTrack'", ImageView.class);
-    view7f0800ab = view;
+    view7f0800ac = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -93,11 +93,11 @@ public class MusicPlayerActivity_ViewBinding implements Unbinder {
     target.trackTimeline = null;
     target.mSlideUpMusic = null;
 
+    view7f0800c2.setOnClickListener(null);
+    view7f0800c2 = null;
     view7f0800c1.setOnClickListener(null);
     view7f0800c1 = null;
-    view7f0800c0.setOnClickListener(null);
-    view7f0800c0 = null;
-    view7f0800ab.setOnClickListener(null);
-    view7f0800ab = null;
+    view7f0800ac.setOnClickListener(null);
+    view7f0800ac = null;
   }
 }

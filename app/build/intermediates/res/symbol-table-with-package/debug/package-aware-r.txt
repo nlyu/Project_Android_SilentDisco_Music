@@ -1116,6 +1116,7 @@ id SHIFT
 id SYM
 id SlideUpPanel
 id SpotifyIconBig
+id TrendingTextView
 id Useruser_info
 id accessCode
 id action0
@@ -1366,7 +1367,6 @@ id text2
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
-id textView
 id textView2
 id textView3
 id text_input_password_toggle
