@@ -380,7 +380,10 @@ public class JoinParty extends AppCompatActivity {
 
                                 PartyContainer pc = new PartyContainer(partyName, numPeople, genre, songName);
                                 pc.setDistance(distance);
-                                allPartyData.add(pc);
+
+                                if (distance < 5000) {
+                                    allPartyData.add(pc);
+                                }
                             }
                         }
 
