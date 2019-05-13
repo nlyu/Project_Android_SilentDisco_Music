@@ -1,10 +1,12 @@
 package com.cs160.finalproj.slientDisco;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
@@ -120,6 +122,7 @@ public class JoinParty extends AppCompatActivity {
         mTrendingAdapter.setOnItemClickedListener(new PartyAdapter.onItemClickedListener() {
             @Override
             public void onItemClick(int position) {
+
                 PartyContainer pc = trendingPartyData.get(position);
 
                 // if greater than 5000m, can't click in
@@ -128,16 +131,37 @@ public class JoinParty extends AppCompatActivity {
                     return;
                 }
 
-                // set party name
-                mPartyName = pc.getPartyName();
-                Intent myIntent = new Intent(JoinParty.this, MusicPlayerActivity.class);
-                // myIntent.putExtra("key", value); //Optional parameters
-                myIntent.putExtra("username", mUsername);
-                myIntent.putExtra("partyname", mPartyName);
-                myIntent.putExtra("songUri", "spotify:track:4lIxdJw6W3Fg4vUIYCB0S5"); //TODO, just for demo, play tyler swift's style
+                AlertDialog.Builder builder = new AlertDialog.Builder(JoinParty.this);
+                builder.setCancelable(true);
+                builder.setTitle("You are about to join the Silent Disco party");
+                builder.setMessage(pc.getPartyName());
+                builder.setPositiveButton("Confirm",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // set party name
+                                // set party name
+                                mPartyName = pc.getPartyName();
+                                Intent myIntent = new Intent(JoinParty.this, MusicPlayerActivity.class);
+                                // myIntent.putExtra("key", value); //Optional parameters
+                                myIntent.putExtra("username", mUsername);
+                                myIntent.putExtra("partyname", mPartyName);
+                                myIntent.putExtra("songUri", "spotify:track:4lIxdJw6W3Fg4vUIYCB0S5"); //TODO, just for demo, play tyler swift's style
 
-                myIntent.putExtra("mode", "join");
-                startActivity(myIntent);
+                                myIntent.putExtra("mode", "join");
+                                startActivity(myIntent);
+
+                            }
+                        });
+                builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
 
                 //Toast toast=Toast.makeText(getApplicationContext(),pc.getPartyName(),Toast.LENGTH_SHORT);
                 //toast.show();
@@ -167,19 +191,39 @@ public class JoinParty extends AppCompatActivity {
                     return;
                 }
 
-                // set party name
-                Toast toast=Toast.makeText(getApplicationContext(),pc.getPartyName(),Toast.LENGTH_SHORT);
-                toast.show();
-                mPartyName = pc.getPartyName();
-                Intent myIntent = new Intent(JoinParty.this, MusicPlayerActivity.class);
-                // myIntent.putExtra("key", value); //Optional parameters
-                myIntent.putExtra("username", mUsername);
-                myIntent.putExtra("partyname", mPartyName);
-                myIntent.putExtra("songUri", "spotify:track:4lIxdJw6W3Fg4vUIYCB0S5"); //TODO, just for demo, play tyler swift's style
+                AlertDialog.Builder builder = new AlertDialog.Builder(JoinParty.this);
+                builder.setCancelable(true);
+                builder.setTitle("You are about to join the Silent Disco party");
+                builder.setMessage(pc.getPartyName());
+                builder.setPositiveButton("Confirm",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // set party name
+                                Toast toast=Toast.makeText(getApplicationContext(),pc.getPartyName(),Toast.LENGTH_SHORT);
+                                toast.show();
+                                mPartyName = pc.getPartyName();
+                                Intent myIntent = new Intent(JoinParty.this, MusicPlayerActivity.class);
+                                // myIntent.putExtra("key", value); //Optional parameters
+                                myIntent.putExtra("username", mUsername);
+                                myIntent.putExtra("partyname", mPartyName);
+                                myIntent.putExtra("songUri", "spotify:track:4lIxdJw6W3Fg4vUIYCB0S5"); //TODO, just for demo, play tyler swift's style
 
-                //it is join party mode, firebase read only
-                myIntent.putExtra("mode", "join");
-                startActivity(myIntent);
+                                //it is join party mode, firebase read only
+                                myIntent.putExtra("mode", "join");
+                                startActivity(myIntent);
+
+                            }
+                        });
+                builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
             }
         });
 
