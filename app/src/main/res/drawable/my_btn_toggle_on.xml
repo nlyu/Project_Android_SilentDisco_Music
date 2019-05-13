@@ -4,13 +4,14 @@
         android:width="8dp"
         android:color="@color/toggle_button" />
 
-    <solid android:color="@color/toggle_button_on" />
+    <solid android:color="@color/colorPrimaryPurple" />
 
     <padding
         android:left="1dp"
         android:right="1dp"
         android:bottom="1dp"
-        android:top="1dp" />
+        android:top="1dp"
+        android:color="@color/toggle_button" />
 
     <corners android:radius="1dp" />
 </shape>

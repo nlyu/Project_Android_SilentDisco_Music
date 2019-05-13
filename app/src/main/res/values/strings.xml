@@ -12,7 +12,7 @@
     <string name="find_songs">Find songs</string>
     <string name="public_button">Public</string>
     <string name="private_button">Private</string>
-    <string name="join_party_enter_code_hint">Enter code</string>
+    <string name="join_party_enter_code_hint">" "Enter a party code</string>
     <string name="sort_people">Sort by the number of people</string>
     <string name="sort_distance">Sort by distance</string>
 
@@ -133,6 +133,6 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-    <string name="enter">Enter</string>
+    <string name="enter">Find Party</string>
 
 </resources>

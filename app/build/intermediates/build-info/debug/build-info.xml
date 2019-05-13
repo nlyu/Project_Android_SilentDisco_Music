@@ -5,80 +5,116 @@
     build-mode="COLD"
     density="420dpi"
     format="10"
-    ir-eligibility="METHOD_ADDED"
     plugin-version="3.2.1"
-    timestamp="1557053864888"
-    token="6634540956759782403"
-    verifier="COLD_SWAP_REQUESTED" >
+    timestamp="1557722325163"
+    token="-5138882912215828362"
+    verifier="FIELD_TYPE_CHANGE" >
 
     <task
         name="javac"
-        duration="6059" />
+        duration="6918" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="122" />
+        duration="79" />
     <task
         name="verifier"
-        duration="85" />
+        duration="12" />
 
     <artifact
-        location="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
+        location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/resources/instant-run/debug/resources-debug.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
         type="SPLIT" />
 
     <build
         build-mode="FULL"
-        timestamp="1557053717575"
+        timestamp="1557716147918"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
-            location="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
+            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
+            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
+            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/resources/instant-run/debug/resources-debug.apk"
+            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
+            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
+            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
+            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
+            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
+            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/resources/instant-run/debug/resources-debug.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
+            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
+            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
+            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
+            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
             type="SPLIT_MAIN" />
     </build>
     <build
         build-mode="COLD"
-        ir-eligibility="METHOD_ADDED"
-        timestamp="1557053864888"
-        verifier="COLD_SWAP_REQUESTED" >
+        timestamp="1557717128388"
+        verifier="R_CLASS_CHANGE" >
         <artifact
-            location="/Users/Aidan/Desktop/SP2019/CS160/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
+            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
+            type="SPLIT" />
+    </build>
+    <build
+        build-mode="COLD"
+        timestamp="1557722325163"
+        verifier="FIELD_TYPE_CHANGE" >
+        <artifact
+            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/resources/instant-run/debug/resources-debug.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/graceychin/AndroidStudioProjects/finalProject/team-project-team04/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
             type="SPLIT" />
     </build>
 

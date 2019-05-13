@@ -2,9 +2,9 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android" >
     <stroke
         android:width="0dp"
-        android:color="@android:color/white" />
+        android:color="@color/toggle_button" />
 
-    <solid android:color="@color/toggle_button" />
+    <solid android:color="@color/colorPrimaryPurple" />
 
     <corners android:radius="1dp" />
 </shape>

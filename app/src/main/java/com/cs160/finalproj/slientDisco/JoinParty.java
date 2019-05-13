@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -112,7 +113,10 @@ public class JoinParty extends AppCompatActivity {
         mTrendingAdapter = new PartyAdapter(trendingPartyData);
         mTrendingRV.setLayoutManager(mTrendingLayoutManager);
         mTrendingRV.setAdapter(mTrendingAdapter);
-
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mTrendingRV.getContext(),
+                LinearLayoutManager.VERTICAL);
+        mTrendingRV.addItemDecoration(new VerticalSpaceItemDecoration(30));
+        mTrendingRV.addItemDecoration(dividerItemDecoration);
         mTrendingAdapter.setOnItemClickedListener(new PartyAdapter.onItemClickedListener() {
             @Override
             public void onItemClick(int position) {
@@ -146,6 +150,10 @@ public class JoinParty extends AppCompatActivity {
         mAllAdapter = new PartyAdapter(allPartyData);
         mAllRV.setLayoutManager(mAllLayoutManager);
         mAllRV.setAdapter(mAllAdapter);
+        DividerItemDecoration dividerItemDecoration2 = new DividerItemDecoration(mAllRV.getContext(),
+                LinearLayoutManager.VERTICAL);
+        mAllRV.addItemDecoration(new VerticalSpaceItemDecoration(30));
+        mAllRV.addItemDecoration(dividerItemDecoration2);
 
         mAllAdapter.setOnItemClickedListener(new PartyAdapter.onItemClickedListener() {
             @Override
@@ -361,3 +369,4 @@ public class JoinParty extends AppCompatActivity {
     }
 
 }
+

@@ -616,6 +616,7 @@ color cardview_shadow_start_color
 color colorAccent
 color colorAccentPurple
 color colorPrimary
+color colorPrimaryClickedPurple
 color colorPrimaryDark
 color colorPrimaryDarkPurple
 color colorPrimaryLightPurple
@@ -720,6 +721,7 @@ color toggle_button
 color toggle_button_on
 color tooltip_background_dark
 color tooltip_background_light
+color transparent
 color white
 dimen abc_action_bar_content_inset_material
 dimen abc_action_bar_content_inset_with_nav
@@ -1030,6 +1032,7 @@ drawable account
 drawable avd_hide_password
 drawable avd_show_password
 drawable back
+drawable btn_rounded_clicked
 drawable btn_rounded_corner
 drawable btn_rounded_no_edge
 drawable btn_rounded_transparent
@@ -1060,6 +1063,7 @@ drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
 drawable disco
+drawable favorite_icon
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable help
@@ -1081,6 +1085,7 @@ drawable ic_play
 drawable ic_previous_track
 drawable mtrl_snackbar_background
 drawable mtrl_tabs_default_indicator
+drawable musicicon
 drawable my_btn_toggle_off
 drawable my_btn_toggle_on
 drawable navigation_empty_icon
@@ -1096,9 +1101,11 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable spotify
 drawable spotify_512
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
+drawable user
 id ALT
 id CTRL
 id FUNCTION
@@ -1110,6 +1117,7 @@ id SYM
 id SlideUpPanel
 id SpotifyIconBig
 id Useruser_info
+id accessCode
 id action0
 id action_bar
 id action_bar_activity_content
@@ -1176,12 +1184,9 @@ id create_party_create_party_name
 id create_party_disco
 id create_party_find_genres
 id create_party_find_songs
-id create_party_genre_textview
 id create_party_help_icon
-id create_party_party_name_textview
 id create_party_private_button
 id create_party_public_button
-id create_party_song_textview
 id create_party_title
 id custom
 id customPanel
@@ -1232,6 +1237,7 @@ id join_party_account_icon
 id join_party_all_recycler_vew
 id join_party_back_arrow
 id join_party_back_text
+id join_party_code_button
 id join_party_enter_code
 id join_party_help_icon
 id join_party_trending_recycler_vew
@@ -1263,6 +1269,7 @@ id music_party_account_icon
 id music_party_audienceList
 id music_party_back_arrow
 id music_party_back_text
+id music_party_code
 id music_party_help_icon
 id music_party_name
 id music_party_name_text
@@ -1297,6 +1304,7 @@ id profile_name
 id progress_circular
 id progress_horizontal
 id radio
+id radioGroup
 id right
 id right_icon
 id right_side
@@ -1335,6 +1343,7 @@ id sort_by_distance
 id sort_by_distance_text
 id sort_by_people
 id sort_by_people_text
+id sort_layout
 id spacer
 id split_action_bar
 id spread
@@ -1357,10 +1366,9 @@ id text2
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
+id textView
+id textView2
 id textView3
-id textView4
-id textView5
-id textViewStuck
 id text_input_password_toggle
 id textinput_counter
 id textinput_error
@@ -1582,6 +1590,7 @@ string common_signin_button_text_long
 string create_party
 string create_party_name
 string default_web_client_id
+string enter
 string error_field_required
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
@@ -1828,6 +1837,8 @@ style Base_Widget_MaterialComponents_TextInputLayout
 style CardView
 style CardView_Dark
 style CardView_Light
+style CollapsedAppBar
+style ExpandedAppBar
 style Platform_AppCompat
 style Platform_AppCompat_Light
 style Platform_MaterialComponents

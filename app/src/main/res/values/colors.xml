@@ -14,4 +14,5 @@
     <color name="background">#F2F2F2</color>
     <color name="toggle_button">#F2F2F2</color>
     <color name="toggle_button_on">#A7A7A7</color>
+    <color name="transparent">#0000ffff </color>
 </resources>
