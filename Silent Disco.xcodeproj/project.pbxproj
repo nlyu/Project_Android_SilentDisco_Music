@@ -7,6 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1056BD1D4B94F1246EDA3C8A /* Pods_Silent_Disco.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 637D24169772E1CD42185C8C /* Pods_Silent_Disco.framework */; };
+		65028F622282331A000293CB /* MusicVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65028F612282331A000293CB /* MusicVC.swift */; };
+		65028F642282332E000293CB /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65028F632282332E000293CB /* LoginManager.swift */; };
+		65028F6622823336000293CB /* TableViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65028F6522823336000293CB /* TableViewVC.swift */; };
+		65028F722282654D000293CB /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65028F7022826546000293CB /* Core.swift */; };
+		65028F732282654D000293CB /* KVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65028F6E22826546000293CB /* KVO.swift */; };
+		65028F742282654D000293CB /* UIBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65028F6822826545000293CB /* UIBarButtonItem.swift */; };
+		65028F752282654D000293CB /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65028F6F22826546000293CB /* UICollectionView.swift */; };
+		65028F762282654D000293CB /* UIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65028F7122826546000293CB /* UIControl.swift */; };
+		65028F772282654D000293CB /* UIGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65028F6B22826545000293CB /* UIGestureRecognizer.swift */; };
+		65028F792282654D000293CB /* UIPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65028F6A22826545000293CB /* UIPickerView.swift */; };
+		65028F7A2282654D000293CB /* UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65028F6D22826545000293CB /* UIScrollView.swift */; };
+		65028F7B2282654D000293CB /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65028F6C22826545000293CB /* UITableView.swift */; };
+		65028F7D22826561000293CB /* JoinPartyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65028F7C22826560000293CB /* JoinPartyVC.swift */; };
+		65171DB3228A41F500686CA4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65171DB2228A41F500686CA4 /* GoogleService-Info.plist */; };
 		653A4C8B2282276600190872 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A4C8A2282276600190872 /* AppDelegate.swift */; };
 		653A4C8D2282276600190872 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A4C8C2282276600190872 /* ViewController.swift */; };
 		653A4C902282276600190872 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 653A4C8E2282276600190872 /* Main.storyboard */; };
@@ -34,6 +49,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1309505E97E4A90CB2E4892E /* Pods-Silent Disco.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Silent Disco.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Silent Disco/Pods-Silent Disco.debug.xcconfig"; sourceTree = "<group>"; };
+		637D24169772E1CD42185C8C /* Pods_Silent_Disco.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Silent_Disco.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		65028F612282331A000293CB /* MusicVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicVC.swift; sourceTree = "<group>"; };
+		65028F632282332E000293CB /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		65028F6522823336000293CB /* TableViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewVC.swift; sourceTree = "<group>"; };
+		65028F6822826545000293CB /* UIBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarButtonItem.swift; sourceTree = "<group>"; };
+		65028F6A22826545000293CB /* UIPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPickerView.swift; sourceTree = "<group>"; };
+		65028F6B22826545000293CB /* UIGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGestureRecognizer.swift; sourceTree = "<group>"; };
+		65028F6C22826545000293CB /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		65028F6D22826545000293CB /* UIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollView.swift; sourceTree = "<group>"; };
+		65028F6E22826546000293CB /* KVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KVO.swift; sourceTree = "<group>"; };
+		65028F6F22826546000293CB /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
+		65028F7022826546000293CB /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
+		65028F7122826546000293CB /* UIControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControl.swift; sourceTree = "<group>"; };
+		65028F7C22826560000293CB /* JoinPartyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinPartyVC.swift; sourceTree = "<group>"; };
+		65171DB2228A41F500686CA4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		653A4C872282276600190872 /* Silent Disco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Silent Disco.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		653A4C8A2282276600190872 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		653A4C8C2282276600190872 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +78,7 @@
 		653A4CA62282276800190872 /* Silent DiscoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Silent DiscoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		653A4CAA2282276800190872 /* Silent_DiscoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Silent_DiscoUITests.swift; sourceTree = "<group>"; };
 		653A4CAC2282276800190872 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D9AACEBE80AFBE25F0504C01 /* Pods-Silent Disco.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Silent Disco.release.xcconfig"; path = "Pods/Target Support Files/Pods-Silent Disco/Pods-Silent Disco.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1056BD1D4B94F1246EDA3C8A /* Pods_Silent_Disco.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +107,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		65028F6722826535000293CB /* ClosureHelper */ = {
+			isa = PBXGroup;
+			children = (
+				65028F7022826546000293CB /* Core.swift */,
+				65028F6E22826546000293CB /* KVO.swift */,
+				65028F6822826545000293CB /* UIBarButtonItem.swift */,
+				65028F6F22826546000293CB /* UICollectionView.swift */,
+				65028F7122826546000293CB /* UIControl.swift */,
+				65028F6B22826545000293CB /* UIGestureRecognizer.swift */,
+				65028F6A22826545000293CB /* UIPickerView.swift */,
+				65028F6D22826545000293CB /* UIScrollView.swift */,
+				65028F6C22826545000293CB /* UITableView.swift */,
+			);
+			path = ClosureHelper;
+			sourceTree = "<group>";
+		};
 		653A4C7E2282276600190872 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +130,8 @@
 				653A4C9E2282276800190872 /* Silent DiscoTests */,
 				653A4CA92282276800190872 /* Silent DiscoUITests */,
 				653A4C882282276600190872 /* Products */,
+				B10802E04006C505F7DEDEA2 /* Pods */,
+				ACDDBA90A56536B9719F5B22 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,10 +148,16 @@
 		653A4C892282276600190872 /* Silent Disco */ = {
 			isa = PBXGroup;
 			children = (
+				65028F6722826535000293CB /* ClosureHelper */,
 				653A4C8A2282276600190872 /* AppDelegate.swift */,
 				653A4C8C2282276600190872 /* ViewController.swift */,
+				65028F7C22826560000293CB /* JoinPartyVC.swift */,
+				65028F632282332E000293CB /* LoginManager.swift */,
+				65028F6522823336000293CB /* TableViewVC.swift */,
+				65028F612282331A000293CB /* MusicVC.swift */,
 				653A4C8E2282276600190872 /* Main.storyboard */,
 				653A4C912282276800190872 /* Assets.xcassets */,
+				65171DB2228A41F500686CA4 /* GoogleService-Info.plist */,
 				653A4C932282276800190872 /* LaunchScreen.storyboard */,
 				653A4C962282276800190872 /* Info.plist */,
 			);
@@ -125,6 +182,23 @@
 			path = "Silent DiscoUITests";
 			sourceTree = "<group>";
 		};
+		ACDDBA90A56536B9719F5B22 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				637D24169772E1CD42185C8C /* Pods_Silent_Disco.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B10802E04006C505F7DEDEA2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1309505E97E4A90CB2E4892E /* Pods-Silent Disco.debug.xcconfig */,
+				D9AACEBE80AFBE25F0504C01 /* Pods-Silent Disco.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +206,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 653A4CAF2282276800190872 /* Build configuration list for PBXNativeTarget "Silent Disco" */;
 			buildPhases = (
+				26E09B17A80B8556236E39C5 /* [CP] Check Pods Manifest.lock */,
 				653A4C832282276600190872 /* Sources */,
 				653A4C842282276600190872 /* Frameworks */,
 				653A4C852282276600190872 /* Resources */,
+				3DCAF08609AB0DF67369A0EE /* [CP] Embed Pods Frameworks */,
+				9CA2DBADB31A7E6FB4D50ECF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -232,6 +309,7 @@
 				653A4C952282276800190872 /* LaunchScreen.storyboard in Resources */,
 				653A4C922282276800190872 /* Assets.xcassets in Resources */,
 				653A4C902282276600190872 /* Main.storyboard in Resources */,
+				65171DB3228A41F500686CA4 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,13 +329,91 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		26E09B17A80B8556236E39C5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Silent Disco-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3DCAF08609AB0DF67369A0EE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Silent Disco/Pods-Silent Disco-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/SpotifyKit/SpotifyKit.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SpotifyKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Silent Disco/Pods-Silent Disco-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9CA2DBADB31A7E6FB4D50ECF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Silent Disco/Pods-Silent Disco-resources.sh",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Silent Disco/Pods-Silent Disco-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		653A4C832282276600190872 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65028F772282654D000293CB /* UIGestureRecognizer.swift in Sources */,
+				65028F722282654D000293CB /* Core.swift in Sources */,
+				65028F7B2282654D000293CB /* UITableView.swift in Sources */,
+				65028F762282654D000293CB /* UIControl.swift in Sources */,
 				653A4C8D2282276600190872 /* ViewController.swift in Sources */,
+				65028F6622823336000293CB /* TableViewVC.swift in Sources */,
+				65028F7A2282654D000293CB /* UIScrollView.swift in Sources */,
+				65028F752282654D000293CB /* UICollectionView.swift in Sources */,
+				65028F732282654D000293CB /* KVO.swift in Sources */,
+				65028F642282332E000293CB /* LoginManager.swift in Sources */,
 				653A4C8B2282276600190872 /* AppDelegate.swift in Sources */,
+				65028F742282654D000293CB /* UIBarButtonItem.swift in Sources */,
+				65028F622282331A000293CB /* MusicVC.swift in Sources */,
+				65028F792282654D000293CB /* UIPickerView.swift in Sources */,
+				65028F7D22826561000293CB /* JoinPartyVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,10 +586,13 @@
 		};
 		653A4CB02282276800190872 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1309505E97E4A90CB2E4892E /* Pods-Silent Disco.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F2ZE74PLHN;
 				INFOPLIST_FILE = "Silent Disco/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -447,10 +606,13 @@
 		};
 		653A4CB12282276800190872 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D9AACEBE80AFBE25F0504C01 /* Pods-Silent Disco.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F2ZE74PLHN;
 				INFOPLIST_FILE = "Silent Disco/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
