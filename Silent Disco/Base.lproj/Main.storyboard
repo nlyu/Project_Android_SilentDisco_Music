@@ -33,7 +33,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder=" Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5dc-Mx-Gjc">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder=" Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5dc-Mx-Gjc">
                                 <rect key="frame" x="16" y="279" width="343" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="0.92000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
@@ -420,7 +420,7 @@ Daniel</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pause" translatesAutoresizingMaskIntoConstraints="NO" id="wpr-63-3nR">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="play" translatesAutoresizingMaskIntoConstraints="NO" id="wpr-63-3nR">
                                 <rect key="frame" x="143" y="661" width="96" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
@@ -541,7 +541,7 @@ TheLegend47 Daniel</string>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pause" translatesAutoresizingMaskIntoConstraints="NO" id="U1I-el-sKa">
+                                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="play" translatesAutoresizingMaskIntoConstraints="NO" id="U1I-el-sKa">
                                             <rect key="frame" x="143" y="112" width="96" height="96"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <gestureRecognizers/>
@@ -622,8 +622,8 @@ Daniel</string>
     <resources>
         <image name="disco" width="512" height="512"/>
         <image name="jonas" width="1280" height="1280"/>
-        <image name="pause" width="396.3870849609375" height="396.3870849609375"/>
         <image name="pink floyd" width="1240" height="1240"/>
+        <image name="play" width="396.3870849609375" height="396.3870849609375"/>
         <image name="spotify" width="341.33334350585938" height="341.33334350585938"/>
     </resources>
     <inferredMetricsTieBreakers>
